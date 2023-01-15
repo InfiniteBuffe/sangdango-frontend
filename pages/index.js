@@ -1,11 +1,25 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/pages/Home/Home.module.css'
+import Header from '@/components/Header'
+import TextTransition, { presets } from "react-text-transition";
+import { useState, useEffect } from 'react'
 
-const inter = Inter({ subsets: ['latin'] })
+const Home = () => {
 
-export default function Home() {
+  const TEXTS = [
+    (<div>미래를 주도할 🚀<br />역량있는 상당인,</div>),
+    (<div>상상하라,<br/>당당하라!</div>)
+  ]
+  const [index, setIndex] = useState(0);
+    useEffect(() => {
+        const intervalId = setInterval(() =>
+            setIndex(index => index + 1),
+            5000
+        );
+        return () => clearTimeout(intervalId);
+    }, []);
+
   return (
     <>
       <Head>
@@ -14,110 +28,39 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+      <Header />
+      <div className={styles.video_box}>
+        <div className={styles.video_text_box}>
+          <div className={styles.video_top_text}>
+            상당고 학생인트라넷 🏫
           </div>
-        </div>
-
-        <div className={styles.center}>
+          <div className={styles.video_text}>
+            <TextTransition springConfig={presets.default}>
+              {TEXTS[index % TEXTS.length]}
+            </TextTransition>
+            <br/>오직 <span className={styles.highlight}>상당고에서.</span>
+          </div>
           <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
+            src="/images/down_arrow.svg"
+            className={styles.down_arrow}
+            width={20}
+            height={20}
+          // priority
           />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
         </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+        <video
+          autoPlay={true}
+          loop={true}
+          width={'100%'}
+          height={'100%'}
+          muted={true}
+          className={styles.video}
+        >
+          <source src="https://sangdango.r2.ptj.kr/intro_video.mp4" type='video/mp4' />
+        </video>
+      </div>
     </>
   )
 }
+
+export default Home

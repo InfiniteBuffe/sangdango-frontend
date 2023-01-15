@@ -1,0 +1,116 @@
+@import '../../variables';
+
+.video_box {
+    height: calc(100vh - #{$header-height} - 25px);
+    width: calc(100% - 50px);
+    background-color: rgb(190, 190, 190);
+    margin: auto;
+    overflow:hidden;
+    border-radius: 30px;
+    // transition: all .2;
+    user-select: none;
+}
+
+.video {
+    width: 100%;
+    margin: auto;
+    height: 100%;
+    transform: scale(1.5);
+    z-index: 2;
+}
+
+.video_text_box {
+    position: absolute;
+    width: calc(100% - 50px);
+    height: calc(100vh - #{$header-height} - 25px);
+    left: 25px;
+    background-color: rgba(50, 50, 50, 0.7);
+    backdrop-filter: blur(7px);
+    border-radius: 30px;
+    z-index: 1;
+}
+
+.video_text {
+    text-align: left;
+    font-family: 'pretendard';
+    font-weight: 600;
+    font-size: 27px;
+    color: white;
+    position: absolute;
+    bottom: 67px; // down_arrow 공간, 60 + 7 에서 7은 highlight 부분.
+    left: 35px;
+}
+
+.video_top_text {
+    text-align: left;
+    font-family: 'pretendard';
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    top: 35px;
+    left: 35px;
+}
+
+.highlight {
+    background-color: black;
+    color: white;
+    padding: 7px 10px;
+    border-radius: 15px;
+}
+
+.down_arrow {
+    // fill: white; // 이거는 svg 파일에서 fill="white" 추가로 해결
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -10px;
+}
+
+@media (max-width: 1055px) {
+    .video {
+        transform: scale(1.65);
+    }
+}
+@media (max-width: 950px) {
+    .video {
+        transform: scale(3.0);
+    }
+}
+@media (max-width: 655px) {
+    .video {
+        transform: scale(3.35);
+    }
+    .video_text {
+        font-size: 23px;
+    }
+    .video_top_text {
+        font-size: 23px;
+    }
+}
+@media (max-width: 470px) {
+    .video {
+        transform: scale(3.75);
+    }
+}
+@media (max-width: 410px) {
+    .video {
+        transform: scale(4.5);
+    }
+}
+@media (max-width: 305px) {
+    .video {
+        transform: scale(5);
+    }
+    .video_text {
+        font-size: 20px;
+    }
+    .video_top_text {
+        font-size: 20px;
+    }
+}
+@media (max-width: 295px) {
+    .video {
+        transform: scale(5.15);
+    }
+}
