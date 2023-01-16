@@ -2,23 +2,39 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '@/styles/pages/Home/Home.module.css'
 import Header from '@/components/Header'
-import TextTransition, { presets } from "react-text-transition";
-import { useState, useEffect } from 'react'
+import TextTransition, { presets } from "react-text-transition"
+import { useState, useEffect, useRef } from 'react'
+import classNames from 'classnames'
+import useResize from '@/hooks/useResize'
 
 const Home = () => {
 
   const TEXTS = [
     (<div>미래를 주도할 🚀<br />역량있는 상당인,</div>),
-    (<div>상상하라,<br/>당당하라!</div>)
+    (<div>상상하라,<br />당당하라!</div>)
   ]
   const [index, setIndex] = useState(0);
-    useEffect(() => {
-        const intervalId = setInterval(() =>
-            setIndex(index => index + 1),
-            5000
-        );
-        return () => clearTimeout(intervalId);
-    }, []);
+  const [videoClass, setVideoClass] = useState(styles.video)
+  const videoRef = useRef()
+  useEffect(() => {
+    if(typeof window != undefined){
+      const resize = ()=> {
+        if (window.innerWidth >= window.innerHeight * 2) {
+          setVideoClass(classNames(styles.video, styles.video_bug))
+        } else {
+          setVideoClass(styles.video)
+        }
+      }
+      window.addEventListener('resize', resize)
+      return () => window.removeEventListener('resize', resize)      
+    }
+
+    const intervalId = setInterval(() =>
+      setIndex(index => index + 1),
+      5000
+    )
+    return () => clearTimeout(intervalId)
+  }, [])
 
   return (
     <>
@@ -38,7 +54,7 @@ const Home = () => {
             <TextTransition springConfig={presets.default}>
               {TEXTS[index % TEXTS.length]}
             </TextTransition>
-            <br/>오직 <span className={styles.highlight}>상당고에서.</span>
+            <br />오직 <span className={styles.highlight}>상당고에서.</span>
           </div>
           <Image
             src="/images/down_arrow.svg"
@@ -49,12 +65,13 @@ const Home = () => {
           />
         </div>
         <video
+          ref={videoRef}
           autoPlay={true}
           loop={true}
           width={'100%'}
           height={'100%'}
           muted={true}
-          className={styles.video}
+          className={videoClass}
         >
           <source src="https://sangdango.r2.ptj.kr/intro_video.mp4" type='video/mp4' />
         </video>
