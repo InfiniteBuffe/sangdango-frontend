@@ -1,6 +1,5 @@
 import styles from '@/styles/components/Header/Header.module.css'
 import { useState, useEffect } from 'react'
-import Transition from 'react-transition-group/Transition'
 
 const Header = (props) => {
     return (
