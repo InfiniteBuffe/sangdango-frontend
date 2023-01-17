@@ -5,7 +5,7 @@ import Header from '@/components/Header'
 import TextTransition, { presets } from "react-text-transition"
 import { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
-import useResize from '@/hooks/useResize'
+// import useResize from '@/hooks/useResize'
 
 const Home = () => {
 
@@ -17,22 +17,38 @@ const Home = () => {
   const [videoClass, setVideoClass] = useState(styles.video)
   const videoRef = useRef()
   useEffect(() => {
-    if(typeof window != undefined){
-      const resize = ()=> {
-        if (window.innerWidth >= window.innerHeight * 2) {
+    // if(typeof window != undefined){
+    //   const resize = ()=> {
+    //     if (window.innerWidth >= window.innerHeight * 2) {
+    //       setVideoClass(classNames(styles.video, styles.video_bug))
+    //     } else {
+    //       setVideoClass(styles.video)
+    //     }
+    //   }
+    //   window.addEventListener('resize', resize)
+    //   return () => window.removeEventListener('resize', resize)      
+    // }
+    const intervalId = setInterval(() =>
+      setIndex(index => index + 1),
+      5000
+    )
+    if (typeof window != undefined) {
+      const handleResize = () => {
+        let width = window.innerWidth
+        let height = window.innerHeight
+        console.table(width, height)
+        if (width >= height * 2) {
           setVideoClass(classNames(styles.video, styles.video_bug))
         } else {
           setVideoClass(styles.video)
         }
       }
-      window.addEventListener('resize', resize)
-      return () => window.removeEventListener('resize', resize)      
+      window.addEventListener('resize', handleResize)
+      return () => {
+        window.removeEventListener('resize', handleResize)
+        clearTimeout(intervalId)
+      }
     }
-
-    const intervalId = setInterval(() =>
-      setIndex(index => index + 1),
-      5000
-    )
     return () => clearTimeout(intervalId)
   }, [])
 
