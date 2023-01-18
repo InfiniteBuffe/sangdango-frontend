@@ -16,9 +16,8 @@
 
 .title_box {
     position: absolute;
-    left: 25px;
-    margin: auto;
-    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .title {

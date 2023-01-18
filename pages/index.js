@@ -77,9 +77,10 @@ const Home = () => {
           muted={true}
           className={videoClass}
         >
-          <source src="https://sangdango.r2.ptj.kr/intro_video.mp4" type='video/mp4' />
+          <source src="https://cdn.sangdang.kr/intro_video.mp4" type='video/mp4' />
         </video>
       </div>
+
     </>
   )
 }

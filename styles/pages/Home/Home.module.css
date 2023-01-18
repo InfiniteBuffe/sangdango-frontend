@@ -1,7 +1,7 @@
 .video_box {
   position: relative;
-  height: calc(100vh - 70px - 25px);
-  width: calc(100% - 50px);
+  height: calc(100vh - 70px - 15px);
+  width: calc(100% - 30px);
   background-color: rgb(190, 190, 190);
   margin: auto;
   overflow: hidden;
@@ -30,7 +30,7 @@
 .video_text_box {
   position: absolute;
   width: 100%;
-  height: calc(100vh - 70px - 25px);
+  height: calc(100vh - 70px - 15px);
   background-color: rgba(50, 50, 50, 0.7);
   -webkit-backdrop-filter: blur(7px);
           backdrop-filter: blur(7px);
@@ -53,7 +53,7 @@
   text-align: left;
   font-family: "pretendard";
   font-weight: 500;
-  font-size: 17px;
+  font-size: 16px;
   color: white;
   position: absolute;
   top: 35px;
