@@ -73,4 +73,106 @@
   bottom: 20px;
   left: 50%;
   margin-left: -10px;
+}
+
+.warp_container {
+  margin: auto;
+  margin-top: 15px;
+  width: 685px;
+  height: auto;
+  border-radius: 15px;
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.warp_box {
+  margin: auto;
+  margin-top: 15px;
+  width: 100%;
+  border-radius: 15px;
+}
+.warp_box:first-child {
+  margin-top: 0;
+}
+
+@media (max-width: 730px) {
+  .warp_container {
+    width: calc(100% - 30px);
+  }
+}
+.intro_big_text {
+  font-family: "PyeongChangPeace-Bold";
+  font-size: 23px;
+  text-align: center;
+  margin-top: 15px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.intro_small_text {
+  font-family: "pretendard";
+  font-size: 15px;
+  text-align: center;
+  margin-top: 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.warp_text_box {
+  margin-left: 30px;
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  height: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+.warp_small_text {
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.warp_big_text {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 27px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.warp_big_small_text {
+  font-size: 17px;
+  font-weight: 300;
+  text-align: left;
+}
+
+#club {
+  color: white;
+  background: #8E2DE2;
+  background: linear-gradient(to right, #4A00E0, #8E2DE2);
+  border: 1px solid rgb(210, 200, 255);
+  box-shadow: 0px 7px 15px 2px rgba(140, 45, 225, 0.7);
+}
+
+#community {
+  color: black;
+  background: #0cebeb;
+  background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);
+  border: 1px solid rgb(25, 156, 123);
+  box-shadow: 0px 7px 15px 2px rgba(30, 230, 180, 0.7);
 }/*# sourceMappingURL=Home.module.css.map */
