@@ -1,0 +1,12 @@
+@import '../../variables';
+
+.header {
+    width: 100%;
+    height: $service-header-height;
+    background-color: red;
+    position: fixed;
+}
+
+.header_space {
+    height: $service-header-height;
+}

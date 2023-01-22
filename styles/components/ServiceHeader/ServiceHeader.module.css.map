@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"ServiceHeader.module.css"}
+{"version":3,"sources":["ServiceHeader.module.scss","../../_variables.scss","ServiceHeader.module.css"],"names":[],"mappings":"AAEA;EACI,WAAA;EACA,aCKoB;EDJpB,qBAAA;EACA,eAAA;AEDJ;;AFIA;EACI,aCDoB;ACAxB","file":"ServiceHeader.module.css"}

@@ -1,1 +1,10 @@
-/*# sourceMappingURL=ServiceHeader.module.css.map */
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: red;
+  position: fixed;
+}
+
+.header_space {
+  height: 100px;
+}/*# sourceMappingURL=ServiceHeader.module.css.map */
