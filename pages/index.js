@@ -1,14 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '@/styles/pages/Home/Home.module.css'
+import styles from '@/styles/pages/Main/Main.module.css'
 import Header from '@/components/Header'
 import TextTransition, { presets } from "react-text-transition"
 import { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
+import Twemoji from 'react-twemoji'
 
-const Home = () => {
+const Main = () => {
 
   const TEXTS = [
     (<div>미래를 주도할 🚀<br />역량있는 상당인,</div>),
@@ -94,10 +95,10 @@ const Home = () => {
         아래 버튼을 눌러 이동하세요
       </div>
       <div className={styles.warp_container}>
-        <div className={styles.warp_box} id={styles.club}>
+        <div className={styles.warp_box} id={styles.club} onClick={()=>router.push('/service/club')}>
           <div className={styles.warp_text_box}>
             <div className={styles.warp_big_text}>
-              동아리 🔬
+              <span className={styles.warp_big_text_line}>동아리&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>🔬</Twemoji></span>
               <div className={styles.warp_big_small_text}>
                 동아리를 손쉽게 관리.
               </div>
@@ -108,7 +109,7 @@ const Home = () => {
         <div className={styles.warp_box} id={styles.community} onClick={()=>toast('아직 준비중인 기능이에요!')}>
           <div className={styles.warp_text_box}>
             <div className={styles.warp_big_text}>
-              커뮤니티 ✍️
+              <span className={styles.warp_big_text_line}>커뮤니티&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>✍️</Twemoji></span>
               <div className={styles.warp_big_small_text}>
                 사람이 여행하는 곳은 사람의 마음뿐이다
               </div>
@@ -121,4 +122,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Main
