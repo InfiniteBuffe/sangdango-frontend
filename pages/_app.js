@@ -1,8 +1,10 @@
+import Layout from '@/components/Layout'
 import '@/styles/globals.css'
 import { Toaster } from 'react-hot-toast'
-import { motion } from "framer-motion"
+import { useRouter } from 'next/router'
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter()
   return (
     <>
       <Toaster position="bottom-center"
@@ -15,9 +17,9 @@ export default function App({ Component, pageProps }) {
           },
         }}
       />
-      <motion.div exit={{ opacity: 0 }}>
-        <Component {...pageProps} />
-      </motion.div>
+      <Layout>
+        <Component key={router.route} {...pageProps} />
+      </Layout>
     </>
   )
 }
