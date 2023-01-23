@@ -20,10 +20,10 @@ const Main = () => {
   const videoRef = useRef()
   const router = useRouter()
   useEffect(() => {
-    toast('아직 서비스가 준비중입니다.',
-      {
-        icon: '⏳',
-      }
+    toast('3월 2일에 만나요! 🎉',
+      // {
+      //   icon: '⏳',
+      // }
     );
     const intervalId = setInterval(() =>
       setIndex(index => index + 1),
