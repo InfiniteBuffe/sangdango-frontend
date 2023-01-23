@@ -23,6 +23,7 @@
     "react-modern-drawer": "^1.2.0",
     "react-parallax": "^3.5.1",
     "react-text-transition": "^3.0.2",
+    "react-transition-group": "^4.4.5",
     "react-twemoji": "^0.5.0"
   }
 }
