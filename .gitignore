@@ -3,6 +3,9 @@
 # goorm ide
 goorm.manifest
 
+# next
+/out
+
 # dependencies
 /node_modules
 /.pnp
