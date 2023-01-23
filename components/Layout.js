@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
   const router = useRouter();
   return (
     <>
-      <TransitionGroup style={{ position: "relative" }}>
+      <TransitionGroup>
         <Transition
           key={router.pathname}
           timeout={{

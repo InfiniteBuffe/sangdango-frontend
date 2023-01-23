@@ -2,9 +2,11 @@ import Layout from '@/components/Layout'
 import '@/styles/globals.css'
 import { Toaster } from 'react-hot-toast'
 import { useRouter } from 'next/router'
+import TransitionFix from '@/components/TransitionFix'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
+  TransitionFix()
   return (
     <>
       <Toaster position="bottom-center"
