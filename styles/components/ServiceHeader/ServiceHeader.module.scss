@@ -3,10 +3,68 @@
 .header {
     width: 100%;
     height: $service-header-height;
-    background-color: red;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
     position: fixed;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
 }
 
 .header_space {
     height: $service-header-height;
+}
+
+.title {
+    float: left;
+    font-family: 'pretendard';
+    font-size: 20px;
+    font-weight: 700;
+    line-height: $service-header-height;
+    margin-left: 30px;
+    user-select: none;
+}
+
+.highlight {
+    background-color: rgb(7, 0, 100);
+    color: white;
+    padding: 3px 7px;
+    margin-right: 3px;
+    margin-left: 5px;
+    font-weight: 800;
+}
+
+.menu_box {
+    float: left;
+    margin-left: 30px;
+    height: $service-header-height;
+    width: 300px;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: row;
+}
+
+.menu_item {
+    font-family: 'pretendard';
+    font-weight: 400;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: $service-header-height;
+    user-select: none;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+        text-underline-offset: 10px;
+        text-decoration-color: rgb(170, 170, 170);
+    }
+}
+
+#menu_active {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-color: black;
+    // text-decoration-thickness: 1px;
 }

@@ -1,10 +1,76 @@
 .header {
   width: 100%;
-  height: 100px;
-  background-color: red;
+  height: 70px;
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   position: fixed;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row;
 }
 
 .header_space {
-  height: 100px;
+  height: 70px;
+}
+
+.title {
+  float: left;
+  font-family: "pretendard";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 70px;
+  margin-left: 30px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.highlight {
+  background-color: rgb(7, 0, 100);
+  color: white;
+  padding: 3px 7px;
+  margin-right: 3px;
+  margin-left: 5px;
+  font-weight: 800;
+}
+
+.menu_box {
+  float: left;
+  margin-left: 30px;
+  height: 70px;
+  width: 300px;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  flex-direction: row;
+}
+
+.menu_item {
+  font-family: "pretendard";
+  font-weight: 400;
+  font-size: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+  line-height: 70px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.menu_item:hover {
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  -webkit-text-decoration-color: rgb(170, 170, 170);
+          text-decoration-color: rgb(170, 170, 170);
+}
+
+#menu_active {
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  -webkit-text-decoration-color: black;
+          text-decoration-color: black;
 }/*# sourceMappingURL=ServiceHeader.module.css.map */
