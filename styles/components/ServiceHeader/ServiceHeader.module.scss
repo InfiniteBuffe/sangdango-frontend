@@ -10,7 +10,8 @@
     justify-content: left;
     align-items: center;
     flex-direction: row;
-    overflow: hidden;
+    // overflow: hidden;
+    z-index: 5;
 }
 
 .header_space {
@@ -74,22 +75,41 @@
     display: none;
 }
 
+.drawer_box {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .menu_box, .menu_item {
         display: none;
     }
+
     .title {
         margin: auto;
         position: relative;
         left:50%;
         transform: translateX(-50%);
+        // margin-top: 0px;
+        width: calc(100% - 50px);
+        // z-index: 200;
     }
 
     .drawer_button {
         display: block;
-        // float: left;
-        margin-top: 20px;
+        // margin-top: 20px;
         margin-left: 20px;
-        position: absolute;
+        position: relative;
+        z-index: 150 !important;
+    }
+
+    .drawer_box {
+        display: block;
+        position: relative;
+        z-index: 15 !important;
+    }
+
+    .drawer {
+        position: relative;
+        // z-index: 11 !important;
     }
 }
