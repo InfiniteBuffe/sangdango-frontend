@@ -1,0 +1,28 @@
+diff --git a/node_modules/@animated-burgers/burger/dist/styles.css b/node_modules/@animated-burgers/burger/dist/styles.css
+index 57dabcf..c0a4e5d 100644
+--- a/node_modules/@animated-burgers/burger/dist/styles.css
++++ b/node_modules/@animated-burgers/burger/dist/styles.css
+@@ -31,8 +31,8 @@
+       content: '';
+       width: 100%;
+       border-radius: 0.25em;
+-      background-color: white;
+-      height: 0.25em;
++      background-color: black;
++      height: 0.15em;
+       position: absolute;
+       -webkit-transform: rotate(0);
+           -ms-transform: rotate(0);
+diff --git a/node_modules/@animated-burgers/burger/styles.scss b/node_modules/@animated-burgers/burger/styles.scss
+index b6720f5..54a8b85 100644
+--- a/node_modules/@animated-burgers/burger/styles.scss
++++ b/node_modules/@animated-burgers/burger/styles.scss
+@@ -37,7 +37,7 @@
+       content: '';
+       width: 100%;
+       border-radius: 0.25em;
+-      background-color: white;
++      background-color: black;
+       height: 0.25em;
+       position: absolute;
+       transform: rotate(0);

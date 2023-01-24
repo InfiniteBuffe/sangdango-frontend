@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@animated-burgers/burger-squeeze": "^1.1.2",
@@ -19,6 +20,8 @@
     "next": "13.1.2",
     "next-page-transitions": "^1.0.0-beta.2",
     "nprogress": "^0.2.0",
+    "patch-package": "^6.5.1",
+    "postinstall-postinstall": "^2.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
