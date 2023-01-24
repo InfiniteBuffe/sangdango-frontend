@@ -1,3 +1,5 @@
+> 사용 시 @animated-burgers/burger-squeeze/dist/styles.css 와 @animated-burgers/burger/dist/style.css 에서 background 색상을 white에서 black으로 바꿔야 함.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
