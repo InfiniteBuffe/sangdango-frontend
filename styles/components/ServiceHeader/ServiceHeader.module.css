@@ -9,6 +9,7 @@
   justify-content: left;
   align-items: center;
   flex-direction: row;
+  overflow: hidden;
 }
 
 .header_space {
@@ -41,7 +42,6 @@
   float: left;
   margin-left: 30px;
   height: 70px;
-  width: 300px;
   display: flex;
   align-items: left;
   justify-content: left;
@@ -73,4 +73,26 @@
   text-underline-offset: 10px;
   -webkit-text-decoration-color: black;
           text-decoration-color: black;
+}
+
+.drawer_button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu_box, .menu_item {
+    display: none;
+  }
+  .title {
+    margin: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .drawer_button {
+    display: block;
+    margin-top: 20px;
+    margin-left: 20px;
+    position: absolute;
+  }
 }/*# sourceMappingURL=ServiceHeader.module.css.map */

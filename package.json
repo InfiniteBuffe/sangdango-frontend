@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@animated-burgers/burger-squeeze": "^1.1.2",
     "@next/font": "13.1.2",
     "aos": "^2.3.4",
     "classnames": "^2.3.2",
