@@ -90,7 +90,7 @@ const Main = () => {
         </video>
       </div>
       <div className={styles.intro_big_text}>
-        너만의 상당을 만들어봐
+        너만의 상당을 만들어봐!
       </div>
       <div className={styles.intro_small_text}>
         아래 버튼을 눌러 이동하세요
