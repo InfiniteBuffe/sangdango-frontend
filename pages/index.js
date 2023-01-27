@@ -29,23 +29,24 @@ const Main = () => {
       setIndex(index => index + 1),
       5000
     )
-    if (typeof window != undefined) {
-      const handleResize = () => {
-        let width = window.innerWidth
-        let height = window.innerHeight
-        if (width >= height * 2) {
-          setVideoClass(classNames(styles.video, styles.video_bug))
-        } else {
-          setVideoClass(styles.video)
-        }
-      }
-      window.addEventListener('resize', handleResize)
-      return () => {
-        window.removeEventListener('resize', handleResize)
-        clearTimeout(intervalId)
-      }
-    }
-    return () => clearTimeout(intervalId)
+    // 화면 크기에 따라 영상 잘리는 부분 없애기
+    // if (typeof window != undefined) {
+    //   const handleResize = () => {
+    //     let width = window.innerWidth
+    //     let height = window.innerHeight
+    //     if (width >= height * 2) {
+    //       setVideoClass(classNames(styles.video, styles.video_bug))
+    //     } else {
+    //       setVideoClass(styles.video)
+    //     }
+    //   }
+    //   window.addEventListener('resize', handleResize)
+    //   return () => {
+    //     window.removeEventListener('resize', handleResize)
+    //     clearTimeout(intervalId)
+    //   }
+    // }
+    // return () => clearTimeout(intervalId)
   }, [])
 
   return (
@@ -67,7 +68,7 @@ const Main = () => {
             <TextTransition springConfig={presets.default}>
               {TEXTS[index % TEXTS.length]}
             </TextTransition>
-            <br />오직 <span className={styles.highlight}>상당고에서.</span>
+            <div className={styles.video_space} />오직 <span className={styles.highlight}>상당고에서.</span>
           </div>
           <Image
             src="/images/down_arrow.svg"

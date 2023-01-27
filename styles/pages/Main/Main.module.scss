@@ -2,24 +2,31 @@
 
 .video_box {
     position: relative;
-    height: calc(100vh - #{$header-height} - 15px);
+    height: 500px;
     width: calc(100% - 30px);
+    max-width: $page-width;
     background-color: rgb(190, 190, 190);
     margin: auto;
     overflow: hidden;
     border-radius: 30px;
-    // transition: all .2;
     user-select: none;
 }
 
 .video {
     position: absolute;
-    width: auto;
     height: 100%;
+    width: auto;
     z-index: 1;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1.25);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+@media (max-width: 670px) {
+    .video {
+        width: auto;
+        height: 100%;
+    }
 }
 
 .video_bug {
@@ -30,7 +37,8 @@
 .video_text_box {
     position: absolute;
     width: 100%;
-    height: calc(100vh - #{$header-height} - 15px);
+    max-width: $page-width;
+    height: 500px;
     background-color: rgba(50, 50, 50, 0.7);
     backdrop-filter: blur(7px);
     border-radius: 30px;
@@ -41,7 +49,7 @@
     text-align: left;
     font-family: 'pretendard';
     font-weight: 600;
-    font-size: 27px;
+    font-size: 22px;
     color: white;
     position: absolute;
     bottom: 67px; // down_arrow 공간, 60 + 7 에서 7은 highlight 부분.
@@ -57,6 +65,10 @@
     position: absolute;
     top: 35px;
     left: 35px;
+}
+
+.video_space {
+    height: 15px;
 }
 
 .highlight {
@@ -78,12 +90,11 @@
     // position: relative;
     margin: auto;
     margin-top: 15px;
-    width: 685px;
+    width: $page-width;
     height: auto;
     border-radius: 15px;
     background-color: white;
     padding: 15px;
-
     margin-bottom: 15px;
 }
 

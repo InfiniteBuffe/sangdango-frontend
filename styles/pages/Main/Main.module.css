@@ -1,7 +1,8 @@
 .video_box {
   position: relative;
-  height: calc(100vh - 70px - 15px);
+  height: 500px;
   width: calc(100% - 30px);
+  max-width: 685px;
   background-color: rgb(190, 190, 190);
   margin: auto;
   overflow: hidden;
@@ -14,14 +15,20 @@
 
 .video {
   position: absolute;
-  width: auto;
   height: 100%;
+  width: auto;
   z-index: 1;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.25);
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
+@media (max-width: 670px) {
+  .video {
+    width: auto;
+    height: 100%;
+  }
+}
 .video_bug {
   width: 100%;
   height: auto;
@@ -30,7 +37,8 @@
 .video_text_box {
   position: absolute;
   width: 100%;
-  height: calc(100vh - 70px - 15px);
+  max-width: 685px;
+  height: 500px;
   background-color: rgba(50, 50, 50, 0.7);
   -webkit-backdrop-filter: blur(7px);
           backdrop-filter: blur(7px);
@@ -42,7 +50,7 @@
   text-align: left;
   font-family: "pretendard";
   font-weight: 600;
-  font-size: 27px;
+  font-size: 22px;
   color: white;
   position: absolute;
   bottom: 67px;
@@ -58,6 +66,10 @@
   position: absolute;
   top: 35px;
   left: 35px;
+}
+
+.video_space {
+  height: 15px;
 }
 
 .highlight {
