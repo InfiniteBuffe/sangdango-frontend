@@ -96,7 +96,7 @@ const Main = () => {
         아래 버튼을 눌러 이동하세요
       </div>
       <div className={styles.warp_container}>
-        <div className={styles.warp_box} id={styles.club} onClick={()=>router.push('/service/club')}>
+        <div className={styles.warp_box} id={styles.club} onClick={()=>router.push('/service/club/home')}>
           <div className={styles.warp_text_box}>
             <div className={styles.warp_big_text}>
               <span className={styles.warp_big_text_line}>동아리&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>🔬</Twemoji></span>

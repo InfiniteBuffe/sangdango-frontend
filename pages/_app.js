@@ -1,4 +1,4 @@
-import Layout from '@/components/Layout'
+// import Layout from '@/components/Layout'
 import '@/styles/globals.css'
 import { Toaster } from 'react-hot-toast'
 import { useRouter } from 'next/router'
@@ -6,6 +6,7 @@ import TransitionFix from '@/components/TransitionFix'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
+  const transition_paths = ['/', '/service/club/home']
   TransitionFix()
   return (
     <>
@@ -19,9 +20,10 @@ export default function App({ Component, pageProps }) {
           },
         }}
       />
-      <Layout>
+      {/* <Layout>
         <Component key={router.route} {...pageProps} />
-      </Layout>
+      </Layout> */}
+      <Component key={router.route} {...pageProps} />
     </>
   )
 }
