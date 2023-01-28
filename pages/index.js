@@ -96,7 +96,7 @@ const Main = () => {
         아래 버튼을 눌러 이동하세요
       </div>
       <div className={styles.warp_container}>
-        <div className={styles.warp_box} id={styles.club} onClick={()=>router.push('/service/club/home')}>
+        <div className={styles.warp_box} id={styles.club} onClick={()=>{router.push('/service/club/home');toast('동아리 서비스로 이동합니다')}}>
           <div className={styles.warp_text_box}>
             <div className={styles.warp_big_text}>
               <span className={styles.warp_big_text_line}>동아리&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>🔬</Twemoji></span>
@@ -107,12 +107,23 @@ const Main = () => {
             <div className={styles.warp_small_text}>눌러서 이동하기 →</div>
           </div>
         </div>
-        <div className={styles.warp_box} id={styles.community} onClick={()=>toast('아직 준비중인 기능이에요!')}>
+        <div className={styles.warp_box} id={styles.community} onClick={()=>toast('학기 중 오픈 예정이에요!')}>
           <div className={styles.warp_text_box}>
             <div className={styles.warp_big_text}>
               <span className={styles.warp_big_text_line}>커뮤니티&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>✍️</Twemoji></span>
               <div className={styles.warp_big_small_text}>
                 사람이 여행하는 곳은 사람의 마음뿐이다
+              </div>
+            </div>
+            <div className={styles.warp_small_text}>눌러서 이동하기 →</div>
+          </div>
+        </div>
+        <div className={styles.warp_box} id={styles.music} onClick={()=>toast('학기 중 협의 후 오픈 예정이에요!')}>
+          <div className={styles.warp_text_box}>
+            <div className={styles.warp_big_text}>
+              <span className={styles.warp_big_text_line}>시설이용&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>📋</Twemoji></span>
+              <div className={styles.warp_big_small_text}>
+                지금. 여기. 상당고에서.
               </div>
             </div>
             <div className={styles.warp_small_text}>눌러서 이동하기 →</div>
