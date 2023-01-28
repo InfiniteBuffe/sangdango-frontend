@@ -5,7 +5,7 @@ import ServiceHeader from '@/components/ServiceHeader'
 const View = (props) => {
     return (
         <>
-            <ServiceHeader title='동아리' />
+            <ServiceHeader title='동아리' service={'club'}/>
             <BottomNav service={'club'} />
         </>
     )

@@ -5,6 +5,7 @@ import '@animated-burgers/burger-squeeze/dist/styles.css'
 import { useState } from 'react'
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
+import { useRouter } from 'next/router'
 
 const ServiceHeader = (props) => {
 
@@ -16,6 +17,16 @@ const ServiceHeader = (props) => {
         setDrawerButtonOpen(change)
         setDrawerOpen(change)
     }
+
+    const router = useRouter()
+    const ClubMenu = [
+        // path가 /service/club/home 일 경우 -> 'home', /service/club/view 일 경우 -> 'view'
+        { id: 0, name: '홈', path_name: 'home' },
+        { id: 1, name: '둘러보기', path_name: 'view' },
+        { id: 3, name: '행사 및 일정', path_name: 'plan' },
+        { id: 2, name: '내 정보', path_name: 'my' },
+    ]
+    const now_path = router.pathname
 
     return (
         <>
@@ -46,21 +57,26 @@ const ServiceHeader = (props) => {
                         <span className={styles.highlight}>상당고</span> {props.title}
                     </div>
                     <div className={styles.menu_box}>
-                        <div className={styles.menu_item} id={styles.menu_active}>
-                            홈
-                        </div>
-                        <div className={styles.menu_item}>
-                            둘러보기
-                        </div>
-                        <div className={styles.menu_item}>
-                            내 정보
-                        </div>
-                        <div className={styles.menu_item}>
-                            임시1
-                        </div>
-                        <div className={styles.menu_item}>
-                            임시2
-                        </div>
+
+                        {
+                            (props.service == 'club') ? (
+                                ClubMenu.map(e => {
+                                    let path = now_path.split('/')[3]
+                                    let is_active = false
+                                    if (path == e.path_name) is_active = true
+                                    return (
+                                        <div
+                                            key={e.id}
+                                            id={(is_active) ? (styles.menu_active) : (false)}
+                                            className={styles.menu_item}
+                                            onClick={() => router.push(`/service/${props.service}/${e.path_name}`)}
+                                        >
+                                            {e.name}
+                                        </div>
+                                    )
+                                })
+                            ) : false
+                        }
                     </div>
                 </Container>
             </div>
