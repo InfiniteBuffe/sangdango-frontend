@@ -35,6 +35,8 @@ const BottomNav = (props) => {
     useEffect(() => {
         if (path[1] == 'service' || path[2] in current_service) {
             setViewHeader(true)
+        } else {
+            setViewHeader(false)
         }
     }, [router.pathname])
 

@@ -38,6 +38,9 @@ const ServiceHeader = (props) => {
         if (path[1] == 'service' || path[2] in current_service) {
             setViewHeader(true)
             setTitle(current_service_title[path[2]])
+        } else {
+            setViewHeader(false)
+            setTitle('')
         }
     }, [router.pathname])
 
