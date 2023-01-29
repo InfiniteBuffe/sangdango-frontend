@@ -5,7 +5,6 @@ import ServiceHeader from '@/components/ServiceHeader'
 const View = (props) => {
     return (
         <>
-            <BottomNav service={'club'} />
         </>
     )
 }

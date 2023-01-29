@@ -1,14 +1,43 @@
+.container {
+    text-align: center;
+}
+
+.box {
+    display: inline-block;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 30px;
+    border-radius: 50px;
+    height: auto;
+    max-width: calc(1130px - 60px);
+    margin: 0 auto;
+}
+
 .alert_bar {
-    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
 
 .icon {
-    
+    padding-left: 25px;
+    padding-right: 25px;
+    position: relative;
+    top: 50%;
+    vertical-align: middle;
 }
 
-@media (max-width: 0px) {
-    .alert_bar {
-        width: calc(100% - 30px);
+.text {
+    text-align: left;
+    font-family: 'pretendard';
+    font-size: 17px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .box {
+        width: calc(100% - 20px);
         margin: auto;
     }
 }
@@ -16,5 +45,6 @@
 #yellow {
     background-color: rgb(255, 255, 190);
     border: 1px solid rgb(255, 255, 80);
-    box-shadow: 0 3px 15px 0 rgba(255, 255, 80, 0.5);
+    box-shadow: 0 3px 15px 0 rgba(255, 255, 80, 0.3);
+    color: rgb(70, 70, 0);
 }

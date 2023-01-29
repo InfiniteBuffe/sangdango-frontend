@@ -5,7 +5,6 @@ import ServiceHeader from '@/components/ServiceHeader'
 const Plan = (props) => {
     return (
         <>
-            <BottomNav service={'club'} />
         </>
     )
 }

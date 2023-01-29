@@ -11,6 +11,7 @@ import {
     IoPerson
 } from 'react-icons/io5';
 import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 
 const BottomNav = (props) => {
 
@@ -22,20 +23,36 @@ const BottomNav = (props) => {
         { id: 3, name: '행사 및 일정', path_name: 'plan', icon: <IoCalendarClearOutline size={25} />, active: <IoCalendarClear size={25} /> },
         { id: 2, name: '내 정보', path_name: 'my', icon: <IoPersonOutline size={25} />, active: <IoPerson size={25} /> },
     ]
+    const current_service = ['club']
+    const current_service_title = {
+        club: '동아리'
+    }
     const now_path = router.pathname
+    const [viewHeader, setViewHeader] = useState(false)
+
+    const path = now_path.split('/')
+
+    useEffect(() => {
+        if (path[1] == 'service' || path[2] in current_service) {
+            setViewHeader(true)
+        }
+    }, [router.pathname])
+
+    // ServiceHeader가 적용되는 페이지가 아닐 경우
+    if (!viewHeader) return (<></>)
 
     return (
         <>
             <div className={styles.bottom_nav}>
                 <div className={styles.menu_box}>
                     {
-                        (props.service == 'club') ? (
+                        (path[2] == 'club') ? (
                             ClubMenu.map(e => {
                                 let icon = e.icon
-                                let path = now_path.split('/')[3]
-                                if (path == e.path_name) icon = e.active
+                                let _path = now_path.split('/')[3]
+                                if (_path == e.path_name) icon = e.active
                                 return (
-                                    <div key={e.id} className={styles.menu} onClick={() => router.push(`/service/${props.service}/${e.path_name}`)}>
+                                    <div key={e.id} className={styles.menu} onClick={() => router.push(`/service/${path[2]}/${e.path_name}`)}>
                                         <div className={styles.icon}>
                                             {icon}
                                         </div>
