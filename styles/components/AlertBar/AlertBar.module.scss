@@ -1,0 +1,20 @@
+.alert_bar {
+    width: 100%;
+}
+
+.icon {
+    
+}
+
+@media (max-width: 0px) {
+    .alert_bar {
+        width: calc(100% - 30px);
+        margin: auto;
+    }
+}
+
+#yellow {
+    background-color: rgb(255, 255, 190);
+    border: 1px solid rgb(255, 255, 80);
+    box-shadow: 0 3px 15px 0 rgba(255, 255, 80, 0.5);
+}
