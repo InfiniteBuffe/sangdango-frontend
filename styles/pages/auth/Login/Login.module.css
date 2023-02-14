@@ -31,10 +31,6 @@
   height: 20px;
 }
 
-.input {
-  font-family: "pretendard";
-}
-
 @media (max-width: 560px) {
   .login {
     width: calc(100% - 60px);

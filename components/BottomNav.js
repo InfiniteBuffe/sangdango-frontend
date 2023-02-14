@@ -33,7 +33,7 @@ const BottomNav = (props) => {
     const path = now_path.split('/')
 
     useEffect(() => {
-        if (path[1] == 'service' || path[2] in current_service) {
+        if (path[1] == 'service' && path[2] in current_service) {
             setViewHeader(true)
         } else {
             setViewHeader(false)
