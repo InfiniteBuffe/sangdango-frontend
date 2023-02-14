@@ -17,7 +17,7 @@ const ServiceHeader = (props) => {
         setDrawerOpen(change)
     }
     const router = useRouter()
-    const current_service = ['club']
+    const current_service = { 'club': true }
     const current_service_title = {
         club: '동아리'
     }
@@ -35,7 +35,7 @@ const ServiceHeader = (props) => {
     const path = now_path.split('/')
 
     useEffect(() => {
-        if (path[1] == 'service' && path[2] in current_service) {
+        if (path[1] == 'service' && path[2] in current_service && current_service[path[2]]) {
             setViewHeader(true)
             setTitle(current_service_title[path[2]])
         } else {

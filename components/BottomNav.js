@@ -23,7 +23,7 @@ const BottomNav = (props) => {
         { id: 3, name: '행사 및 일정', path_name: 'plan', icon: <IoCalendarClearOutline size={25} />, active: <IoCalendarClear size={25} /> },
         { id: 2, name: '내 정보', path_name: 'my', icon: <IoPersonOutline size={25} />, active: <IoPerson size={25} /> },
     ]
-    const current_service = ['club']
+    const current_service = { 'club': true }
     const current_service_title = {
         club: '동아리'
     }
@@ -33,7 +33,7 @@ const BottomNav = (props) => {
     const path = now_path.split('/')
 
     useEffect(() => {
-        if (path[1] == 'service' && path[2] in current_service) {
+        if (path[1] == 'service' && path[2] in current_service && current_service[path[2]]) {
             setViewHeader(true)
         } else {
             setViewHeader(false)
