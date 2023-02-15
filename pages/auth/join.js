@@ -2,6 +2,7 @@ import Header from '@/components/Header'
 import styles from '@/styles/pages/auth/Join/Join.module.css'
 import { Button, ThemeProvider, createTheme } from '@mui/material'
 import { grey } from '@mui/material/colors'
+import Twemoji from 'react-twemoji'
 
 const Join = () => {
 
@@ -24,6 +25,8 @@ const Join = () => {
                     서비스를 이용하기 위한 계정을 생성합니다.
                 </div>
                 <div className={styles.intro_text}>
+                    <Twemoji options={{ className: styles.intro_emoji }}>👏</Twemoji>
+                    <div className={styles.space} />
                     <div id={styles.intro_1}>
                         반가워요.
                     </div>
