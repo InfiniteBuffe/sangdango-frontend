@@ -69,7 +69,7 @@ const Login = () => {
                         <div className={styles.space} />
                         <Button
                             fullWidth
-                            style={{ fontFamily: 'pretendard', fontWeight: 600, height: '56px', fontSize: '18px', color: 'white' }}
+                            style={{ fontFamily: 'pretendard', fontWeight: 600, height: '56px', fontSize: '18px', color: 'white', borderRadius: '20px' }}
                             variant="contained"
                             size="large"
                             color="dark"
