@@ -88,6 +88,75 @@
   font-weight: 700;
 }
 
+.fadein {
+  -webkit-animation: fadein 0.7s;
+          animation: fadein 0.7s;
+}
+
+.fadeout {
+  -webkit-animation: fadeout 0.7s;
+          animation: fadeout 0.7s;
+}
+
+.remove {
+  display: none;
+  opacity: 0;
+}
+
+.terms {
+  width: 100%;
+}
+
+.terms_title {
+  font-family: "pretendard";
+  font-size: 25px;
+  font-weight: 700;
+}
+
+#terms_highlight {
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: transparent;
+  -webkit-background-clip: text;
+          background-clip: text;
+}
+
+#terms_light {
+  font-weight: 500;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 @media (max-width: 560px) {
   .box {
     width: calc(100% - 30px);

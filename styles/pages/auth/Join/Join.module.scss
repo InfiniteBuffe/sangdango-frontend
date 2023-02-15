@@ -81,9 +81,62 @@
 
 #intro_2 {
     font-weight: 700;
-    // background: linear-gradient(to right, #414d0b, #727a17);
-    // color: transparent;
-    // background-clip: text;
+}
+
+.fadein {
+    animation: fadein .7s;
+}
+
+.fadeout {
+    animation: fadeout .7s;
+}
+
+.remove {
+    display: none;
+    opacity: 0;
+}
+
+.terms {
+    width: 100%;
+    // background-color: red;
+}
+
+.terms_title {
+    font-family: 'pretendard';
+    font-size: 25px;
+    font-weight: 700;
+    // margin-top: 15px;
+}
+
+
+#terms_highlight {
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    color: transparent;
+    background-clip: text;
+}
+
+#terms_light {
+    font-weight: 500;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 @media (max-width: 560px) {
