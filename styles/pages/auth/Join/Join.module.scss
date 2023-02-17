@@ -8,6 +8,7 @@
     transform: translateX(-50%);
     -webkit-tap-highlight-color: transparent;
     padding: 30px;
+    box-shadow: 5px 0px 50px 0 rgba(50, 50, 50, 0.3);
 }
 
 .bottom_button {
@@ -105,9 +106,8 @@
     font-family: 'pretendard';
     font-size: 25px;
     font-weight: 700;
-    // margin-top: 15px;
+    user-select: none;
 }
-
 
 #terms_highlight {
     background: linear-gradient(to right, #8e2de2, #4a00e0);
@@ -117,6 +117,30 @@
 
 #terms_light {
     font-weight: 500;
+}
+
+.label {
+    font-family: 'pretendard';
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.all_select {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 20px;
+}
+
+.select {
+    padding: 20px;
+    padding-top: 0;
+}
+
+.require {
+    font-weight: 300;
+    // color: rgb(100, 100, 100);
+    color: red;
 }
 
 @keyframes fadein {

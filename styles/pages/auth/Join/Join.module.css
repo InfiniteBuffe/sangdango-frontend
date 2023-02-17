@@ -8,6 +8,7 @@
   transform: translateX(-50%);
   -webkit-tap-highlight-color: transparent;
   padding: 30px;
+  box-shadow: 5px 0px 50px 0 rgba(50, 50, 50, 0.3);
 }
 
 .bottom_button {
@@ -111,6 +112,10 @@
   font-family: "pretendard";
   font-size: 25px;
   font-weight: 700;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 #terms_highlight {
@@ -122,6 +127,29 @@
 
 #terms_light {
   font-weight: 500;
+}
+
+.label {
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.all_select {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 20px;
+}
+
+.select {
+  padding: 20px;
+  padding-top: 0;
+}
+
+.require {
+  font-weight: 300;
+  color: red;
 }
 
 @-webkit-keyframes fadein {

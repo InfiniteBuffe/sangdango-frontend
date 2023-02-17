@@ -17,7 +17,7 @@ model User {
   phoneNumber String   @unique
   verify      Boolean  @default(false)
   admin       Boolean  @default(false) // 과연 필요할까?
-  type        TYPE     @default(STUDENT)
+  type        TYPE     // @default(STUDENT)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
 }
