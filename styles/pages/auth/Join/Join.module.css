@@ -152,6 +152,14 @@
   color: red;
 }
 
+.loading_text {
+  font-family: "pretendard";
+  font-weight: 700;
+  text-align: center;
+  margin: 30px;
+  font-size: 23px;
+}
+
 @-webkit-keyframes fadein {
   from {
     opacity: 0;

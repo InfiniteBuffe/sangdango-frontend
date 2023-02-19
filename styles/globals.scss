@@ -40,3 +40,21 @@ a {
   position: relative;
   z-index: 10 !important;
 }
+
+:root {
+  --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
+  // --rsbs-bg: #31313a;
+  // --rsbs-handle-bg: #31313a;
+  --rsbs-max-w: auto;
+  --rsbs-ml: env(safe-area-inset-left);
+  --rsbs-mr: env(safe-area-inset-right);
+  --rsbs-overlay-rounded: 16px;
+}
+
+@media (min-width: 500px) {
+  :root {
+    --rsbs-max-w: 500px;
+    --rsbs-ml: auto;
+    --rsbs-mr: auto;
+  }
+}

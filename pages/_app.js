@@ -7,6 +7,7 @@ import ServiceHeader from '@/components/ServiceHeader'
 import Layout from '@/components/Layout'
 import BottomNav from '@/components/BottomNav'
 import { SessionProvider } from "next-auth/react"
+import "react-spring-bottom-sheet/dist/style.css"
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()

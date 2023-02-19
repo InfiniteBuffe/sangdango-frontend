@@ -32,8 +32,10 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
+    "react-loader-spinner": "^5.3.4",
     "react-modern-drawer": "^1.2.0",
     "react-parallax": "^3.5.1",
+    "react-spring-bottom-sheet": "^3.4.1",
     "react-text-transition": "^3.0.2",
     "react-transition-group": "^4.4.5",
     "react-twemoji": "^0.5.0"

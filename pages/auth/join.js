@@ -8,6 +8,7 @@ import Twemoji from 'react-twemoji';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { BottomSheet } from 'react-spring-bottom-sheet';
 
 const Join = () => {
 	const theme = createTheme({
@@ -50,8 +51,10 @@ const Join = () => {
 		}
 	};
 	
+	const [sheetOpen, setSheetOpen] = useState(false)
+	
 	const gotoForm = () => {
-		
+		setSheetOpen(true)
 	}
 
 	useEffect(() => {	
@@ -68,6 +71,11 @@ const Join = () => {
 
 	return (
 		<>
+			<BottomSheet open={sheetOpen}>
+				<div className={styles.loading_text}>
+					잠시만 기다려주세요
+				</div>
+			</BottomSheet>
 			<Header />
 			<div className={styles.box}>
 				<div className={styles.title}>회원가입</div>
