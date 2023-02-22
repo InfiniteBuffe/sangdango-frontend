@@ -1,14 +1,16 @@
 import Header from '@/components/Header';
-import styles from '@/styles/pages/auth/Join/Join.module.css';
+import styles from '@/styles/pages/auth/join/Join/Join.module.css';
 import { Button, ThemeProvider, createTheme } from '@mui/material';
 import { grey, pink } from '@mui/material/colors';
-import classNames from 'classnames';
 import { useState, useEffect } from 'react';
 import Twemoji from 'react-twemoji';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { BottomSheet } from 'react-spring-bottom-sheet';
+import Loading from "@/components/Loading";
+import axios from "axios";
+import {useRouter} from "next/router";
+import { setCookie } from 'cookies-next';
 
 const Join = () => {
 	const theme = createTheme({
@@ -18,7 +20,7 @@ const Join = () => {
 			},
 		},
 	});
-	
+
 	const fadeAnimationDuration = 700 // css에서 재생시간 변경 시 ms단위로 변경 필요함.
 
 	const nextButton = () => {
@@ -38,6 +40,7 @@ const Join = () => {
 	const [allAgree, setAllAgree] = useState(false);
 
 	const [allCheckedNextButton, setAllCheckedNextButton] = useState(false);
+	const [loadingVisible, setLoadingVisible] = useState(false)
 
 	const allCheck = () => {
 		if(allAgree) {
@@ -50,14 +53,32 @@ const Join = () => {
 			setAllAgree(true);
 		}
 	};
-	
-	const [sheetOpen, setSheetOpen] = useState(false)
-	
+
+	const router = useRouter()
+
 	const gotoForm = () => {
-		setSheetOpen(true)
+		setLoadingVisible(true) // 나중에 버튼 클릭 시 버튼 글자 옆에 spinner 돌아가게 할 것. 이건 너무 좀 그런거같음.
+		axios({
+			url: '/api/verify/join/create',
+			method: 'post',
+			data: {
+				privacy_agree: privacyAgree,
+				terms_agree: termsAgree,
+			}
+		})
+			.then( r => {
+				// router.replace({
+				// 	pathname: '/auth/join/info',
+				// 	query: {
+				// 		token: r.data.token
+				// 	}
+				// })
+				setCookie('join_token', r.data.token, {maxAge: 10})
+				router.push('/auth/join/info')
+			})
 	}
 
-	useEffect(() => {	
+	useEffect(() => {
 		if (termsAgree && privacyAgree) {
 			setAllAgree(true);
 			setAllCheckedNextButton(true);
@@ -71,12 +92,8 @@ const Join = () => {
 
 	return (
 		<>
-			<BottomSheet open={sheetOpen}>
-				<div className={styles.loading_text}>
-					잠시만 기다려주세요
-				</div>
-			</BottomSheet>
 			<Header />
+			<Loading visible={loadingVisible} />
 			<div className={styles.box}>
 				<div className={styles.title}>회원가입</div>
 				<div className={styles.title_info}>서비스를 이용하기 위한 계정을 생성합니다.</div>
@@ -99,7 +116,7 @@ const Join = () => {
 								fontFamily: 'pretendard',
 								fontWeight: 600,
 								height: '60px',
-								fontSize: '18px',
+								fontSize: '16px',
 								width: 'calc(100% - 30px)',
 								left: '15px',
 								color: 'white',
@@ -204,7 +221,7 @@ const Join = () => {
 										fontFamily: 'pretendard',
 										fontWeight: 600,
 										height: '60px',
-										fontSize: '18px',
+										fontSize: '16px',
 										width: 'calc(100% - 30px)',
 										left: '15px',
 										color: 'white',

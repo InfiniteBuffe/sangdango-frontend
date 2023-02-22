@@ -2,8 +2,7 @@
   width: 100%;
   height: 70px;
   background-color: transparent;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   position: fixed;
   display: flex;
   justify-content: left;
@@ -23,10 +22,7 @@
   font-weight: 700;
   line-height: 70px;
   margin-left: 30px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .highlight {
@@ -55,24 +51,19 @@
   padding-left: 20px;
   padding-right: 20px;
   line-height: 70px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   cursor: pointer;
 }
 .menu_item:hover {
   text-decoration: underline;
   text-underline-offset: 10px;
-  -webkit-text-decoration-color: rgb(170, 170, 170);
-          text-decoration-color: rgb(170, 170, 170);
+  text-decoration-color: rgb(170, 170, 170);
 }
 
 #menu_active {
   text-decoration: underline;
   text-underline-offset: 10px;
-  -webkit-text-decoration-color: black;
-          text-decoration-color: black;
+  text-decoration-color: black;
 }
 
 .drawer_button {
@@ -108,4 +99,6 @@
   .drawer {
     position: relative;
   }
-}/*# sourceMappingURL=ServiceHeader.module.css.map */
+}
+
+/*# sourceMappingURL=ServiceHeader.module.css.map */

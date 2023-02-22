@@ -1,0 +1,65 @@
+.loading {
+  z-index: 9999999999;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: rgba(150, 150, 150, 0.3);
+  backdrop-filter: blur(2px);
+  width: 100vw;
+  margin-top: -70px;
+  transition: background-color 0.3s;
+}
+
+.box {
+  background: white;
+  box-shadow: 3px 0 30px 0 rgba(110, 110, 110, 0.3);
+  border-radius: 10px;
+  position: absolute;
+}
+
+.loader {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.text {
+  user-select: none;
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  margin: 20px;
+}
+
+.fadein {
+  animation: fadein 0.3s;
+}
+
+.fadeout {
+  animation: fadeout 0.3s;
+}
+
+.remove {
+  display: none;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/*# sourceMappingURL=Loading.module.css.map */

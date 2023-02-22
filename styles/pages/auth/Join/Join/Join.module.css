@@ -1,14 +1,15 @@
 .box {
   position: absolute;
   width: 500px;
-  height: calc(100% - 70px - 15px);
+  height: calc(100% - 70px);
   background-color: rgb(255, 255, 255);
-  border-radius: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   left: 50%;
   transform: translateX(-50%);
   -webkit-tap-highlight-color: transparent;
   padding: 30px;
-  box-shadow: 5px 0px 50px 0 rgba(50, 50, 50, 0.3);
+  border: 1px solid #d2d2d2;
 }
 
 .bottom_button {
@@ -21,12 +22,9 @@
   border-radius: 20px;
   font-family: "pretendard";
   font-weight: 600;
-  font-size: 18px;
+  font-size: 15px;
   text-align: center;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   cursor: pointer;
   color: white;
   line-height: 70px;
@@ -44,7 +42,7 @@
 .title {
   text-align: left;
   font-family: "pretendard";
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
 }
 
@@ -67,11 +65,8 @@
   height: calc(100% - 50px - 45px - 15px);
   text-align: center;
   font-weight: 800;
-  font-size: 25px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  font-size: 23px;
+  user-select: none;
 }
 
 .intro_emoji {
@@ -81,27 +76,23 @@
 #intro_1 {
   background: linear-gradient(to right, #8a2387, #e94057, #f27121);
   color: transparent;
-  -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
 }
 
 #intro_2 {
-  font-weight: 700;
+  font-weight: 300;
 }
 
 .fadein {
-  -webkit-animation: fadein 0.7s;
-          animation: fadein 0.7s;
+  animation: fadein 0.7s;
 }
 
 .fadeout {
-  -webkit-animation: fadeout 0.7s;
-          animation: fadeout 0.7s;
+  animation: fadeout 0.7s;
 }
 
 .remove {
   display: none;
-  opacity: 0;
 }
 
 .terms {
@@ -110,19 +101,15 @@
 
 .terms_title {
   font-family: "pretendard";
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 #terms_highlight {
   background: linear-gradient(to right, #8e2de2, #4a00e0);
   color: transparent;
-  -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
 }
 
 #terms_light {
@@ -132,12 +119,12 @@
 .label {
   font-family: "pretendard";
   font-weight: 500;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .all_select {
   width: 100%;
-  padding: 10px 20px;
+  padding: 5px 20px;
   background-color: rgb(240, 240, 240);
   border-radius: 20px;
 }
@@ -154,19 +141,20 @@
 
 .loading_text {
   font-family: "pretendard";
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
-  margin: 30px;
-  font-size: 23px;
+  margin: 20px;
+  font-size: 20px;
+  background: linear-gradient(to right, #000428, #004e92);
+  color: transparent;
+  background-clip: text;
 }
 
-@-webkit-keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.loading_icon {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
 }
 
 @keyframes fadein {
@@ -175,14 +163,6 @@
   }
   to {
     opacity: 1;
-  }
-}
-@-webkit-keyframes fadeout {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
 @keyframes fadeout {
@@ -201,4 +181,6 @@
   .space {
     height: 15px;
   }
-}/*# sourceMappingURL=Join.module.css.map */
+}
+
+/*# sourceMappingURL=Join.module.css.map */
