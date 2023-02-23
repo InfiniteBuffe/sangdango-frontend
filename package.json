@@ -7,7 +7,7 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "patch-package",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@animated-burgers/burger-squeeze": "^1.1.2",
