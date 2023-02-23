@@ -5,9 +5,6 @@ const nextConfig = {
     loader: 'akamai',
     path: '/',
   },
-  experimental: {
-    runtime: 'edge',
-  },
   api: {
     bodyParser: {
       sizeLimit: '1mb',
