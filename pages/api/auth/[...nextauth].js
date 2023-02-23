@@ -1,13 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const config = {
-    runtime: "edge",
-    unstable_allowDynamic: [
-        '**/node_modules/lodash/_root.js', // use a glob to allow anything in the function-bind 3rd party module
-    ],
-};
-
 export default NextAuth({
     providers: [
         CredentialsProvider({
