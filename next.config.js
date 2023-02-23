@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    runtime: 'experimental-edge',
+  },
+  swcMinify: true,
   reactStrictMode: false,
   images: {
     loader: 'akamai',
