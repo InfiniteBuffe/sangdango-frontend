@@ -46,7 +46,11 @@
     "react-transition-group": "^4.4.5",
     "react-twemoji": "^0.5.0"
   },
+  "resolutions": {
+    "@babel/plugin-transform-typescript": "7.19.3"
+  },
   "devDependencies": {
+    "@babel/plugin-transform-typescript": "7.19.3",
     "@cloudflare/next-on-pages": "^0.3.0",
     "prisma": "^4.10.1",
     "vercel": "^28.16.5"
