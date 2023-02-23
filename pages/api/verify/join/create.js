@@ -1,8 +1,11 @@
 import jwt from 'jsonwebtoken'
 
 export const config = {
-    runtime: 'edge',
-}
+    runtime: "edge",
+    unstable_allowDynamic: [
+        '**/node_modules/lodash/_root.js', // use a glob to allow anything in the function-bind 3rd party module
+    ],
+};
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
