@@ -7,7 +7,8 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "cloudflare:build": "node node_modules/@cloudflare/next-on-pages/bin/index.js --experimental-minify"
   },
   "dependencies": {
     "@animated-burgers/burger-squeeze": "^1.1.2",
@@ -30,7 +31,6 @@
     "next-auth": "^4.19.2",
     "next-page-transitions": "^1.0.0-beta.2",
     "nprogress": "^0.2.0",
-    "patch-package": "^6.5.1",
     "postinstall-postinstall": "^2.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -46,12 +46,9 @@
     "react-transition-group": "^4.4.5",
     "react-twemoji": "^0.5.0"
   },
-  "resolutions": {
-    "@babel/plugin-transform-typescript": "7.19.3"
-  },
   "devDependencies": {
-    "@babel/plugin-transform-typescript": "7.19.3",
     "@cloudflare/next-on-pages": "^0.3.0",
+    "patch-package": "^6.5.1",
     "prisma": "^4.10.1",
     "vercel": "^28.16.5"
   }
