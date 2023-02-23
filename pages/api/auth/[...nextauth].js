@@ -1,9 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const config = {
-    runtime: "experimental-edge",
-};
 
 export default NextAuth({
     providers: [
