@@ -1,0 +1,36 @@
+.space {
+  height: 20px;
+}
+
+.fadein {
+  animation: fadein 0.7s;
+}
+
+.fadeout {
+  animation: fadeout 0.7s;
+}
+
+.label {
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.all_select {
+  width: 100%;
+  padding: 5px 20px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.select {
+  padding: 20px;
+  padding-top: 0;
+}
+
+.require {
+  font-weight: 300;
+  color: red;
+}
+
+/*# sourceMappingURL=Terms.module.css.map */

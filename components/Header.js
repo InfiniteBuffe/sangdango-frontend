@@ -6,7 +6,7 @@ const Header = (props) => {
         <>
             <div className={styles.header}>
                 <div className={styles.title_box}>
-                    <div className={styles.title}>여기는 <span className={styles.highlight}>상당</span>입니다.</div>
+                    <div className={styles.title}><span className={styles.highlight}>상당고</span>&nbsp;학생정보망</div>
                 </div>
             </div>
             <div className={styles.header_space} />

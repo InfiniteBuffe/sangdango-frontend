@@ -28,12 +28,10 @@
 }
 
 .highlight {
-  background-color: rgb(7, 0, 100);
-  color: white;
-  padding: 3px 7px;
-  margin-right: 3px;
-  margin-left: 5px;
-  font-weight: 800;
+  background: linear-gradient(to right, rgb(7, 0, 100), rgb(83, 71, 234));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
 }
 
 /*# sourceMappingURL=Header.module.css.map */

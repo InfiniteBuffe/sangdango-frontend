@@ -1,0 +1,31 @@
+.space {
+  height: 20px;
+}
+.fadein {
+  animation: fadein .7s;
+}
+
+.fadeout {
+  animation: fadeout .7s;
+}
+.label {
+  font-family: 'pretendard';
+  font-weight: 500;
+  font-size: 15px;
+}
+.all_select {
+  width: 100%;
+  padding: 5px 20px;
+  //background-color: rgb(240, 240, 240);
+  border-radius: 20px;
+  background-color: white;
+}
+.select {
+  padding: 20px;
+  padding-top: 0;
+}
+.require {
+  font-weight: 300;
+  // color: rgb(100, 100, 100);
+  color: red;
+}

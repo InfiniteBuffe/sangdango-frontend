@@ -29,7 +29,7 @@ const Login = () => {
                         로그인
                     </div>
                     <div className={styles.title_info}>
-                        상당고등학교 학생인트라넷에 로그인합니다.
+                        상당고 학생정보망에 로그인합니다.
                     </div>
                     <div className={styles.space} />
                     <div className={styles.space} />
