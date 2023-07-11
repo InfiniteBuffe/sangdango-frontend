@@ -1,5 +1,5 @@
 .intro_text {
-  font-family: 'pretendard';
+  font-family: "pretendard";
   font-size: 30px;
   text-align: center;
   margin-top: 20px;
@@ -8,6 +8,117 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.status {
+  margin-top: 20px;
+  width: 160px;
+  background-color: white;
+  height: 160px;
+  border-radius: 30px;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  border: 1px solid #1400c9;
+  -webkit-box-shadow: 0px 7px 30px 2px rgba(172, 166, 255, 0.35);
+          box-shadow: 0px 7px 30px 2px rgba(172, 166, 255, 0.35);
+  background: -webkit-gradient(linear, left top, right bottom, from(#221ff0), to(#0a0881));
+  background: linear-gradient(to bottom right, #221ff0, #0a0881);
+}
+
+.status_flex {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.status_title {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 25px;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: white;
+  margin-top: -10px;
+}
+
+.status_number {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 50px;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: white;
+}
+
+.status_message {
+  position: absolute;
+  bottom: 10px;
+  background-color: white;
+  border-radius: 50px;
+  width: auto;
+  height: 20px;
+  padding: auto 10px;
+}
+
+.status_now_circle {
+  float: left;
+  width: 10px;
+  height: 10px;
+  background-color: #00c43b;
+  border-radius: 100%;
+  margin-top: 5px;
+  margin-left: 10px;
+  -webkit-box-shadow: 0 0px 10px 0 #00b600;
+          box-shadow: 0 0px 10px 0 #00b600;
+}
+
+.status_now_message {
+  float: left;
+  font-family: 'pretendard';
+  font-weight: 300;
+  font-size: 13px;
+  text-align: left;
+  margin-left: 5px;
+  margin-right: 10px;
+  margin-top: 2.5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.notice {
+  padding: 20px;
+  font-family: 'pretendard';
+  font-weight: 600;
+  margin: auto;
+  width: 230px;
+  margin-top: 20px;
+  background-color: white;
+  text-align: center;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 5px 30px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 30px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
 }
 
 #intro_highlight {

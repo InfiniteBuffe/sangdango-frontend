@@ -8,8 +8,9 @@ import {
     IoSearchOutline,
     IoSearch,
     IoPersonOutline,
-    IoPerson
+    IoPerson,
 } from 'react-icons/io5';
+import { AiFillHome, AiOutlineHome } from 'react-icons/ai'
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
@@ -24,7 +25,7 @@ const BottomNav = (props) => {
         { id: 2, name: '내 정보', path_name: 'my', icon: <IoPersonOutline size={25} />, active: <IoPerson size={25} /> },
     ]
     const RentalMenu = [
-        { id: 0, name: '홈', path_name: 'home', icon: <IoHomeOutline size={25} />, active: <IoHome size={25} />}
+        { id: 0, name: '홈', path_name: 'home', icon: <AiOutlineHome size={25} />, active: <AiFillHome size={25} />}
     ]
     const current_service = { 'club': true, 'rental': true}
     const current_service_title = {
