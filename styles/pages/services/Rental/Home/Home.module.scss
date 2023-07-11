@@ -99,6 +99,27 @@
     margin-bottom: 50px;
 }
 
+.warning {
+    position: relative;
+    color: rgb(90, 90, 90);
+    font-family: 'pretendard';
+    font-weight: 500;
+    text-align: left;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+#warning_strong {
+    font-weight: 700;
+    height: 0;
+    margin-bottom: 7px;
+}
+
 #intro_highlight {
     background: linear-gradient(to right, rgb(7, 0, 100), rgb(83, 71, 234));
     -webkit-background-clip: text;
