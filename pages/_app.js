@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import ServiceHeader from '@/components/ServiceHeader'
 // import Layout from '@/components/Layout'
 import BottomNav from '@/components/BottomNav'
-// import { SessionProvider } from "next-auth/react"
+import { SessionProvider } from "next-auth/react"
 import "react-spring-bottom-sheet/dist/style.css"
 
 export default function App({ Component, pageProps }) {
@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }) {
   // TransitionFix()
   return (
     <>
+      <SessionProvider>
         <Toaster position="bottom-center"
           reverseOrder={false}
           toastOptions={{
@@ -31,6 +32,7 @@ export default function App({ Component, pageProps }) {
             <Component key={router.route} {...pageProps} />
         {/*</Layout>*/}
         {/* <Component key={router.route} {...pageProps} /> */}
+      </SessionProvider>
     </>
   )
 }
