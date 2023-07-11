@@ -3,8 +3,12 @@ import BottomNav from '@/components/BottomNav'
 import ServiceHeader from '@/components/ServiceHeader'
 import styles from '@/styles/pages/services/Rental/Home/Home.module.css'
 import Container from 'components/Container'
+import { useState } from 'react'
 
 const Home = () => {
+
+    const currentCount = useState(0)
+
     return (
         <>
             {/* <AlertBar content='아직 서비스가 불안정합니다.' /> */}

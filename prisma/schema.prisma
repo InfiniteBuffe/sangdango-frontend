@@ -10,27 +10,41 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id          Int      @id @default(autoincrement())
-  uuid        String   @unique @default(uuid())
-  name        String
-  phoneNumber String   @unique
-  verify      Boolean  @default(false)
-  admin       Boolean  @default(false) // 과연 필요할까?
-  type        TYPE     // @default(STUDENT)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
-}
-
-model UserPassword {
+model RentalLog {
   id        Int      @id @default(autoincrement())
-  uuid      String   @unique
-  password  String
+  name      String   @db.VarChar(10)
+  studentId Int
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
 }
 
-enum TYPE {
-  STUDENT
-  TEACHER
+model CurrentRental {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(10)
+  studentId Int
+  createdAt DateTime @default(now())
 }
+
+// model User {
+//   id          Int      @id @default(autoincrement())
+//   uuid        String   @unique @default(uuid())
+//   name        String
+//   phoneNumber String   @unique
+//   verify      Boolean  @default(false)
+//   admin       Boolean  @default(false) // 과연 필요할까?
+//   type        TYPE     // @default(STUDENT)
+//   createdAt   DateTime @default(now())
+//   updatedAt   DateTime @default(now()) @updatedAt
+// }
+
+// model UserPassword {
+//   id        Int      @id @default(autoincrement())
+//   uuid      String   @unique
+//   password  String
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @default(now()) @updatedAt
+// }
+
+// enum TYPE {
+//   STUDENT
+//   TEACHER
+// }
