@@ -1,0 +1,39 @@
+.description {
+  font-family: 'pretendard';
+  font-weight: 300;
+  font-size: 15px;
+  margin-top: 10px;
+  color: black;
+}
+
+.helper {
+  font-family: 'pretendard';
+  color: black;
+  font-weight: 500;
+}
+
+.box {
+  position: relative;
+  width: 480px;
+  padding: 0 20px;
+  margin: auto;
+  //background-color: red;
+  height: auto;
+  user-select: none;
+}
+
+.space {
+  height: 20px;
+}
+
+.title {
+  font-family: 'pretendard';
+  font-weight: 800;
+  font-size: 22px;
+}
+
+@media (max-width: 480px) {
+  .box {
+    width: 100%;
+  }
+}

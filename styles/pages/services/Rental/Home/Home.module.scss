@@ -1,0 +1,21 @@
+
+.intro_text {
+    font-family: 'pretendard';
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 700;
+    user-select: none;
+}
+
+#intro_highlight {
+    background: linear-gradient(to right, rgb(7, 0, 100), rgb(83, 71, 234));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .intro_text {
+        font-size: 22px;
+    }
+}

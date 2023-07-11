@@ -17,9 +17,10 @@ const ServiceHeader = (props) => {
         setDrawerOpen(change)
     }
     const router = useRouter()
-    const current_service = { 'club': true }
+    const current_service = { 'club': true, 'rental': true }
     const current_service_title = {
-        club: '동아리'
+        club: '동아리',
+        rental: '우산대여'
     }
     const ClubMenu = [
         // path가 /service/club/home 일 경우 -> 'home', /service/club/view 일 경우 -> 'view'
@@ -27,6 +28,9 @@ const ServiceHeader = (props) => {
         { id: 1, name: '둘러보기', path_name: 'view' },
         { id: 3, name: '행사 및 일정', path_name: 'plan' },
         { id: 2, name: '내 정보', path_name: 'my' },
+    ]
+    const RentalMenu = [
+        { id: 0, name: '홈', path_name: 'home' },
     ]
     const now_path = router.pathname
     const [viewHeader, setViewHeader] = useState(false)
@@ -50,16 +54,16 @@ const ServiceHeader = (props) => {
     return (
         <>
             <div className={styles.header}>
-                <div className={styles.drawer_button}>
+                {/* <div className={styles.drawer_button}>
                     <Squeeze
                         isOpen={drawerButtonOpen}
                         onClick={ChangeDrawer}
                         direction="right"
                         style={{ fontSize: '10px' }}
                     />
-                </div>
-                {/* Drawer */}
-                <div className={styles.drawer_box}>
+                </div> */}
+                {/* Drawer | 필요 없어보여서 제외함 */}
+                {/* <div className={styles.drawer_box}>
                     <Drawer
                         open={drawerOpen}
                         onClose={ChangeDrawer}
@@ -70,16 +74,36 @@ const ServiceHeader = (props) => {
                     >
                         <div>메뉴는 여기에 들어감</div>
                     </Drawer>
-                </div>
+                </div> */}
                 <Container>
                     <div className={styles.title}>
                         <span className={styles.highlight}>상당고</span> {current_service_title[path[2]]}
                     </div>
                     <div className={styles.menu_box}>
+                        {/* 나중에 코드 정리할 것 */}
 
                         {
                             (path[2] == 'club') ? (
                                 ClubMenu.map(e => {
+                                    let _path = now_path.split('/')[3]
+                                    let is_active = false
+                                    if (_path == e.path_name) is_active = true
+                                    return (
+                                        <div
+                                            key={e.id}
+                                            id={(is_active) ? (styles.menu_active) : (undefined)}
+                                            className={styles.menu_item}
+                                            onClick={() => router.push(`/service/${path[2]}/${e.path_name}`)}
+                                        >
+                                            {e.name}
+                                        </div>
+                                    )
+                                })
+                            ) : false
+                        }
+                         {
+                            (path[2] == 'rental') ? (
+                                RentalMenu.map(e => {
                                     let _path = now_path.split('/')[3]
                                     let is_active = false
                                     if (_path == e.path_name) is_active = true

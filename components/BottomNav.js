@@ -23,9 +23,13 @@ const BottomNav = (props) => {
         { id: 3, name: '행사 및 일정', path_name: 'plan', icon: <IoCalendarClearOutline size={25} />, active: <IoCalendarClear size={25} /> },
         { id: 2, name: '내 정보', path_name: 'my', icon: <IoPersonOutline size={25} />, active: <IoPerson size={25} /> },
     ]
-    const current_service = { 'club': true }
+    const RentalMenu = [
+        { id: 0, name: '홈', path_name: 'home', icon: <IoHomeOutline size={25} />, active: <IoHome size={25} />}
+    ]
+    const current_service = { 'club': true, 'rental': true}
     const current_service_title = {
-        club: '동아리'
+        club: '동아리',
+        rental: '우산대여',
     }
     const now_path = router.pathname
     const [viewHeader, setViewHeader] = useState(false)
@@ -47,9 +51,28 @@ const BottomNav = (props) => {
         <>
             <div className={styles.bottom_nav}>
                 <div className={styles.menu_box}>
+
+                    {/* 이 코드도 정리 필요함. */}
+
                     {
                         (path[2] == 'club') ? (
                             ClubMenu.map(e => {
+                                let icon = e.icon
+                                let _path = now_path.split('/')[3]
+                                if (_path == e.path_name) icon = e.active
+                                return (
+                                    <div key={e.id} className={styles.menu} onClick={() => router.push(`/service/${path[2]}/${e.path_name}`)}>
+                                        <div className={styles.icon}>
+                                            {icon}
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        ) : false
+                    }
+                    {
+                        (path[2] == 'rental') ? (
+                            RentalMenu.map(e => {
                                 let icon = e.icon
                                 let _path = now_path.split('/')[3]
                                 if (_path == e.path_name) icon = e.active

@@ -2,12 +2,22 @@
   width: 100%;
   height: 70px;
   background-color: transparent;
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: left;
-  align-items: center;
-  flex-direction: row;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   z-index: 5;
 }
 
@@ -17,16 +27,19 @@
 
 .title {
   float: left;
-  font-family: "pretendard";
+  font-family: 'pretendard';
   font-size: 20px;
   font-weight: 700;
   line-height: 70px;
   margin-left: 30px;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .highlight {
-  background-color: rgb(7, 0, 100);
+  background-color: #070064;
   color: white;
   padding: 3px 7px;
   margin-right: 3px;
@@ -38,32 +51,47 @@
   float: left;
   margin-left: 30px;
   height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: left;
-  justify-content: left;
-  flex-direction: row;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .menu_item {
-  font-family: "pretendard";
+  font-family: 'pretendard';
   font-weight: 400;
   font-size: 16px;
   padding-left: 20px;
   padding-right: 20px;
   line-height: 70px;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   cursor: pointer;
 }
+
 .menu_item:hover {
   text-decoration: underline;
   text-underline-offset: 10px;
-  text-decoration-color: rgb(170, 170, 170);
+  -webkit-text-decoration-color: #aaaaaa;
+          text-decoration-color: #aaaaaa;
 }
 
 #menu_active {
   text-decoration: underline;
   text-underline-offset: 10px;
-  text-decoration-color: black;
+  -webkit-text-decoration-color: black;
+          text-decoration-color: black;
 }
 
 .drawer_button {
@@ -82,7 +110,8 @@
     margin: auto;
     position: relative;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     width: calc(100% - 50px);
   }
   .drawer_button {
@@ -100,5 +129,4 @@
     position: relative;
   }
 }
-
 /*# sourceMappingURL=ServiceHeader.module.css.map */

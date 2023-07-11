@@ -1,0 +1,25 @@
+.intro_text {
+  font-family: 'pretendard';
+  font-size: 30px;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 700;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#intro_highlight {
+  background: -webkit-gradient(linear, left top, right top, from(#070064), to(#5347ea));
+  background: linear-gradient(to right, #070064, #5347ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .intro_text {
+    font-size: 22px;
+  }
+}
+/*# sourceMappingURL=Home.module.css.map */

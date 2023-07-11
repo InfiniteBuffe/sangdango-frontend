@@ -8,6 +8,7 @@ import classNames from 'classnames'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
 import Twemoji from 'react-twemoji'
+import Footer from '@/components/Footer'
 
 const Main = () => {
 
@@ -20,11 +21,11 @@ const Main = () => {
   const videoRef = useRef()
   const router = useRouter()
   useEffect(() => {
-    toast('3월 2일에 만나요! 🎉',
-      // {
-      //   icon: '⏳',
-      // }
-    );
+    // toast('3월 2일에 만나요! 🎉',
+    //   // {
+    //   //   icon: '⏳',
+    //   // }
+    // );
     const intervalId = setInterval(() =>
       setIndex(index => index + 1),
       5000
@@ -62,7 +63,7 @@ const Main = () => {
       <div className={styles.video_box}>
         <div className={styles.video_text_box}>
           <div className={styles.video_top_text}>
-            상당고 학생인트라넷 🏫
+            상당고 학생정보망📡
           </div>
           <div className={styles.video_text}>
             <TextTransition springConfig={presets.default}>
@@ -90,13 +91,24 @@ const Main = () => {
         </video>
       </div>
       <div className={styles.intro_big_text}>
-        너만의 상당을 만들어봐!
+        너만의 학교를 만들어봐!
       </div>
       <div className={styles.intro_small_text}>
         아래 버튼을 눌러 이동하세요
       </div>
       <div className={styles.warp_container}>
-        <div className={styles.warp_box} id={styles.club} onClick={()=>{router.push('/service/club/home');toast('동아리 서비스로 이동합니다')}}>
+        <div className={styles.warp_box} id={styles.umbrella} onClick={()=>{router.push('/service/rental/home');toast('우산대여 서비스로 이동합니다')}}>
+          <div className={styles.warp_text_box}>
+            <div className={styles.warp_big_text}>
+              <span className={styles.warp_big_text_line}>우산대여&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>☂</Twemoji></span>
+              <div className={styles.warp_big_small_text}>
+                손쉽게 우산 대여!
+              </div>
+            </div>
+            <div className={styles.warp_small_text}>눌러서 이동하기 →</div>
+          </div>
+        </div>
+        {/* <div className={styles.warp_box} id={styles.club} onClick={()=>{router.push('/service/club/home');toast('동아리 서비스로 이동합니다')}}>
           <div className={styles.warp_text_box}>
             <div className={styles.warp_big_text}>
               <span className={styles.warp_big_text_line}>동아리&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>🔬</Twemoji></span>
@@ -106,8 +118,8 @@ const Main = () => {
             </div>
             <div className={styles.warp_small_text}>눌러서 이동하기 →</div>
           </div>
-        </div>
-        <div className={styles.warp_box} id={styles.community} onClick={()=>toast('학기 중 오픈 예정이에요!')}>
+        </div> */}
+        {/* <div className={styles.warp_box} id={styles.community} onClick={()=>toast('학기 중 오픈 예정이에요!')}>
           <div className={styles.warp_text_box}>
             <div className={styles.warp_big_text}>
               <span className={styles.warp_big_text_line}>커뮤니티&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>✍️</Twemoji></span>
@@ -128,8 +140,9 @@ const Main = () => {
             </div>
             <div className={styles.warp_small_text}>눌러서 이동하기 →</div>
           </div>
-        </div>
+        </div> */}
       </div>
+      <Footer />
     </>
   )
 }

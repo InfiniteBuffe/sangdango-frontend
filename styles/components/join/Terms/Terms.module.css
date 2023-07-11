@@ -3,15 +3,17 @@
 }
 
 .fadein {
-  animation: fadein 0.7s;
+  -webkit-animation: fadein .7s;
+          animation: fadein .7s;
 }
 
 .fadeout {
-  animation: fadeout 0.7s;
+  -webkit-animation: fadeout .7s;
+          animation: fadeout .7s;
 }
 
 .label {
-  font-family: "pretendard";
+  font-family: 'pretendard';
   font-weight: 500;
   font-size: 15px;
 }
@@ -32,5 +34,4 @@
   font-weight: 300;
   color: red;
 }
-
 /*# sourceMappingURL=Terms.module.css.map */
