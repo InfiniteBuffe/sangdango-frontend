@@ -1,5 +1,6 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
@@ -12,7 +13,7 @@ body {
 
 body {
   background-color: #e6ebec;
-  font-family: "pretendard";
+  font-family: 'pretendard';
 }
 
 a {
@@ -21,17 +22,19 @@ a {
 }
 
 @font-face {
-  font-family: "PyeongChangPeace-Bold";
+  font-family: 'PyeongChangPeace-Bold';
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
+
 @font-face {
-  font-family: "PyeongChangPeace-Light";
+  font-family: 'PyeongChangPeace-Light';
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Light.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
+
 .EZDrawer {
   position: relative;
   z-index: 10 !important;
@@ -51,4 +54,5 @@ a {
     --rsbs-ml: auto;
     --rsbs-mr: auto;
   }
-}/*# sourceMappingURL=globals.css.map */
+}
+/*# sourceMappingURL=globals.css.map */

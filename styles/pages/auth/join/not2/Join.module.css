@@ -3,7 +3,8 @@
   width: 500px;
   height: calc(100% - 70px);
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   -webkit-tap-highlight-color: transparent;
   padding: 30px;
 }
@@ -14,32 +15,38 @@
   width: calc(100% - 30px);
   height: 70px;
   margin-left: -15px;
-  background-color: rgb(0, 0, 0);
+  background-color: black;
   border-radius: 20px;
-  font-family: "pretendard";
+  font-family: 'pretendard';
   font-weight: 600;
   font-size: 15px;
   text-align: center;
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
   cursor: pointer;
   color: white;
   line-height: 70px;
-  transition: all 0.35s;
+  -webkit-transition: all .35s;
+  transition: all .35s;
 }
+
 .bottom_button:hover {
-  transition: all 0.35s;
+  -webkit-transition: all .35s;
+  transition: all .35s;
   scale: 1.01;
 }
+
 .bottom_button:active {
-  transition: all 0.35s;
+  -webkit-transition: all .35s;
+  transition: all .35s;
   scale: 0.97;
 }
 
 .title {
   text-align: left;
-  font-family: "pretendard";
+  font-family: 'pretendard';
   font-size: 20px;
   font-weight: 700;
 }
@@ -48,7 +55,7 @@
   text-align: left;
   margin-top: 5px;
   font-size: 13px;
-  color: rgb(130, 130, 130);
+  color: #828282;
 }
 
 .space {
@@ -56,16 +63,26 @@
 }
 
 .intro_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: calc(100% - 50px - 45px - 15px);
   text-align: center;
   font-weight: 800;
   font-size: 23px;
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
 }
 
@@ -74,10 +91,10 @@
 }
 
 #intro_1 {
+  background: -webkit-gradient(linear, left top, right top, from(#8a2387), color-stop(#e94057), to(#f27121));
   background: linear-gradient(to right, #8a2387, #e94057, #f27121);
   color: transparent;
-  -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
 }
 
 #intro_2 {
@@ -85,11 +102,13 @@
 }
 
 .fadein {
-  animation: fadein 0.7s;
+  -webkit-animation: fadein .7s;
+          animation: fadein .7s;
 }
 
 .fadeout {
-  animation: fadeout 0.7s;
+  -webkit-animation: fadeout .7s;
+          animation: fadeout .7s;
 }
 
 .remove {
@@ -101,19 +120,20 @@
 }
 
 .terms_title {
-  font-family: "pretendard";
+  font-family: 'pretendard';
   font-size: 20px;
   font-weight: 700;
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
 }
 
 #terms_highlight {
+  background: -webkit-gradient(linear, left top, right top, from(#8e2de2), to(#4a00e0));
   background: linear-gradient(to right, #8e2de2, #4a00e0);
   color: transparent;
-  -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
 }
 
 #terms_light {
@@ -121,7 +141,7 @@
 }
 
 .label {
-  font-family: "pretendard";
+  font-family: 'pretendard';
   font-weight: 500;
   font-size: 15px;
 }
@@ -144,22 +164,32 @@
 }
 
 .loading_text {
-  font-family: "pretendard";
+  font-family: 'pretendard';
   font-weight: 600;
   text-align: center;
   margin: 20px;
   font-size: 20px;
+  background: -webkit-gradient(linear, left top, right top, from(#000428), to(#004e92));
   background: linear-gradient(to right, #000428, #004e92);
   color: transparent;
-  -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
 }
 
 .loading_icon {
   position: relative;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   width: 50px;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadein {
@@ -170,6 +200,16 @@
     opacity: 1;
   }
 }
+
+@-webkit-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes fadeout {
   from {
     opacity: 1;
@@ -178,6 +218,7 @@
     opacity: 0;
   }
 }
+
 @media (max-width: 500px) {
   .box {
     width: 100%;
@@ -187,4 +228,5 @@
   .all_select {
     background-color: #ffffff;
   }
-}/*# sourceMappingURL=Join.module.css.map */
+}
+/*# sourceMappingURL=Join.module.css.map */

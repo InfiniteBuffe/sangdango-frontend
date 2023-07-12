@@ -14,6 +14,6 @@ export default async function handler(req, res) {
         .json({
             status: 200,
             count: currentRental.length,
-            max: 10,
+            max: 30, // 우산 최대 갯수
         })
 }

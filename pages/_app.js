@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <SessionProvider>
-        <Toaster position="bottom-center"
+        <Toaster position="top-center"
           reverseOrder={false}
           toastOptions={{
             duration: 2300,

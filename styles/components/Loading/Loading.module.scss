@@ -29,7 +29,7 @@
   user-select: none;
   font-family: 'pretendard';
   font-weight: 500;
-  font-size: 13px;
+  font-size: 15px;
   text-align: center;
   margin: 20px;
 }
@@ -44,6 +44,17 @@
 
 .remove {
   display: none;
+}
+
+.mini_text {
+  user-select: none;
+  color: rgb(130, 130, 130);
+  font-family: 'pretendard';
+  font-weight: 300;
+  font-size: 13px;
+  text-align: center;
+  margin-top: -15px;
+  margin-bottom: 20px;
 }
 
 @keyframes fadein {

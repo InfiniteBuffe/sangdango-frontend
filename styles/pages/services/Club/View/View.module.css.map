@@ -1,1 +1,9 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"View.module.css"}
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "View.module.scss"
+    ],
+    "names": [],
+    "file": "View.module.css"
+}

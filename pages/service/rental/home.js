@@ -1,22 +1,28 @@
-import AlertBar from '@/components/AlertBar'
-import BottomNav from '@/components/BottomNav'
+import Loading from '@/components/Loading'
 import ServiceHeader from '@/components/ServiceHeader'
 import styles from '@/styles/pages/services/Rental/Home/Home.module.css'
-import { TextField } from '@mui/material'
 import axios from 'axios'
 import Container from 'components/Container'
 import { useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast'
 import { BottomSheet } from 'react-spring-bottom-sheet'
 import 'react-spring-bottom-sheet/dist/style.css'
 import Twemoji from 'react-twemoji'
+import { useRouter } from 'next/router'
+import ChannelTalk from '@/components/ChannelTalk'
+import {TextField} from '@mui/material';
 
 const Home = () => {
 
     const [currentCount, setCurrentCount] = useState('-')
     const [formOpen, setFormOpen] = useState(false)
+    const [formInfo, setFormInfo] = useState({ studentId: '', name: '', agree: true }) // 나중에 약관 동의 체크 받을 것
+    const [loading, setLoading] = useState(false)
+
+    const router = useRouter()
+    const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
 
     useEffect(() => {
-        const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
         axios({
             url: url + '/api/rental/current',
             method: 'GET',
@@ -25,12 +31,93 @@ const Home = () => {
                 if (r.status != 200) {
                     setCurrentCount(0)
                 }
-                setCurrentCount(r.data.count)
+                setCurrentCount(Number(r.data.max) - Number(r.data.count))
             })
+        if (router.isReady) {
+            ChannelTalk.boot({
+                "pluginKey": "bf6065f9-c6b5-4270-8159-25ba0ff50f83",
+            });
+        }
     }, [])
+    
+    const errorMsg = (text, options) => {
+        toast.error(text, { ...options })
+    }
+
+    const apply = () => {
+        let { name, studentId } = formInfo
+        if (studentId == '' || studentId.length != 5) {
+            return errorMsg('학번은 숫자 5자리 입니다.')
+        }
+        if (name == '' || name.length < 2) {
+            return errorMsg('이름은 한/영 1~10글자 입니다.')
+        }
+        setLoading(true)
+        axios({
+            url: url + '/api/rental/add',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: {
+                name: formInfo.name,
+                studentId: formInfo.studentId
+            }
+        })
+            .then(r => {
+                console.log(r.data)
+                setFormInfo({ studentId: '', name: '', agree: true })
+                setFormOpen(false)
+                setLoading(false)
+                if (!r.data.added) {
+                    return toast.error(r.data.message)
+                }
+                setCurrentCount(Number(r.data.max) - Number(r.data.rental))
+                return toast.success('우산대여가 완료되었습니다!')
+            })
+            .catch(e=>{
+                setLoading(false)
+                errorMsg('서버와 통신 중 오류가 발생하였습니다.')
+            })
+    }
+
+
+    const changeOnlyNum = (text) => {
+        let regex = /[^0-9]/g
+        let result = text.replace(regex, '')
+        return result
+    }
+
+    const verifyName = (text) => {
+        const t = /[^(가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9)]/gi;
+        const n = /[0-9]/g;
+        text = text.replace(t, '')
+        text = text.replace(n, '')
+        if (text.length > 10) {
+            return text.substring(0, 10)
+        }
+        return text
+    }
+
+    const changeValue = (name, value, type) => {
+        let data = { ...formInfo }
+        data[name] = value
+        if (type == 'number') {
+            data[name] = changeOnlyNum(value)
+            let a = data[name]
+            if (name == 'studentId' && a.length > 5) {
+                return
+            }
+        }
+        if (name == 'name') {
+            data[name] = verifyName(value)
+        }
+        setFormInfo({ ...formInfo, ...data })
+    }
 
     return (
         <>
+            <Loading visible={loading} text='서버와 통신 중' />
             {/* <AlertBar content='아직 서비스가 불안정합니다.' /> */}
             <div className={styles.intro_text}>
                 <div id={styles.intro_highlight}>우산대여,</div>온라인으로 간편하게!
@@ -65,16 +152,39 @@ const Home = () => {
                     </div>
                 </div>
                 <div className={styles.notice}>
-                    아직 신청을 할 수 없어요.<br />곧 다시 만나요!
+                    오전 8시 30분~오후 7시 동안 신청 가능합니다.<br/>(매일 자정 초기화)
                 </div>
             </Container>
-            <BottomSheet className={styles.bottom_sheet} open={formOpen}>
+            <BottomSheet onDismiss={() => setFormOpen(false)} className={styles.bottom_sheet} open={formOpen}>
                 <div className={styles.sheet_title}>
                     <Twemoji options={{ className: styles.emoji_font }}>☂</Twemoji>
                     &nbsp;대여 신청서
                 </div>
-                <TextField style={{ width: 'calc(100% - 40px)', marginLeft: '20px', marginTop: '20px' }} fullWidth label="학번" variant="outlined" />
-                <TextField style={{ width: 'calc(100% - 40px)', marginLeft: '20px', marginTop: '20px' }} fullWidth label="이름" variant="outlined" />
+                <TextField
+                    helperText="예) 1학년 9반 32번 → 10932"
+                    style={{ width: 'calc(100% - 40px)', marginLeft: '20px', marginTop: '20px' }}
+                    fullWidth
+                    label="학번"
+                    variant="outlined"
+                    inputProps={{ style: { fontFamily: 'pretendard', fontWeight: '500' } }}
+                    InputLabelProps={{ style: { fontFamily: 'pretendard', fontWeight: '500' } }}
+                    onChange={(a) => changeValue('studentId', a.target.value, 'number')}
+                    value={formInfo.studentId}
+                />
+                <TextField
+                    style={{ width: 'calc(100% - 40px)', marginLeft: '20px', marginTop: '20px' }}
+                    fullWidth label="이름"
+                    variant="outlined"
+                    inputProps={{ style: { fontFamily: 'pretendard', fontWeight: '500' } }}
+                    InputLabelProps={{ style: { fontFamily: 'pretendard', fontWeight: '500' } }}
+                    onChange={(a) => changeValue('name', a.target.value)}
+                    value={formInfo.name}
+                />
+                <div className={styles.sheet_button} onClick={apply}>
+                    <div className={styles.sheet_button_text}>
+                        신청하기
+                    </div>
+                </div>
             </BottomSheet>
         </>
     )
