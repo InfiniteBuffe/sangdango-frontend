@@ -5,9 +5,6 @@ import styles from '@/styles/pages/services/Rental/Home/Home.module.css'
 import axios from 'axios'
 import Container from 'components/Container'
 import { useEffect, useState } from 'react'
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const Home = () => {
 
