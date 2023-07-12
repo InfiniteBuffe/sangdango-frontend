@@ -37,7 +37,7 @@ const Home = () => {
                             가능 수량
                         </div>
                         <div className={styles.status_number}>
-                            0개
+                            {currentCount}개
                         </div>
                         <div className={styles.status_message}>
                             <div className={styles.status_now_circle} />
