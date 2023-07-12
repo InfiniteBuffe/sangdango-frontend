@@ -2,23 +2,19 @@
   width: 100%;
   height: 120px;
   position: absolute;
-  -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
-  display: -webkit-box;
-  display: -ms-flexbox;
+  transform: translateY(-100%);
   display: flex;
 }
 
 .space {
-  margin-top: calc(20px + 120px);
+  margin-top: 140px;
 }
 
 .text {
-  font-family: 'pretendard';
+  font-family: "pretendard";
   font-weight: 300;
   font-size: 15px;
   text-align: center;
   color: black;
   line-height: 20px;
-}
-/*# sourceMappingURL=Footer.module.css.map */
+}/*# sourceMappingURL=Footer.module.css.map */

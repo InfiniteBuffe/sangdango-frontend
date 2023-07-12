@@ -15,28 +15,24 @@
 .title_box {
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .title {
   font-size: 20px;
-  font-family: 'pretendard';
+  font-family: "pretendard";
   font-weight: 700;
   text-align: center;
   line-height: 70px;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   white-space: nowrap;
 }
 
 .highlight {
-  background: -webkit-gradient(linear, left top, right top, from(#070064), to(#5347ea));
-  background: linear-gradient(to right, #070064, #5347ea);
+  background: linear-gradient(to right, rgb(7, 0, 100), rgb(83, 71, 234));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 900;
-}
-/*# sourceMappingURL=Header.module.css.map */
+}/*# sourceMappingURL=Header.module.css.map */

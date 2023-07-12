@@ -2,13 +2,18 @@ import AlertBar from '@/components/AlertBar'
 import BottomNav from '@/components/BottomNav'
 import ServiceHeader from '@/components/ServiceHeader'
 import styles from '@/styles/pages/services/Rental/Home/Home.module.css'
+import { TextField } from '@mui/material'
 import axios from 'axios'
 import Container from 'components/Container'
 import { useEffect, useState } from 'react'
+import { BottomSheet } from 'react-spring-bottom-sheet'
+import 'react-spring-bottom-sheet/dist/style.css'
+import Twemoji from 'react-twemoji'
 
 const Home = () => {
 
-    const [currentCount,setCurrentCount] = useState(0)
+    const [currentCount,setCurrentCount] = useState('-')
+    const [formOpen, setFormOpen] = useState(false)
     
     useEffect(()=>{
         const url = (process.env.NEXT_PUBLIC_ENV=='dev')?(process.env.NEXT_PUBLIC_DEV_URL):(process.env.NEXT_PUBLIC_PROD_URL)
@@ -54,10 +59,23 @@ const Home = () => {
                     - 타인의 정보를 무단으로 이용 후 적발 시 이용정지 됩니다.<br/>
                     - 반납은 익일 점심시간 반납을 원칙으로 합니다.
                 </div>
+                <div className={styles.button} onClick={()=>setFormOpen(true)}>
+                    <div className={styles.button_text}>
+                        대여 신청하기
+                    </div>
+                </div>
                 <div className={styles.notice}>
                     아직 신청을 할 수 없어요.<br/>곧 다시 만나요!
                 </div>
             </Container>
+            <BottomSheet className={styles.bottom_sheet} open={formOpen}>
+                <div className={styles.sheet_title}>
+                    <Twemoji options={{ className: styles.emoji_font }}>☂</Twemoji>
+                    &nbsp;대여 신청서
+                </div>
+                <TextField style={{width:'calc(100% - 40px)', marginLeft: '20px', marginTop: '20px'}} fullWidth label="학번" variant="outlined" />
+                <TextField style={{width:'calc(100% - 40px)', marginLeft: '20px', marginTop: '20px'}} fullWidth label="이름" variant="outlined" />
+            </BottomSheet>
         </>
     )
 }

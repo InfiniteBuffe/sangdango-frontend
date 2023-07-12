@@ -27,7 +27,7 @@ const BottomNav = (props) => {
     const RentalMenu = [
         { id: 0, name: '홈', path_name: 'home', icon: <AiOutlineHome size={25} />, active: <AiFillHome size={25} />}
     ]
-    const current_service = { 'club': true, 'rental': true}
+    const current_service = { 'club': true, 'rental': false}
     const current_service_title = {
         club: '동아리',
         rental: '우산대여',

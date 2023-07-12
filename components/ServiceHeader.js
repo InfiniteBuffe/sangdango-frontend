@@ -30,7 +30,7 @@ const ServiceHeader = (props) => {
         { id: 2, name: '내 정보', path_name: 'my' },
     ]
     const RentalMenu = [
-        { id: 0, name: '홈', path_name: 'home' },
+        // { id: 0, name: '홈', path_name: 'home' },
     ]
     const now_path = router.pathname
     const [viewHeader, setViewHeader] = useState(false)

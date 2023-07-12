@@ -6,7 +6,6 @@
   height: auto;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 
@@ -15,7 +14,7 @@
 }
 
 .title {
-  font-family: 'pretendard';
+  font-family: "pretendard";
   font-weight: 800;
   font-size: 22px;
 }
@@ -25,7 +24,7 @@
 }
 
 .description {
-  font-family: 'pretendard';
+  font-family: "pretendard";
   font-weight: 300;
   font-size: 15px;
   margin-top: 10px;
@@ -33,15 +32,14 @@
 }
 
 .helper {
-  font-family: 'pretendard';
+  font-family: "pretendard";
   color: black;
   font-weight: 500;
 }
 
 #highlight_purple {
   position: absolute;
-  background: -webkit-gradient(linear, left top, right top, from(#7a7a7a), to(#574ec9));
-  background: linear-gradient(to right, #7a7a7a, #574ec9);
+  background: linear-gradient(to right, rgb(122, 122, 122), rgb(87, 78, 201));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -52,7 +50,6 @@
   background-color: #b40000;
   border-radius: 5px;
 }
-
 .error > .icon {
   float: left;
   position: relative;
@@ -62,10 +59,9 @@
   margin: auto 15px;
   margin-top: -10px;
 }
-
 .error > .text {
   float: left;
-  font-family: 'pretendard';
+  font-family: "pretendard";
   font-size: 17px;
   color: white;
   font-weight: 300;
@@ -76,5 +72,4 @@
   .box {
     width: 100%;
   }
-}
-/*# sourceMappingURL=Class.module.css.map */
+}/*# sourceMappingURL=Class.module.css.map */
