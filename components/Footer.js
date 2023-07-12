@@ -12,7 +12,7 @@ const Footer = () => {
                         <br />
                         개발: 상당고등학교 박태진
                         <br />
-                        호스팅 서비스 제공: Cloudflare, Amazon Web Service
+                        호스팅 서비스 제공: Vercel, Oracle Cloud
                     </div>
                 </Container>
             </div>
