@@ -2,12 +2,30 @@ import AlertBar from '@/components/AlertBar'
 import BottomNav from '@/components/BottomNav'
 import ServiceHeader from '@/components/ServiceHeader'
 import styles from '@/styles/pages/services/Rental/Home/Home.module.css'
+import axios from 'axios'
 import Container from 'components/Container'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const Home = () => {
 
-    const currentCount = useState(0)
+    const [currentCount,setCurrentCount] = useState(0)
+    
+    useEffect(()=>{
+        const url = (process.env.NEXT_PUBLIC_ENV=='dev')?(process.env.NEXT_PUBLIC_DEV_URL):(process.env.NEXT_PUBLIC_PROD_URL)
+        axios({
+            url: url + '/api/rental/current',
+            method: 'GET',
+        })
+            .then(r=>{
+                if (r.status != 200) {
+                    setCurrentCount(0)
+                }
+                setCurrentCount(r.data.count)
+            })
+    }, [])
 
     return (
         <>
