@@ -8,6 +8,7 @@ import ServiceHeader from '@/components/ServiceHeader'
 import BottomNav from '@/components/BottomNav'
 import { SessionProvider } from "next-auth/react"
 import "react-spring-bottom-sheet/dist/style.css"
+import { Analytics } from '@vercel/analytics/react'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
@@ -30,6 +31,7 @@ export default function App({ Component, pageProps }) {
             <ServiceHeader />
             <BottomNav />
             <Component key={router.route} {...pageProps} />
+            <Analytics />
         {/*</Layout>*/}
         {/* <Component key={router.route} {...pageProps} /> */}
       </SessionProvider>
