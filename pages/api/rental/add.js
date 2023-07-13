@@ -10,8 +10,10 @@ export default async function handler(req, res) {
         return
     }
 
-    const time = moment().format('HH:mm:ss');
+    const time = moment().tz("Asia/Seoul").format('HH:mm:ss');
     let now = time.split(':')
+
+
 
     if (Number(now[0]) == 8 && Number(now[1]) < 30) {
         return res
