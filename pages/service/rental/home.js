@@ -34,9 +34,9 @@ const Home = () => {
                 setCurrentCount(Number(r.data.max) - Number(r.data.count))
             })
         if (router.isReady) {
-            ChannelTalk.boot({
-                "pluginKey": "bf6065f9-c6b5-4270-8159-25ba0ff50f83",
-            });
+            // ChannelTalk.boot({
+            //     "pluginKey": "bf6065f9-c6b5-4270-8159-25ba0ff50f83",
+            // });
         }
     }, [])
     
