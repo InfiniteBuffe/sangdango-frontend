@@ -2,12 +2,32 @@ import styles from '@/styles/pages/auth/join/Class/Class.module.css'
 import Header from "@/components/Header";
 import {Button, createTheme, ThemeProvider} from "@mui/material";
 import {grey} from "@mui/material/colors";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Inputs from "@/components/join/inputs";
 import {MoonLoader} from "react-spinners";
 import {IoInformationCircleSharp} from "react-icons/io5";
+import axios from "axios";
+import {useRouter} from "next/router";
 
 const Class = () => {
+
+    const [isDisabled, setIsDisabled] = useState(true)
+    const router = useRouter()
+
+    useEffect(()=>{
+        axios({
+            url: '/api/verify/join/check',
+            withCredentials: true,
+        })
+            .then(r=>{
+                if(r.data.verify) {
+                    setIsDisabled(false)
+                } else {
+                    router.push('/auth/join')
+                }
+            })
+    }, [])
+
     const theme = createTheme({
         palette: {
             dark: {
@@ -89,7 +109,7 @@ const Class = () => {
                     </div>
                 ):undefined}
                 <div className={styles.space} />
-                <Inputs setInputData={setInputData} />
+                <Inputs setInputData={setInputData} disabled={isDisabled}/>
                 <div className={styles.space} />
                 <ThemeProvider theme={theme}>
                     <Button

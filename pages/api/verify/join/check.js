@@ -6,15 +6,12 @@ export default async function handler(req, res) {
         return
     }
     const data = {
-        status: 'success',
         verify: false,
     }
     const cookie = req.cookies
     jwt.verify(cookie.join_token, process.env.JWT_SECRET, (err, decoded) => {
         if (!err) {
             data.verify = true
-        } else {
-            data.msg = cookie
         }
     })
     await res.status(200).json(data)

@@ -14,7 +14,7 @@ export default async function handler(req, res) {
         }
         const token = await jwt.sign(jwt_data, process.env.JWT_SECRET, {
             algorithm: 'HS256',
-            expiresIn: '10s',
+            expiresIn: '15m',
             issuer: 'sangdango.kr',
         })
         const data = {

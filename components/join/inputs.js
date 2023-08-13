@@ -52,6 +52,7 @@ const Inputs = (props) => {
                     }}
                     onChange={(a)=>changeValue('studentId', a.target.value, 'number')}
                     value={info.studentId}
+                    disabled={props.disabled}
                 />
                 <div className={styles.space} />
                 <TextField
@@ -64,6 +65,7 @@ const Inputs = (props) => {
                     variant="outlined"
                     onChange={(a)=>changeValue('name', a.target.value)}
                     value={info.name}
+                    disabled={props.disabled}
                 />
                 <div className={styles.space} />
                 <TextField
@@ -76,6 +78,7 @@ const Inputs = (props) => {
                     variant="outlined"
                     onChange={(a)=>changeValue('phoneNumber', a.target.value, 'number')}
                     value={info.phoneNumber}
+                    disabled={props.disabled}
                 />
                 <div className={styles.space} />
                 <TextField
@@ -92,6 +95,7 @@ const Inputs = (props) => {
                     }}
                     onChange={(a)=>changeValue('verifyCode', a.target.value)}
                     value={info.verifyCode}
+                    disabled={props.disabled}
                 />
             </ThemeProvider>
         </>

@@ -1,29 +1,20 @@
 .loading {
   z-index: 9999999999;
   position: fixed;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   background: rgba(150, 150, 150, 0.3);
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   width: 100vw;
   margin-top: -70px;
-  -webkit-transition: background-color .3s;
-  transition: background-color .3s;
+  transition: background-color 0.3s;
 }
 
 .box {
   background: white;
-  -webkit-box-shadow: 3px 0 30px 0 rgba(110, 110, 110, 0.3);
-          box-shadow: 3px 0 30px 0 rgba(110, 110, 110, 0.3);
+  box-shadow: 3px 0 30px 0 rgba(110, 110, 110, 0.3);
   border-radius: 10px;
   position: absolute;
 }
@@ -34,11 +25,8 @@
 }
 
 .text {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  font-family: 'pretendard';
+  user-select: none;
+  font-family: "pretendard";
   font-weight: 500;
   font-size: 15px;
   text-align: center;
@@ -46,13 +34,11 @@
 }
 
 .fadein {
-  -webkit-animation: fadein .3s;
-          animation: fadein .3s;
+  animation: fadein 0.3s;
 }
 
 .fadeout {
-  -webkit-animation: fadeout .3s;
-          animation: fadeout .3s;
+  animation: fadeout 0.3s;
 }
 
 .remove {
@@ -60,26 +46,14 @@
 }
 
 .mini_text {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  color: #828282;
-  font-family: 'pretendard';
+  user-select: none;
+  color: rgb(130, 130, 130);
+  font-family: "pretendard";
   font-weight: 300;
   font-size: 13px;
   text-align: center;
   margin-top: -15px;
   margin-bottom: 20px;
-}
-
-@-webkit-keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 @keyframes fadein {
@@ -90,16 +64,6 @@
     opacity: 1;
   }
 }
-
-@-webkit-keyframes fadeout {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 @keyframes fadeout {
   from {
     opacity: 1;
@@ -108,4 +72,5 @@
     opacity: 0;
   }
 }
+
 /*# sourceMappingURL=Loading.module.css.map */

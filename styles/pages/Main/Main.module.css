@@ -3,14 +3,11 @@
   height: 500px;
   width: calc(100% - 30px);
   max-width: 685px;
-  background-color: #bebebe;
+  background-color: rgb(190, 190, 190);
   margin: auto;
   overflow: hidden;
   border-radius: 30px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .video {
@@ -20,8 +17,7 @@
   z-index: 1;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(1.1);
-          transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 @media (max-width: 670px) {
@@ -30,7 +26,6 @@
     height: 100%;
   }
 }
-
 .video_bug {
   width: 100%;
   height: auto;
@@ -42,8 +37,7 @@
   max-width: 685px;
   height: 500px;
   background-color: rgba(50, 50, 50, 0.7);
-  -webkit-backdrop-filter: blur(9px);
-          backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
   border-radius: 30px;
   z-index: 2;
 }
@@ -75,7 +69,7 @@
 }
 
 .highlight {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   color: black;
   padding: 5px 8px;
   border-radius: 15px;
@@ -106,7 +100,6 @@
   width: 100%;
   border-radius: 15px;
 }
-
 .warp_box:first-child {
   margin-top: 0;
 }
@@ -116,16 +109,12 @@
     width: calc(100% - 30px);
   }
 }
-
 .intro_big_text {
   font-family: "PyeongChangPeace-Bold";
   font-size: 23px;
   text-align: center;
   margin-top: 15px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .intro_small_text {
@@ -133,35 +122,18 @@
   font-size: 15px;
   text-align: center;
   margin-top: 10px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .warp_text_box {
   margin-left: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
-  -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
+  flex: 2;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
   height: 100%;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   cursor: pointer;
 }
 
@@ -199,39 +171,36 @@
 #umbrella {
   color: white;
   background: #667db6;
-  background: -webkit-gradient(linear, left top, right top, from(#667db6), color-stop(#0082c8), color-stop(#0082c8), to(#667db6));
+  background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
   background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
-  -webkit-box-shadow: 0px 7px 15px 2px rgba(102, 125, 182, 0.7);
-          box-shadow: 0px 7px 15px 2px rgba(102, 125, 182, 0.7);
+  box-shadow: 0px 7px 15px 2px rgba(102, 125, 182, 0.7);
 }
 
 #club {
   color: white;
   background: #8e2de2;
-  background: -webkit-gradient(linear, left top, right top, from(#4a00e0), to(#8e2de2));
+  background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2);
   background: linear-gradient(to right, #4a00e0, #8e2de2);
-  border: 1px solid #d2c8ff;
-  -webkit-box-shadow: 0px 7px 15px 2px rgba(140, 45, 225, 0.7);
-          box-shadow: 0px 7px 15px 2px rgba(140, 45, 225, 0.7);
+  border: 1px solid rgb(210, 200, 255);
+  box-shadow: 0px 7px 15px 2px rgba(140, 45, 225, 0.7);
 }
 
 #community {
   color: black;
   background: #0cebeb;
-  background: -webkit-gradient(linear, left top, right top, from(#29ffc6), color-stop(#20e3b2), to(#0cebeb));
+  background: -webkit-linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);
   background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);
-  border: 1px solid #199c7b;
-  -webkit-box-shadow: 0px 7px 15px 2px rgba(30, 230, 180, 0.7);
-          box-shadow: 0px 7px 15px 2px rgba(30, 230, 180, 0.7);
+  border: 1px solid rgb(25, 156, 123);
+  box-shadow: 0px 7px 15px 2px rgba(30, 230, 180, 0.7);
 }
 
 #music {
   color: black;
   background: #11998e;
-  background: -webkit-gradient(linear, left top, right top, from(#38ef7d), to(#11998e));
+  background: -webkit-linear-gradient(to right, #38ef7d, #11998e);
   background: linear-gradient(to right, #38ef7d, #11998e);
   border: 1px solid #26a356;
-  -webkit-box-shadow: 0px 7px 15px 2px rgba(34, 211, 102, 0.7);
-          box-shadow: 0px 7px 15px 2px rgba(34, 211, 102, 0.7);
+  box-shadow: 0px 7px 15px 2px rgba(34, 211, 102, 0.7);
 }
+
 /*# sourceMappingURL=Main.module.css.map */

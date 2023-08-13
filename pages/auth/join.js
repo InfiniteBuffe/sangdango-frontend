@@ -40,7 +40,7 @@ const Join = () => {
             }
         })
             .then(r=>{
-                setCookie('join_token', r.data.token, {maxAge: 10})
+                setCookie('join_token', r.data.token, {maxAge: 60 * 15}) // 15m
                 router.push('/auth/join/class')
             })
     }
