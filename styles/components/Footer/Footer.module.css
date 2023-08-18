@@ -19,4 +19,13 @@
   line-height: 20px;
 }
 
+.github {
+  margin: 10px auto;
+  font-weight: 400;
+}
+.github a {
+  color: #0042ff;
+  font-weight: 500;
+}
+
 /*# sourceMappingURL=Footer.module.css.map */
