@@ -73,7 +73,7 @@ const Home = () => {
                     return toast.error(r.data.message)
                 }
                 setCurrentCount(Number(r.data.max) - Number(r.data.rental))
-                return toast.success('우산대여가 완료되었습니다!')
+                return toast.success('우산대여 신청이 완료되었습니다!')
             })
             .catch(e=>{
                 setLoading(false)
@@ -146,7 +146,6 @@ const Home = () => {
                     - 타인의 정보를 무단으로 이용 후 적발 시 이용정지 됩니다.<br />
                     - 반납은 익일 점심시간 반납을 원칙으로 합니다.<br />
                     - 신청 내역 조회와 신청 취소는 준비 중입니다.<br />
-                    - 조회 및 취소 등은 오른쪽 아래 채널톡으로 문의주세요.<br />
                     - 이 외 자세한 사항은 전달된 공지사항을 확인해주세요.
                 </div>
                 <div className={styles.button} onClick={() => setFormOpen(true)}>

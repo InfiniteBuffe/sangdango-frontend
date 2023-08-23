@@ -14,6 +14,7 @@ export default async function handler(req, res) {
     for (let i=0;i<=count-1;i++) {
         let _d = currentRental[`${i}`]
         data.push({
+            id: _d.id,
             date: _d.createdAt,
             studentId: _d.studentId,
             name: _d.name
