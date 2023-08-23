@@ -159,8 +159,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className={styles.notice}>
-                    [긴급 수량 10개 추가되었습니다.]<br/>
-                    오전 8시 30분~오후 7시 동안 신청 가능합니다.<br />(매일 자정 초기화)
+                    신청은 오전 8시 30분부터 가능합니다.
                 </div>
             </Container>
             <BottomSheet onDismiss={() => setFormOpen(false)} className={styles.bottom_sheet} open={formOpen}>

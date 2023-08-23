@@ -1,5 +1,5 @@
 .description {
-  font-family: 'pretendard';
+  font-family: "pretendard";
   font-weight: 300;
   font-size: 15px;
   margin-top: 10px;
@@ -7,7 +7,7 @@
 }
 
 .helper {
-  font-family: 'pretendard';
+  font-family: "pretendard";
   color: black;
   font-weight: 500;
 }
@@ -20,7 +20,6 @@
   height: auto;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 
@@ -29,7 +28,7 @@
 }
 
 .title {
-  font-family: 'pretendard';
+  font-family: "pretendard";
   font-weight: 800;
   font-size: 22px;
 }
@@ -38,5 +37,4 @@
   .box {
     width: 100%;
   }
-}
-/*# sourceMappingURL=Identity.module.css.map */
+}/*# sourceMappingURL=Identity.module.css.map */

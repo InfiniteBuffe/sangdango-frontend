@@ -10,20 +10,14 @@
   min-height: 30px;
   border-radius: 50px;
   height: auto;
-  max-width: calc(1130px - 60px);
+  max-width: 1070px;
   margin: 0 auto;
 }
 
 .alert_bar {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: left;
+  align-items: center;
 }
 
 .icon {
@@ -36,7 +30,7 @@
 
 .text {
   text-align: left;
-  font-family: 'pretendard';
+  font-family: "pretendard";
   font-size: 15px;
   font-weight: 500;
 }
@@ -47,12 +41,9 @@
     margin: auto;
   }
 }
-
 #yellow {
-  background-color: #ffffbe;
-  border: 1px solid #ffff50;
-  -webkit-box-shadow: 0 3px 15px 0 rgba(255, 255, 80, 0.3);
-          box-shadow: 0 3px 15px 0 rgba(255, 255, 80, 0.3);
-  color: #464600;
-}
-/*# sourceMappingURL=AlertBar.module.css.map */
+  background-color: rgb(255, 255, 190);
+  border: 1px solid rgb(255, 255, 80);
+  box-shadow: 0 3px 15px 0 rgba(255, 255, 80, 0.3);
+  color: rgb(70, 70, 0);
+}/*# sourceMappingURL=AlertBar.module.css.map */
