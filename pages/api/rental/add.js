@@ -118,7 +118,7 @@ export default async function handler(req, res) {
         .json({
             status: 200,
             added: true,
-            max: 30, // 우산 최대 갯수
+            max: 40, // 우산 최대 갯수
             rental: n+1, // 처음 맨 위에 조회한 갯수 + 1
             message: '등록이 완료되었습니다.'
         })
