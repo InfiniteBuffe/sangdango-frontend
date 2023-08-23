@@ -16,10 +16,9 @@ const Home = () => {
 
     const [currentCount, setCurrentCount] = useState('-')
     const [formOpen, setFormOpen] = useState(false)
-    const [formSuccessOpen, setFormSuccessOpen] = useState(true)
+    const [formSuccessOpen, setFormSuccessOpen] = useState(false)
     const [formInfo, setFormInfo] = useState({ studentId: '', name: '', agree: true }) // 나중에 약관 동의 체크 받을 것
     const [loading, setLoading] = useState(false)
-    const [modalIsOpen, setModalIsOpen] = useState(false)
 
     const router = useRouter()
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
