@@ -74,7 +74,6 @@ const Home = () => {
                     return toast.error(r.data.message)
                 }
                 setCurrentCount(Number(r.data.max) - Number(r.data.rental))
-                setModalIsOpen(true)
                 toast.success('우산대여 신청이 완료되었습니다!')
                 setFormOpen(false)
                 setFormSuccessOpen(true)
