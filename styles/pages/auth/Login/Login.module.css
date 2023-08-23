@@ -1,14 +1,6 @@
 .box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: calc(100vh - 70px);
+  justify-content: center;
 }
 
 .login {
@@ -16,13 +8,12 @@
   width: 500px;
   padding: 30px;
   border-radius: 20px;
-  -webkit-box-shadow: 5px 0px 50px 0 rgba(50, 50, 50, 0.3);
-          box-shadow: 5px 0px 50px 0 rgba(50, 50, 50, 0.3);
+  box-shadow: 5px 0px 50px 0 rgba(50, 50, 50, 0.3);
 }
 
 .title {
   text-align: left;
-  font-family: 'pretendard';
+  font-family: "pretendard";
   font-size: 25px;
   font-weight: 700;
 }
@@ -31,7 +22,7 @@
   text-align: left;
   margin-top: 5px;
   font-size: 13px;
-  color: #828282;
+  color: rgb(130, 130, 130);
 }
 
 .space {
@@ -47,4 +38,5 @@
     height: 15px;
   }
 }
+
 /*# sourceMappingURL=Login.module.css.map */
