@@ -45,7 +45,7 @@ export default async function handler(req, res) {
     let n = currentRental.length
 
     // 가능 수량이 없음
-    if (n == 30) {
+    if (n == 40) { // 40개
         return res
             .status(200)
             .json({
