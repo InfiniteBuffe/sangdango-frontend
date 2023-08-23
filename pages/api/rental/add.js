@@ -23,6 +23,14 @@ export default async function handler(req, res) {
                 message: '신청 가능 시간이 아닙니다.'
             })
     }
+    if (Number(now[0]) == 19 && Number(now[1]) < 1) { // 19시 -> 오후 7시, 7시 00분 이후부터 거부
+        return res
+            .status(200)
+            .json({
+                status: 200,
+                message: '신청 가능 시간이 아닙니다.'
+            })
+    }
     if (Number(now[0]) < 8 || Number(now[0]) > 19) {
         return res
             .status(200)
