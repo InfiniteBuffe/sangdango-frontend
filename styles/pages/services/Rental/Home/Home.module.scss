@@ -182,6 +182,28 @@
     cursor: pointer;
 }
 
+.sheet_notice {
+    font-family: 'pretendard';
+    font-weight: 500;
+    font-size: 25px;
+    color: black;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.sheet_notice_mini {
+    font-family: 'pretendard';
+    font-weight: 400;
+    font-size: 17px;
+    color: black;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.sheet_container {
+    width: calc( 100% - 40px);
+    margin-left: 20px;
+}
 #warning_strong {
     font-weight: 700;
     height: 0;

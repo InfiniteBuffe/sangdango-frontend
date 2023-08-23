@@ -10,14 +10,16 @@ import 'react-spring-bottom-sheet/dist/style.css'
 import Twemoji from 'react-twemoji'
 import { useRouter } from 'next/router'
 import ChannelTalk from '@/components/ChannelTalk'
-import {TextField} from '@mui/material';
+import { TextField } from '@mui/material';
 
 const Home = () => {
 
     const [currentCount, setCurrentCount] = useState('-')
     const [formOpen, setFormOpen] = useState(false)
+    const [formSuccessOpen, setFormSuccessOpen] = useState(true)
     const [formInfo, setFormInfo] = useState({ studentId: '', name: '', agree: true }) // 나중에 약관 동의 체크 받을 것
     const [loading, setLoading] = useState(false)
+    const [modalIsOpen, setModalIsOpen] = useState(true)
 
     const router = useRouter()
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
@@ -39,7 +41,7 @@ const Home = () => {
             // });
         }
     }, [])
-    
+
     const errorMsg = (text, options) => {
         toast.error(text, { ...options })
     }
@@ -73,11 +75,16 @@ const Home = () => {
                     return toast.error(r.data.message)
                 }
                 setCurrentCount(Number(r.data.max) - Number(r.data.rental))
-                return toast.success('우산대여 신청이 완료되었습니다!')
+                setModalIsOpen(true)
+                toast.success('우산대여 신청이 완료되었습니다!')
+                setFormOpen(false)
+                setFormSuccessOpen(true)
+                return
             })
-            .catch(e=>{
+            .catch(e => {
                 setLoading(false)
                 errorMsg('서버와 통신 중 오류가 발생하였습니다.')
+                return
             })
     }
 
@@ -154,13 +161,13 @@ const Home = () => {
                     </div>
                 </div>
                 <div className={styles.notice}>
-                    오전 8시 30분~오후 7시 동안 신청 가능합니다.<br/>(매일 자정 초기화)
+                    오전 8시 30분~오후 7시 동안 신청 가능합니다.<br />(매일 자정 초기화)
                 </div>
             </Container>
             <BottomSheet onDismiss={() => setFormOpen(false)} className={styles.bottom_sheet} open={formOpen}>
                 <div className={styles.sheet_title}>
                     <Twemoji options={{ className: styles.emoji_font }}>☂</Twemoji>
-                    &nbsp;대여 신청서
+                    &nbsp;대여 신청하기
                 </div>
                 <TextField
                     helperText="예) 1학년 9반 32번 → 10932"
@@ -185,6 +192,28 @@ const Home = () => {
                 <div className={styles.sheet_button} onClick={apply}>
                     <div className={styles.sheet_button_text}>
                         신청하기
+                    </div>
+                </div>
+            </BottomSheet>
+            <BottomSheet onDismiss={() => setFormSuccessOpen(false)} className={styles.bottom_sheet} open={formSuccessOpen}>
+                {/* <div className={styles.sheet_title}>
+                    <Twemoji options={{ className: styles.emoji_font }}>☂</Twemoji>
+                    &nbsp;대여 신청하기
+                </div> */}
+                <div className={styles.sheet_container}>
+                    <div className={styles.sheet_notice}>
+                        <Twemoji options={{ className: styles.emoji_font }}>✔️</Twemoji>
+                        신청이 완료되었습니다.
+                    </div>
+                    <div className={styles.sheet_notice_mini}>
+                        장소: 3층 학생회실<br/>
+                        대여 시간: 대여 당일 16:40-16:50<br/>
+                        반납 시간: 대여 다음날 13:15~13:25<br/>
+                    </div>
+                </div>
+                <div className={styles.sheet_button} onClick={() => setFormSuccessOpen(false)}>
+                    <div className={styles.sheet_button_text}>
+                        닫기
                     </div>
                 </div>
             </BottomSheet>

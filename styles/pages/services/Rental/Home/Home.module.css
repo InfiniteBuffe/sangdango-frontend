@@ -4,7 +4,9 @@
   text-align: center;
   margin-top: 20px;
   font-weight: 700;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .status {
@@ -34,7 +36,9 @@
   font-weight: 700;
   font-size: 25px;
   text-align: center;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   color: white;
   margin-top: -10px;
 }
@@ -44,7 +48,9 @@
   font-weight: 700;
   font-size: 50px;
   text-align: center;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   color: white;
 }
 
@@ -78,7 +84,9 @@
   margin-left: 5px;
   margin-right: 10px;
   margin-top: 2.5px;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .notice {
@@ -101,7 +109,9 @@
   font-family: "pretendard";
   font-weight: 500;
   text-align: left;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -129,7 +139,9 @@
   font-size: 20px;
   text-align: center;
   line-height: 60px;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .sheet_title {
@@ -171,6 +183,29 @@
   cursor: pointer;
 }
 
+.sheet_notice {
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 25px;
+  color: black;
+  text-align: center;
+  margin: 10px auto;
+}
+
+.sheet_notice_mini {
+  font-family: "pretendard";
+  font-weight: 400;
+  font-size: 17px;
+  color: black;
+  text-align: center;
+  margin: 10px auto;
+}
+
+.sheet_container {
+  width: calc(100% - 40px);
+  margin-left: 20px;
+}
+
 #warning_strong {
   font-weight: 700;
   height: 0;
@@ -190,6 +225,4 @@
   .bottom_sheet {
     margin-bottom: 55px;
   }
-}
-
-/*# sourceMappingURL=Home.module.css.map */
+}/*# sourceMappingURL=Home.module.css.map */
