@@ -22,12 +22,6 @@
   transform: translate(-50%, -50%) scale(1.1);
 }
 
-@media (max-width: 670px) {
-  .video {
-    width: auto;
-    height: 100%;
-  }
-}
 .video_bug {
   width: 100%;
   height: auto;
@@ -107,11 +101,6 @@
   margin-top: 0;
 }
 
-@media (max-width: 730px) {
-  .warp_container {
-    width: calc(100% - 30px);
-  }
-}
 .intro_big_text {
   font-family: "PyeongChangPeace-Bold";
   font-size: 23px;
@@ -177,6 +166,67 @@
   float: left;
 }
 
+.account_card {
+  margin: auto;
+  margin-top: 15px;
+  width: 685px;
+  height: 55px;
+  border-radius: 15px;
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  flex: 2;
+  justify-content: space-between;
+  background-color: #FEE500;
+}
+
+.account_text {
+  font-family: "pretendard";
+  font-size: 20px;
+  text-align: left;
+  font-weight: 700;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.account_logout_box {
+  height: 45px;
+  width: auto;
+  padding: auto 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #191919;
+  margin-top: -10px;
+  margin-right: -10px;
+  border-radius: 15px;
+}
+
+.account_logout {
+  font-weight: 300;
+  line-height: 45px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  color: white;
+}
+
+@media (max-width: 670px) {
+  .video {
+    width: auto;
+    height: 100%;
+  }
+}
+@media (max-width: 730px) {
+  .warp_container {
+    width: calc(100% - 30px);
+  }
+  .account_card {
+    width: calc(100% - 30px);
+  }
+}
 #umbrella {
   color: white;
   background: #667db6;

@@ -1,13 +1,17 @@
-import Header from '@/components/Header'
-import styles from '@/styles/pages/auth/Login/Login.module.css'
+import Header from 'components/Header'
+import styles from 'styles/pages/auth/Login/Login.module.css'
 import { TextField, Button, createTheme, ThemeProvider, InputAdornment, IconButton } from '@mui/material'
 import { grey } from '@mui/material/colors';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
+import Image from 'next/image';
+import { signOut, signIn, useSession } from 'next-auth/react';
 
 const Login = () => {
+
+    const { data: session } = useSession()
 
     const theme = createTheme({
         palette: {
@@ -16,14 +20,23 @@ const Login = () => {
             }
         }
     })
-    const [showPassword, setShowPassword] = useState(false);
-    const handleClickShowPassword = () => setShowPassword(!showPassword);
-    const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
     return (
         <>
             <Header />
             <div className={styles.box}>
+                {/* {(session) ? (
+                    <div className={styles.account_card}>
+                        <div className={styles.account_text}>
+                            이미 로그인이 되어있어요!
+                        </div>
+                        <div className={styles.account_logout_box} onClick={() => signOut()}>
+                            <div className={styles.account_logout}>
+                                로그아웃
+                            </div>
+                        </div>
+                    </div>
+                ) : (<></>)} */}
                 <div className={styles.login}>
                     <div className={styles.title}>
                         로그인
@@ -32,62 +45,19 @@ const Login = () => {
                         상당고 학생정보망에 로그인합니다.
                     </div>
                     <div className={styles.space} />
-                    <div className={styles.space} />
                     <ThemeProvider theme={theme}>
-                        <TextField
-                            fullWidth
-                            InputProps={{ style: { fontFamily: 'pretendard', fontWeight: 500 }, readOnly: false }}
-                            InputLabelProps={{ style: { fontFamily: 'pretendard', fontWeight: 500 } }}
-                            color='dark'
-                            label="아이디"
-                            variant="outlined"
-                        />
-                        <div className={styles.space} />
-                        <TextField
-                            fullWidth
-                            InputProps={{
-                                style: { fontFamily: 'pretendard', fontWeight: 500 },
-                                readOnly: false,
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                        >
-                                            {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                )
+                        <Image
+                            src="kakao_login_large_wide.png"
+                            width={0}
+                            height={0}
+                            style={{
+                                width: '100%',
+                                height: 'auto',
+                                cursor: 'pointer',
                             }}
-                            InputLabelProps={{ style: { fontFamily: 'pretendard', fontWeight: 500 } }}
-                            color='dark'
-                            type={showPassword ? "text" : "password"}
-                            label="비밀번호"
-                            variant="outlined"
+                            loader={({ src }) => { return `https://cdn.sangdang.kr/${src}` }}
+                            onClick={() => signIn('kakao')}
                         />
-                        <div className={styles.space} />
-                        <Button
-                            fullWidth
-                            style={{ fontFamily: 'pretendard', fontWeight: 600, height: '56px', fontSize: '18px', color: 'white', borderRadius: '20px' }}
-                            variant="contained"
-                            size="large"
-                            color="dark"
-                        >
-                            로그인
-                        </Button>
-                        <Box textAlign='center' style={{marginTop:'15px',marginBottom:'-15px'}}>
-                            <Button
-                                color='dark'
-                                variant="text"
-                                style={{
-                                    fontFamily: 'pretendard',
-                                    fontWeight: 500,
-                                    margin: 'auto',
-                                }}>
-                                계정이 없으신가요?
-                            </Button>
-                        </Box>
                     </ThemeProvider>
                 </div>
             </div>

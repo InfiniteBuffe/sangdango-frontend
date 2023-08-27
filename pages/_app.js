@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
   // TransitionFix()
   return (
     <>
-      <SessionProvider>
+      <SessionProvider session={pageProps.session}>
         <Toaster position="top-center"
           reverseOrder={false}
           toastOptions={{

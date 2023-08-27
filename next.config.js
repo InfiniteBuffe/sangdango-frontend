@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     loader: 'akamai',
     path: '/',
+    domains: [
+      "cdn.sangdang.kr",
+  ]
   },
   api: {
     bodyParser: {

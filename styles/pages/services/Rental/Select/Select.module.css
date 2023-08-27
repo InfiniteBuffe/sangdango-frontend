@@ -1,0 +1,10 @@
+.table {
+  width: 300px;
+  margin: auto;
+  line-height: 30px;
+  text-align: center;
+  border-collapse: collapse;
+}
+.table th, .table td {
+  border: 1px solid rgb(170, 170, 170);
+}/*# sourceMappingURL=Select.module.css.map */

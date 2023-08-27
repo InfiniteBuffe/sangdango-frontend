@@ -3,14 +3,18 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import styles from 'styles/pages/services/Rental/Select/Select.module.css'
 
 const Select = () => {
 
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
     const router = useRouter()
     const [data, setData] = useState([])
-    const [tableData, setTableData] = useState(<tr></tr>)
+    const [tableData, setTableData] = useState()
     useEffect(() => {
+        // if (!router.isReady) {
+        //     return
+        // }
         axios({
             url: url + '/api/rental/select',
             method: 'GET'
@@ -22,25 +26,32 @@ const Select = () => {
                     _data.push(r.data[i])
                 }
                 setData(_data)
-                setTableData(
+                let table = (
                     <>
-                        {(data).map((key) => {
-                            <tr>
-                                <td>{key.studentId}</td>
-                                <td>{key.namn}</td>
-                            </tr>
+                        {(_data).map((key, i) => {
+                            return (
+                                <tr key={i}>
+                                    <td>{key.studentId}</td>
+                                    <td>{key.name}</td>
+                                </tr>
+                            )
                         })}
                     </>
                 )
+                setTableData(table)
             })
     }, [])
 
     return (
         <>
             <Container>
-                <table>
-                    <th>학번</th>
-                    <th>이름</th>
+                <table className={styles.table}>
+                    <thead>
+                        <tr>
+                            <th>학번</th>
+                            <th>이름</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         {tableData}
                     </tbody>

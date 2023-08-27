@@ -1,11 +1,14 @@
 .box {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: calc(100vh - 70px);
+  flex-direction: column;
 }
 
 .login {
   background-color: white;
-  width: 500px;
+  width: 350px;
   padding: 30px;
   border-radius: 20px;
   box-shadow: 5px 0px 50px 0 rgba(50, 50, 50, 0.3);
@@ -29,12 +32,66 @@
   height: 20px;
 }
 
-@media (max-width: 560px) {
+.kakao {
+  width: 100%;
+  cursor: pointer;
+}
+
+.account_card {
+  margin: auto;
+  margin-top: 15px;
+  width: 350px;
+  max-height: 55px;
+  border-radius: 15px;
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  flex: 2;
+  justify-content: space-between;
+  background-color: #FEE500;
+}
+
+.account_text {
+  font-family: "pretendard";
+  font-size: 20px;
+  text-align: left;
+  font-weight: 700;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.account_logout_box {
+  height: 45px;
+  width: auto;
+  padding: auto 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #191919;
+  margin-top: -10px;
+  margin-right: -10px;
+  border-radius: 15px;
+}
+
+.account_logout {
+  font-weight: 300;
+  line-height: 45px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  color: white;
+}
+
+@media (max-width: 350px) {
   .login {
-    width: calc(100% - 60px);
-    margin: auto;
+    width: 100%;
+  }
+  .account_card {
+    width: 100%;
   }
   .space {
-    height: 15px;
+    height: 20px;
   }
 }/*# sourceMappingURL=Login.module.css.map */

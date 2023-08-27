@@ -9,6 +9,7 @@ import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
 import Twemoji from 'react-twemoji'
 import Footer from '@/components/Footer'
+import { signOut, useSession } from 'next-auth/react'
 
 const Main = () => {
 
@@ -20,6 +21,9 @@ const Main = () => {
   const [videoClass, setVideoClass] = useState(styles.video)
   const videoRef = useRef()
   const router = useRouter()
+
+  const { data: session } = useSession()
+
   useEffect(() => {
     // toast('3월 2일에 만나요! 🎉',
     //   // {
@@ -49,7 +53,6 @@ const Main = () => {
     // }
     // return () => clearTimeout(intervalId)
   }, [])
-
   return (
     <>
       <Head>
@@ -90,6 +93,18 @@ const Main = () => {
           <source src="https://cdn.sangdang.kr/intro_video.mp4" type='video/mp4' />
         </video>
       </div>
+      {(session) ? (
+        <div className={styles.account_card}>
+          <div className={styles.account_text}>
+            {session.user.name}님
+          </div>
+          <div className={styles.account_logout_box} onClick={()=>signOut()}>
+            <div className={styles.account_logout}>
+              로그아웃
+            </div>
+          </div>
+        </div>
+      ) : (<></>)}
       <div className={styles.intro_big_text}>
         너만의 학교를 만들어봐!
       </div>
@@ -97,7 +112,7 @@ const Main = () => {
         아래 버튼을 눌러 이동하세요
       </div>
       <div className={styles.warp_container}>
-        <div className={styles.warp_box} id={styles.umbrella} onClick={()=>{router.push('/service/rental/home');toast('우산대여 서비스로 이동합니다')}}>
+        <div className={styles.warp_box} id={styles.umbrella} onClick={() => { router.push('/service/rental/home'); toast('우산대여 서비스로 이동합니다') }}>
           <div className={styles.warp_text_box}>
             <div className={styles.warp_big_text}>
               <span className={styles.warp_big_text_line}>우산대여&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>☂</Twemoji></span>
