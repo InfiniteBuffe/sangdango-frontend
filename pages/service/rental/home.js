@@ -175,6 +175,10 @@ const Home = () => {
                 setCurrentCount(Number(data.max) - Number(data.rental))
                 setSelectFormInfo({ studentId: '', name: '', time: '' })
             })
+            .catch(e=>{
+                setLoading(false)
+                errorMsg('오류가 발생하였습니다.')
+            })
     }
 
     return (
