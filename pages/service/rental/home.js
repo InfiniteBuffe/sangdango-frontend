@@ -345,7 +345,7 @@ const Home = () => {
                 <div className={styles.sheet_container}>
                     <div className={styles.sheet_notice}>
                         <Twemoji options={{ className: styles.emoji_font }}>✔️</Twemoji>
-                        대여 신청이 취소되었습니다.
+                        취소가 완료되었습니다.
                     </div>
                     <div className={styles.sheet_info_box}>
                         - 신청 시간내 재신청이 가능하오니 참고해주세요.<br/>
