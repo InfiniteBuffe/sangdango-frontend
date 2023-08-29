@@ -23,17 +23,18 @@ export default async function handler(req, res) {
         }
     })
     const formatDateTime = (dateTimeString) => {
-        var date = new Date(dateTimeString);
+        let date = new Date(dateTimeString);
         if (process.env.NEXT_PUBLIC_ENV == "prod") {
-            var formattedDateTime =
+            let formattedDateTime =
                 date.getFullYear() + "년 " +
                 (date.getMonth() + 1) + "월 " +
                 date.getDate() + "일 " +
                 (date.getHours() + 9) + "시 " +
                 date.getMinutes() + "분 " +
                 date.getSeconds() + "초";
+                return formattedDateTime;
         }
-        var formattedDateTime =
+        let formattedDateTime =
             date.getFullYear() + "년 " +
             (date.getMonth() + 1) + "월 " +
             date.getDate() + "일 " +
