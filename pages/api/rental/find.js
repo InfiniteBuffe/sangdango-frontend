@@ -22,36 +22,46 @@ export default async function handler(req, res) {
             studentId: Number(req.body.studentId)
         }
     })
-    const formatDateTime = (dateTimeString) => {
-        let date = new Date(dateTimeString);
-        if (process.env.NEXT_PUBLIC_ENV == "prod") {
-            let formattedDateTime =
-                date.getFullYear() + "년 " +
-                (date.getMonth() + 1) + "월 " +
-                date.getDate() + "일 " +
-                (date.getHours() + 9) + "시 " +
-                date.getMinutes() + "분 " +
-                date.getSeconds() + "초";
-                return formattedDateTime;
-        }
+
+    let kstDate = new Date(utcDate);
+    kstDate.setHours(kstDate.getHours() + 9);
+    if (kstDate.getUTCHours() >= 24) {
+        kstDate.setDate(kstDate.getDate() + 1);
+    }
+    return kstDate;
+}
+
+
+const formatDateTime = (dateTimeString) => {
+    let date = convertUTCtoKST(dateTimeString);
+    if (process.env.NEXT_PUBLIC_ENV == "prod") {
         let formattedDateTime =
             date.getFullYear() + "년 " +
             (date.getMonth() + 1) + "월 " +
             date.getDate() + "일 " +
-            date.getHours() + "시 " +
+            (date.getHours() + 9) + "시 " +
             date.getMinutes() + "분 " +
             date.getSeconds() + "초";
         return formattedDateTime;
     }
+    let formattedDateTime =
+        date.getFullYear() + "년 " +
+        (date.getMonth() + 1) + "월 " +
+        date.getDate() + "일 " +
+        date.getHours() + "시 " +
+        date.getMinutes() + "분 " +
+        date.getSeconds() + "초";
+    return formattedDateTime;
+}
 
-    let data = {
-        message: 'success',
-        isListed: (currentRental[0] != undefined) ? true : false,
-    }
-    if (data.isListed) {
-        data.time = formatDateTime(currentRental[0].createdAt)
-    }
-    res
-        .status(200)
-        .json(data)
+let data = {
+    message: 'success',
+    isListed: (currentRental[0] != undefined) ? true : false,
+}
+if (data.isListed) {
+    data.time = formatDateTime(currentRental[0].createdAt)
+}
+res
+    .status(200)
+    .json(data)
 }
