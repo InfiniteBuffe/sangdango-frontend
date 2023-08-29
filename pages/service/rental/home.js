@@ -17,7 +17,11 @@ const Home = () => {
     const [currentCount, setCurrentCount] = useState('-')
     const [formOpen, setFormOpen] = useState(false)
     const [formSuccessOpen, setFormSuccessOpen] = useState(false)
+    const [selectFormOpen, setSelectFormOpen] = useState(false)
+    const [selectFormOpen2, setSelectFormOpen2] = useState(false)
+    const [selectFormOpen3, setSelectFormOpen3] = useState(false)
     const [formInfo, setFormInfo] = useState({ studentId: '', name: '', agree: true }) // 나중에 약관 동의 체크 받을 것
+    const [selectFormInfo, setSelectFormInfo] = useState({ studentId: '', name: '', time: '' })
     const [loading, setLoading] = useState(false)
 
     const router = useRouter()
@@ -104,8 +108,8 @@ const Home = () => {
         return text
     }
 
-    const changeValue = (name, value, type) => {
-        let data = { ...formInfo }
+    const changeValue = (name, value, type, use) => {
+        const data = (use == 'select') ? { ...selectFormInfo } : { ...formInfo }
         data[name] = value
         if (type == 'number') {
             data[name] = changeOnlyNum(value)
@@ -117,7 +121,60 @@ const Home = () => {
         if (name == 'name') {
             data[name] = verifyName(value)
         }
-        setFormInfo({ ...formInfo, ...data })
+        if (use == 'select') {
+            setSelectFormInfo({ ...selectFormInfo, ...data })
+        } else {
+            setFormInfo({ ...formInfo, ...data })
+        }
+    }
+
+    const selectStudent = () => {
+        setLoading(true)
+        axios({
+            url: url + '/api/rental/find',
+            method: 'POST',
+            data: {
+                studentId: Number(selectFormInfo.studentId),
+                name: selectFormInfo.name
+            }
+        })
+            .then(r => {
+                let data = r.data
+                if (data.message == 'error' || data.isListed == false) {
+                    errorMsg('잘못된 정보입니다.')
+                    setLoading(false)
+                    return
+                }
+                setSelectFormInfo({ ...selectFormInfo, time: data.time })
+                setSelectFormOpen(false)
+                setLoading(false)
+                setSelectFormOpen2(true)
+            })
+    }
+
+    const cancleRental = () => {
+        setLoading(true)
+        axios({
+            url: url + '/api/rental/remove',
+            method: 'POST',
+            data: {
+                studentId: Number(selectFormInfo.studentId),
+                name: selectFormInfo.name
+            }
+        })
+            .then(r => {
+                let data = r.data
+                if (data.message == 'error') {
+                    setLoading(false)
+                    errorMsg('오류가 발생하였습니다.')
+                    return
+                }
+                setLoading(false)
+                setSelectFormOpen2(false)
+                setSelectFormOpen3(true)
+                setCurrentCount(Number(data.max) - Number(data.rental))
+                setSelectFormInfo({ studentId: '', name: '', time: '' })
+            })
     }
 
     return (
@@ -158,10 +215,71 @@ const Home = () => {
                         대여 신청하기
                     </div>
                 </div>
+                <div className={styles.select_button} onClick={() => setSelectFormOpen(true)}>
+                    <div className={styles.button_text}>
+                        대여 조회 및 취소
+                    </div>
+                </div>
                 <div className={styles.notice}>
                     신청은 오전 8시 30분부터 가능합니다.
                 </div>
             </Container>
+            <BottomSheet onDismiss={() => setSelectFormOpen(false)} className={styles.bottom_sheet} open={selectFormOpen}>
+                <div className={styles.sheet_title}>
+                    대여 조회 및 취소
+                </div>
+                <div className={styles.sheet_notice_mini}>
+                    먼저, 대여하신 정보를 입력해주세요. ✏️
+                </div>
+                <TextField
+                    helperText="예) 1학년 9반 32번 → 10932"
+                    style={{ width: 'calc(100% - 40px)', marginLeft: '20px', marginTop: '20px' }}
+                    fullWidth
+                    label="학번"
+                    variant="outlined"
+                    inputProps={{ style: { fontFamily: 'pretendard', fontWeight: '500' } }}
+                    InputLabelProps={{ style: { fontFamily: 'pretendard', fontWeight: '500' } }}
+                    onChange={(a) => changeValue('studentId', a.target.value, 'number', 'select')}
+                    value={selectFormInfo.studentId}
+                />
+                <TextField
+                    style={{ width: 'calc(100% - 40px)', marginLeft: '20px', marginTop: '20px' }}
+                    fullWidth label="이름"
+                    variant="outlined"
+                    inputProps={{ style: { fontFamily: 'pretendard', fontWeight: '500' } }}
+                    InputLabelProps={{ style: { fontFamily: 'pretendard', fontWeight: '500' } }}
+                    onChange={(a) => changeValue('name', a.target.value, 'text', 'select')}
+                    value={selectFormInfo.name}
+                />
+                <div className={styles.sheet_button} onClick={() => { selectStudent() }}>
+                    <div className={styles.sheet_button_text}>
+                        다음으로
+                    </div>
+                </div>
+            </BottomSheet>
+            <BottomSheet onDismiss={() => setSelectFormOpen2(false)} className={styles.bottom_sheet} open={selectFormOpen2}>
+                <div className={styles.sheet_title}>
+                    대여 조회 및 취소
+                </div>
+                <div className={styles.sheet_notice_mini}>
+                    아래 정보를 확인하시고, 취소 여부를 결정하세요.
+                </div>
+                <div className={styles.sheet_info_box}>
+                    - 대여자: {selectFormInfo.name}<br />
+                    - 학번: {selectFormInfo.studentId}<br />
+                    - 신청한 시간: {selectFormInfo.time}
+                </div>
+                <div className={styles.sheet_button} id={styles.sheet_button_cancel} style={{ marginBottom: '-15px' }} onClick={() => cancleRental()}>
+                    <div className={styles.sheet_button_text}>
+                        대여를 취소할게요
+                    </div>
+                </div>
+                <div className={styles.sheet_button} onClick={() => setSelectFormOpen2(false)}>
+                    <div className={styles.sheet_button_text}>
+                        닫기
+                    </div>
+                </div>
+            </BottomSheet>
             <BottomSheet onDismiss={() => setFormOpen(false)} className={styles.bottom_sheet} open={formOpen}>
                 <div className={styles.sheet_title}>
                     <Twemoji options={{ className: styles.emoji_font }}>☂</Twemoji>
@@ -204,12 +322,33 @@ const Home = () => {
                         신청이 완료되었습니다.
                     </div>
                     <div className={styles.sheet_notice_mini}>
-                        장소: 3층 학생회실<br/>
-                        대여 시간: 대여 당일 16:40-16:50<br/>
-                        반납 시간: 대여 다음날 13:15~13:25<br/>
+                        장소: 3층 학생회실<br />
+                        대여 시간: 대여 당일 16:40-16:50<br />
+                        반납 시간: 대여 다음날 13:15~13:25<br />
                     </div>
                 </div>
                 <div className={styles.sheet_button} onClick={() => setFormSuccessOpen(false)}>
+                    <div className={styles.sheet_button_text}>
+                        닫기
+                    </div>
+                </div>
+            </BottomSheet>
+            <BottomSheet onDismiss={() => setSelectFormOpen3(false)} className={styles.bottom_sheet} open={selectFormOpen3}>
+                {/* <div className={styles.sheet_title}>
+                    <Twemoji options={{ className: styles.emoji_font }}>☂</Twemoji>
+                    &nbsp;대여 신청하기
+                </div> */}
+                <div className={styles.sheet_container}>
+                    <div className={styles.sheet_notice}>
+                        <Twemoji options={{ className: styles.emoji_font }}>✔️</Twemoji>
+                        대여 신청이 취소되었습니다.
+                    </div>
+                    <div className={styles.sheet_info_box}>
+                        - 신청 시간내 재신청이 가능하오니 참고해주세요.<br/>
+                        - 이용해주셔서 감사합니다.
+                    </div>
+                </div>
+                <div className={styles.sheet_button} onClick={() => setSelectFormOpen3(false)}>
                     <div className={styles.sheet_button_text}>
                         닫기
                     </div>

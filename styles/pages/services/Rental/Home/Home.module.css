@@ -144,6 +144,18 @@
           user-select: none;
 }
 
+.select_button {
+  background: linear-gradient(to right, #e96443, #904e95);
+  width: 200px;
+  height: 60px;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 50px 2px rgba(172, 54, 38, 0.3);
+  border: 1px solid rgb(231, 103, 86);
+}
+
 .sheet_title {
   font-family: "pretendard";
   font-weight: 700;
@@ -206,6 +218,18 @@
   margin-left: 20px;
 }
 
+.sheet_info_box {
+  width: calc(100% - 40px);
+  margin: auto;
+  padding: 20px;
+  background-color: rgb(235, 235, 235);
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 400;
+  color: black;
+  text-align: left;
+}
+
 #warning_strong {
   font-weight: 700;
   height: 0;
@@ -216,6 +240,10 @@
   background: linear-gradient(to right, rgb(7, 0, 100), rgb(83, 71, 234));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+#sheet_button_cancel {
+  background: linear-gradient(to right, #e96443, #904e95);
 }
 
 @media (max-width: 768px) {
