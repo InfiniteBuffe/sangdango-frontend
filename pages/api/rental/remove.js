@@ -33,7 +33,7 @@ export default async function handler(req, res) {
             }
         })
         const currentRentalAll = await client.CurrentRental.findMany({})
-        let n = currentRental.length
+        let n = currentRentalAll.length
         res.status(200)
         res.json({
             message: 'success',
