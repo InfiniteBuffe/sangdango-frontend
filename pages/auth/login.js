@@ -25,10 +25,10 @@ const Login = () => {
         <>
             <Header />
             <div className={styles.box}>
-                {/* {(session) ? (
+                {(session) ? (
                     <div className={styles.account_card}>
                         <div className={styles.account_text}>
-                            이미 로그인이 되어있어요!
+                            {session.user.name}
                         </div>
                         <div className={styles.account_logout_box} onClick={() => signOut()}>
                             <div className={styles.account_logout}>
@@ -36,7 +36,7 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                ) : (<></>)} */}
+                ) : (<></>)}
                 <div className={styles.login}>
                     <div className={styles.title}>
                         로그인
