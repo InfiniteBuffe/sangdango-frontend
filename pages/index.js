@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 import Twemoji from 'react-twemoji'
 import Footer from '@/components/Footer'
 import { signOut, useSession } from 'next-auth/react'
+import LoginModal from '@/components/LoginModal'
 
 const Main = () => {
 
@@ -19,17 +20,18 @@ const Main = () => {
   ]
   const [index, setIndex] = useState(0);
   const [videoClass, setVideoClass] = useState(styles.video)
+  const [loginModalStatus, setLoginModalStatus] = useState(false)
   const videoRef = useRef()
   const router = useRouter()
 
   const { data: session } = useSession()
 
+  useEffect(()=>{
+    console.log(1)
+    console.log(loginModalStatus)
+  }, [loginModalStatus])
+
   useEffect(() => {
-    // toast('3월 2일에 만나요! 🎉',
-    //   // {
-    //   //   icon: '⏳',
-    //   // }
-    // );
     const intervalId = setInterval(() =>
       setIndex(index => index + 1),
       5000
@@ -63,6 +65,7 @@ const Main = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      <LoginModal open={loginModalStatus} cb={setLoginModalStatus} />
       <div className={styles.video_box}>
         <div className={styles.video_text_box}>
           <div className={styles.video_top_text}>
@@ -104,7 +107,18 @@ const Main = () => {
             </div>
           </div>
         </div>
-      ) : (<></>)}
+      ) : (
+        <div className={styles.account_card} id={styles.account_nologin}>
+          <div className={styles.account_text} id={styles.account_nologin_text}>
+            간편하게 로그인 →
+          </div>
+          <div className={styles.account_login_box} onClick={()=>setLoginModalStatus(true)}>
+            <div className={styles.account_login}>
+              로그인
+            </div>
+          </div>
+        </div>
+      )}
       <div className={styles.intro_big_text}>
         너만의 학교를 만들어봐!
       </div>

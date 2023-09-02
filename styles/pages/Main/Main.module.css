@@ -178,7 +178,7 @@
   display: flex;
   flex: 2;
   justify-content: space-between;
-  background-color: #FEE500;
+  background-color: #fee500;
 }
 
 .account_text {
@@ -213,6 +213,28 @@
   color: white;
 }
 
+.account_login_box {
+  height: 45px;
+  width: auto;
+  padding: 0 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #ffffff;
+  margin-top: -10px;
+  margin-right: -10px;
+  border-radius: 15px;
+}
+
+.account_login {
+  font-weight: 700;
+  line-height: 45px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  color: black;
+}
+
 @media (max-width: 670px) {
   .video {
     width: auto;
@@ -227,6 +249,15 @@
     width: calc(100% - 30px);
   }
 }
+#account_nologin_text {
+  color: white;
+}
+
+#account_nologin {
+  background: #005c97;
+  background: linear-gradient(to right, #363795, #005c97);
+}
+
 #umbrella {
   color: white;
   background: #667db6;

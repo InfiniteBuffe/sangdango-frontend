@@ -177,11 +177,11 @@
     display: flex;
     flex: 2;
     justify-content: space-between;
-    background-color: #FEE500;
+    background-color: #fee500;
 }
 
-.account_text{
-    font-family: 'pretendard';
+.account_text {
+    font-family: "pretendard";
     font-size: 20px;
     text-align: left;
     font-weight: 700;
@@ -208,6 +208,26 @@
     color: white;
 }
 
+.account_login_box {
+    height: 45px;
+    width: auto;
+    padding: 0 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #ffffff;
+    margin-top: -10px;
+    margin-right: -10px;
+    border-radius: 15px;
+}
+
+.account_login {
+    font-weight: 700;
+    line-height: 45px;
+    user-select: none;
+    cursor: pointer;
+    color: black;
+}
+
 @media (max-width: 670px) {
     .video {
         width: auto;
@@ -224,17 +244,25 @@
     }
 }
 
+#account_nologin_text {
+    color: white;
+}
+
+#account_nologin {
+    background: #005c97;
+    background: -webkit-linear-gradient(to right, #363795, #005c97);
+    background: linear-gradient(
+        to right,
+        #363795,
+        #005c97
+    );
+}
+
 #umbrella {
     color: white;
     background: #667db6;
     background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
-    background: linear-gradient(
-        to right,
-        #667db6,
-        #0082c8,
-        #0082c8,
-        #667db6
-    );
+    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
     box-shadow: 0px 7px 15px 2px rgba(102, 125, 182, 0.7);
 }
 
