@@ -11,6 +11,7 @@ import Twemoji from 'react-twemoji'
 import Footer from '@/components/Footer'
 import { signOut, useSession } from 'next-auth/react'
 import LoginModal from '@/components/LoginModal'
+import axios from 'axios'
 
 const Main = () => {
 
@@ -21,15 +22,27 @@ const Main = () => {
   const [index, setIndex] = useState(0);
   const [videoClass, setVideoClass] = useState(styles.video)
   const [loginModalStatus, setLoginModalStatus] = useState(false)
+  const [meal, setMeal] = useState({ breakfast: '불러오는 중...', lunch: '불러오는 중...', dinner: '불러오는 중...' })
   const videoRef = useRef()
   const router = useRouter()
+  const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
 
-  const { data: session } = useSession()
+  // const { data: session } = useSession()
 
-  useEffect(()=>{
-    console.log(1)
-    console.log(loginModalStatus)
-  }, [loginModalStatus])
+  useEffect(() => {
+    axios({
+      url: url + '/api/meal/today',
+      method: 'GET'
+    })
+      .then(r=>{
+        let {data} = r
+        setMeal({
+          breakfast: data.breakfast,
+          lunch: data.lunch,
+          dinner: data.dinner
+        })
+      })
+  }, [])
 
   useEffect(() => {
     const intervalId = setInterval(() =>
@@ -96,7 +109,7 @@ const Main = () => {
           <source src="https://cdn.sangdang.kr/intro_video.mp4" type='video/mp4' />
         </video>
       </div>
-      {(session) ? (
+      {/* {(session) ? (
         <div className={styles.account_card}>
           <div className={styles.account_text}>
             {session.user.name}님
@@ -118,7 +131,39 @@ const Main = () => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
+      <div className={styles.meal_container}>
+        <div className={styles.meal_title}>
+          오늘의 식단 🍽️
+        </div>
+        {/* <div className={styles.space}/> */}
+        <div className={styles.meal_box}>
+          <div className={styles.meal_item}>
+            <div className={styles.meal_item_title} id={styles.breakfast}>
+              조식
+            </div>
+            <div className={styles.meal_item_menu}>
+              {meal.breakfast}
+            </div>
+          </div>
+          <div className={styles.meal_item}>
+            <div className={styles.meal_item_title} id={styles.lunch}>
+              중식
+            </div>
+            <div className={styles.meal_item_menu}>
+              {meal.lunch}
+            </div>
+          </div>
+          <div className={styles.meal_item}>
+            <div className={styles.meal_item_title} id={styles.dinner}>
+              석식
+            </div>
+            <div className={styles.meal_item_menu}>
+              {meal.dinner}
+            </div>
+          </div>
+        </div>
+      </div>
       <div className={styles.intro_big_text}>
         너만의 학교를 만들어봐!
       </div>

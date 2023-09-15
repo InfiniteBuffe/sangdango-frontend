@@ -11,6 +11,7 @@ import Twemoji from 'react-twemoji'
 import { useRouter } from 'next/router'
 import ChannelTalk from '@/components/ChannelTalk'
 import { TextField } from '@mui/material';
+import PopupModal from '@/components/PopupModal'
 
 const Home = () => {
 
@@ -23,6 +24,7 @@ const Home = () => {
     const [formInfo, setFormInfo] = useState({ studentId: '', name: '', agree: true }) // 나중에 약관 동의 체크 받을 것
     const [selectFormInfo, setSelectFormInfo] = useState({ studentId: '', name: '', time: '' })
     const [loading, setLoading] = useState(false)
+    const [loginModalStatus, setLoginModalStatus] = useState(false)
 
     const router = useRouter()
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
@@ -175,7 +177,7 @@ const Home = () => {
                 setCurrentCount(Number(data.max) - Number(data.rental))
                 setSelectFormInfo({ studentId: '', name: '', time: '' })
             })
-            .catch(e=>{
+            .catch(e => {
                 setLoading(false)
                 errorMsg('오류가 발생하였습니다.')
             })
@@ -184,6 +186,17 @@ const Home = () => {
     return (
         <>
             <Loading visible={loading} text='서버와 통신 중' />
+            <PopupModal
+                open={loginModalStatus}
+                cb={setLoginModalStatus}
+                buttonText={'닫기'}
+                title={'공지사항 📋'}
+            >
+                <div className={styles.notice_modal}>
+                    - 이제 신청을 <strong>바로 취소</strong>할 수 있어요!<br/>
+                    - 우산을 <strong>분실하지 않도록 주의</strong>해주세요.
+                </div>
+            </PopupModal>
             {/* <AlertBar content='아직 서비스가 불안정합니다.' /> */}
             <div className={styles.intro_text}>
                 <div id={styles.intro_highlight}>우산대여,</div>온라인으로 간편하게!
@@ -348,7 +361,7 @@ const Home = () => {
                         취소가 완료되었습니다.
                     </div>
                     <div className={styles.sheet_info_box}>
-                        - 신청 시간내 재신청이 가능하오니 참고해주세요.<br/>
+                        - 신청 시간내 재신청이 가능하오니 참고해주세요.<br />
                         - 이용해주셔서 감사합니다.
                     </div>
                 </div>

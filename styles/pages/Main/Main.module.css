@@ -80,6 +80,90 @@
   margin-left: -10px;
 }
 
+.meal_container {
+  margin: auto;
+  margin-top: 15px;
+  width: 685px;
+  height: auto;
+  border-radius: 15px;
+  background-color: white;
+  padding: 25px;
+  margin-bottom: 15px;
+}
+
+.meal_title {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 20px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.meal_box {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+}
+
+.meal_item {
+  padding: 5px;
+  padding-left: 0;
+  border-radius: 15px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.meal_item:last-child {
+  margin-bottom: 0;
+}
+
+.meal_item_title {
+  font-family: "pretendard";
+  font-size: 17px;
+  font-weight: 600;
+  text-align: left;
+  display: inline;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.meal_item_menu {
+  white-space: nowrap;
+  font-family: "pretendard";
+  font-size: 17px;
+  font-weight: 300;
+  text-align: left;
+  margin-top: 15px;
+}
+
+.meal_notice {
+  font-family: "pretendard";
+  font-weight: 400;
+  font-size: 15px;
+  color: rgb(80, 80, 80);
+  margin-top: 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+#breakfast {
+  background-color: rgb(255, 245, 223);
+}
+
+#lunch {
+  background-color: rgb(238, 255, 215);
+}
+
+#dinner {
+  background-color: rgb(249, 255, 200);
+}
+
+.space {
+  height: 15px;
+}
+
 .warp_container {
   margin: auto;
   margin-top: 15px;
@@ -242,7 +326,8 @@
   }
 }
 @media (max-width: 730px) {
-  .warp_container {
+  .warp_container,
+  .meal_container {
     width: calc(100% - 30px);
   }
   .account_card {

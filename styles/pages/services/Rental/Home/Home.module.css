@@ -230,6 +230,14 @@
   text-align: left;
 }
 
+.notice_modal {
+  font-family: "pretendard";
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 25px;
+}
+
 #warning_strong {
   font-weight: 700;
   height: 0;
