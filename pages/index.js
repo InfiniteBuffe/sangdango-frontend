@@ -22,7 +22,7 @@ const Main = () => {
   const [index, setIndex] = useState(0);
   const [videoClass, setVideoClass] = useState(styles.video)
   const [loginModalStatus, setLoginModalStatus] = useState(false)
-  const [meal, setMeal] = useState({ breakfast: '불러오는 중...', lunch: '불러오는 중...', dinner: '불러오는 중...' })
+  const [meal, setMeal] = useState({ breakfast: '불러오는 중...', lunch: '불러오는 중...', dinner: '불러오는 중...', today: '조회 중...'})
   const videoRef = useRef()
   const router = useRouter()
   const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
@@ -39,7 +39,8 @@ const Main = () => {
         setMeal({
           breakfast: data.breakfast,
           lunch: data.lunch,
-          dinner: data.dinner
+          dinner: data.dinner,
+          today: data.today
         })
       })
   }, [])
@@ -162,6 +163,9 @@ const Main = () => {
               {meal.dinner}
             </div>
           </div>
+        </div>
+        <div className={styles.meal_notice}>
+          기준: {meal.today}
         </div>
       </div>
       <div className={styles.intro_big_text}>

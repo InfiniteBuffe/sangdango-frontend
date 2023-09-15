@@ -9,6 +9,7 @@ export default async function handler(req, res) {
     }
 
     const today = moment().tz("Asia/Seoul").format('YYYYMMDD')
+    const today2 = moment().tz("Asia/Seoul").format('YYYY년 MM월 DD일')
 
     axios({
         url: `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=M10&SD_SCHUL_CODE=8000047&MLSV_YMD=${today}&Type=json&KEY=${process.env.NEIS_KEY}`
@@ -18,7 +19,8 @@ export default async function handler(req, res) {
             let result = {
                 breakfast: '식단이 없습니다.',
                 lunch: '식단이 없습니다.',
-                dinner: '식단이 없습니다.'
+                dinner: '식단이 없습니다.',
+                today: today2
             }
             if (data.mealServiceDietInfo == undefined) {
                 await res.status(200).json(result)
