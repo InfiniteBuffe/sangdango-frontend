@@ -28,25 +28,24 @@ export default async function handler(req, res) {
             }
 
             const clear = (menu) => {
-                return (menu)
+                if (menu == '식단이 없습니다.') {
+                    return menu
+                }
+                let _menu = menu
                     .replaceAll('<br/>', '')
                     .replaceAll('(', '')
                     .replaceAll(')', '')
                     .replaceAll('.', '')
                     .replace(/[0-9]/g, '')
                     .trim()
-                    .replaceAll(' ', ', ')
+                _menu = _menu.split(' ').join(', ')
+                return _menu
             }
 
             let meal_data = data.mealServiceDietInfo[1].row
             for (let i = 0; i < 3; i++) {
                 if (meal_data[i] == undefined) {
-                    // 아래랑 코드 중복됨. 나중에 정리할 것.
-                    result.breakfast = clear(result.breakfast)
-                    result.lunch = clear(result.lunch)
-                    result.dinner = clear(result.dinner)
-                    await res.status(200).json(result)
-                    return
+                    break
                 }
                 if (meal_data[i].MMEAL_SC_CODE == 1) {
                     result.breakfast = meal_data[i].DDISH_NM
