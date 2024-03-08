@@ -12,6 +12,7 @@ import Footer from '@/components/Footer'
 import { signOut, useSession } from 'next-auth/react'
 import LoginModal from '@/components/LoginModal'
 import axios from 'axios'
+import ReactPlayer from 'react-player'
 
 const Main = () => {
 
@@ -19,10 +20,9 @@ const Main = () => {
     (<div>미래를 주도할 🚀<br />역량있는 상당인,</div>),
     (<div>상상하라,<br />당당하라!</div>)
   ]
-  const [index, setIndex] = useState(0);
-  const [videoClass, setVideoClass] = useState(styles.video)
+  const [playerReady, setPlayerReady] = useState(false)
   const [loginModalStatus, setLoginModalStatus] = useState(false)
-  const [meal, setMeal] = useState({ breakfast: '불러오는 중...', lunch: '불러오는 중...', dinner: '불러오는 중...', today: '조회 중...'})
+  const [meal, setMeal] = useState({ breakfast: '불러오는 중...', lunch: '불러오는 중...', dinner: '불러오는 중...', today: '조회 중...' })
   const videoRef = useRef()
   const router = useRouter()
   const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
@@ -30,12 +30,14 @@ const Main = () => {
   // const { data: session } = useSession()
 
   useEffect(() => {
+    if (!router.isReady) return
+    setPlayerReady(true)
     axios({
       url: url + '/api/meal/today',
       method: 'GET'
     })
-      .then(r=>{
-        let {data} = r
+      .then(r => {
+        let { data } = r
         setMeal({
           breakfast: data.breakfast,
           lunch: data.lunch,
@@ -43,31 +45,6 @@ const Main = () => {
           today: data.today
         })
       })
-  }, [])
-
-  useEffect(() => {
-    const intervalId = setInterval(() =>
-      setIndex(index => index + 1),
-      5000
-    )
-    // 화면 크기에 따라 영상 잘리는 부분 없애기
-    // if (typeof window != undefined) {
-    //   const handleResize = () => {
-    //     let width = window.innerWidth
-    //     let height = window.innerHeight
-    //     if (width >= height * 2) {
-    //       setVideoClass(classNames(styles.video, styles.video_bug))
-    //     } else {
-    //       setVideoClass(styles.video)
-    //     }
-    //   }
-    //   window.addEventListener('resize', handleResize)
-    //   return () => {
-    //     window.removeEventListener('resize', handleResize)
-    //     clearTimeout(intervalId)
-    //   }
-    // }
-    // return () => clearTimeout(intervalId)
   }, [])
   return (
     <>
@@ -81,34 +58,31 @@ const Main = () => {
       <Header />
       <LoginModal open={loginModalStatus} cb={setLoginModalStatus} />
       <div className={styles.video_box}>
-        <div className={styles.video_text_box}>
-          <div className={styles.video_top_text}>
-            상당고 학생정보망📡
-          </div>
-          <div className={styles.video_text}>
-            <TextTransition springConfig={presets.default}>
-              {TEXTS[index % TEXTS.length]}
-            </TextTransition>
-            <div className={styles.video_space} />오직 <span className={styles.highlight}>상당고에서.</span>
-          </div>
-          <Image
-            src="/images/down_arrow.svg"
-            className={styles.down_arrow}
-            width={20}
-            height={20}
+        {/* <div className={styles.video_text}>
+          미래인재 양성하는 희망찬 <span id={styles.video_text_school}>상당고등학교</span>
+        </div> */}
+        {playerReady && (
+          <ReactPlayer
+            url='https://cdn.sangdang.kr/sangdango_intro/sangdango_intro.m3u8'
+            muted={true}
+            controls={false}
+            loop={true}
+            playing={true}
+            className={styles.video}
+            width={'100%'}
+            height={'100%'}
+            playsinline={true}
+            autoPlay={true}
           />
+        )}
+      </div>
+      <div className={styles.slogan}>
+        <div className={styles.text}>
+          <span id={styles.nowarp}>미래인재🌏</span>
+          <span id={styles.nowarp}>양성하는✏️</span>
+          <span id={styles.nowarp}>희망찬✨</span>
+          <span id={styles.nowarp}>상당고등학교🏫</span>
         </div>
-        <video
-          ref={videoRef}
-          autoPlay={true}
-          loop={true}
-          width={'100%'}
-          height={'100%'}
-          muted={true}
-          className={videoClass}
-        >
-          <source src="https://cdn.sangdang.kr/intro_video.mp4" type='video/mp4' />
-        </video>
       </div>
       {/* {(session) ? (
         <div className={styles.account_card}>
@@ -168,12 +142,12 @@ const Main = () => {
           기준: {meal.today}
         </div>
       </div>
-      <div className={styles.intro_big_text}>
+      {/* <div className={styles.intro_big_text}>
         너만의 학교를 만들어봐!
-      </div>
-      <div className={styles.intro_small_text}>
+      </div> */}
+      {/* <div className={styles.intro_small_text}>
         아래 버튼을 눌러 이동하세요
-      </div>
+      </div> */}
       <div className={styles.warp_container}>
         <div className={styles.warp_box} id={styles.umbrella} onClick={() => { router.push('/service/rental/home'); toast('우산대여 서비스로 이동합니다') }}>
           <div className={styles.warp_text_box}>
@@ -186,39 +160,6 @@ const Main = () => {
             <div className={styles.warp_small_text}>눌러서 이동하기 →</div>
           </div>
         </div>
-        {/* <div className={styles.warp_box} id={styles.club} onClick={()=>{router.push('/service/club/home');toast('동아리 서비스로 이동합니다')}}>
-          <div className={styles.warp_text_box}>
-            <div className={styles.warp_big_text}>
-              <span className={styles.warp_big_text_line}>동아리&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>🔬</Twemoji></span>
-              <div className={styles.warp_big_small_text}>
-                동아리를 손쉽게 관리.
-              </div>
-            </div>
-            <div className={styles.warp_small_text}>눌러서 이동하기 →</div>
-          </div>
-        </div> */}
-        {/* <div className={styles.warp_box} id={styles.community} onClick={()=>toast('학기 중 오픈 예정이에요!')}>
-          <div className={styles.warp_text_box}>
-            <div className={styles.warp_big_text}>
-              <span className={styles.warp_big_text_line}>커뮤니티&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>✍️</Twemoji></span>
-              <div className={styles.warp_big_small_text}>
-                사람이 여행하는 곳은 사람의 마음뿐이다
-              </div>
-            </div>
-            <div className={styles.warp_small_text}>눌러서 이동하기 →</div>
-          </div>
-        </div>
-        <div className={styles.warp_box} id={styles.music} onClick={()=>toast('학기 중 협의 후 오픈 예정이에요!')}>
-          <div className={styles.warp_text_box}>
-            <div className={styles.warp_big_text}>
-              <span className={styles.warp_big_text_line}>시설이용&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>📋</Twemoji></span>
-              <div className={styles.warp_big_small_text}>
-                지금. 여기. 상당고에서.
-              </div>
-            </div>
-            <div className={styles.warp_small_text}>눌러서 이동하기 →</div>
-          </div>
-        </div> */}
       </div>
       <Footer />
     </>

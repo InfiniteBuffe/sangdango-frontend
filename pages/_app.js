@@ -28,10 +28,10 @@ export default function App({ Component, pageProps }) {
           }}
         />
         {/*<Layout>*/}
-            <ServiceHeader />
-            <BottomNav />
-            <Component key={router.route} {...pageProps} />
-            <Analytics />
+        <ServiceHeader />
+        <BottomNav />
+        <Component key={router.route} {...pageProps} />
+        <Analytics />
         {/*</Layout>*/}
         {/* <Component key={router.route} {...pageProps} /> */}
       </SessionProvider>
