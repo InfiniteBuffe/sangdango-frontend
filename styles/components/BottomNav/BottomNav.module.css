@@ -26,15 +26,23 @@
             user-select: none;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    display: flex;
+    flex-direction: column;
+    height: 55px;
+    justify-content: center;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   .menu:focus {
     outline: none;
   }
   .icon {
-    padding-left: 10px;
-    padding-right: 10px;
-    position: relative;
-    top: 50%;
     vertical-align: middle;
+  }
+  .name {
+    font-family: "pretendard";
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
   }
 }/*# sourceMappingURL=BottomNav.module.css.map */

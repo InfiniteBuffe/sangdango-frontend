@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 import ChannelTalk from '@/components/ChannelTalk'
 import { TextField } from '@mui/material';
 import PopupModal from '@/components/PopupModal'
+import AlertBar from '@/components/AlertBar'
 
 const Home = () => {
 
@@ -24,7 +25,7 @@ const Home = () => {
     const [formInfo, setFormInfo] = useState({ studentId: '', name: '', agree: true }) // 나중에 약관 동의 체크 받을 것
     const [selectFormInfo, setSelectFormInfo] = useState({ studentId: '', name: '', time: '' })
     const [loading, setLoading] = useState(false)
-    const [loginModalStatus, setLoginModalStatus] = useState(false)
+    const [loginModalStatus, setLoginModalStatus] = useState(true)
 
     const router = useRouter()
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
@@ -186,7 +187,7 @@ const Home = () => {
     return (
         <>
             <Loading visible={loading} text='서버와 통신 중' />
-            <PopupModal
+            {/* <PopupModal
                 open={loginModalStatus}
                 cb={setLoginModalStatus}
                 buttonText={'닫기'}
@@ -196,8 +197,8 @@ const Home = () => {
                     - 이제 신청을 <strong>바로 취소</strong>할 수 있어요!<br/>
                     - 우산을 <strong>분실하지 않도록 주의</strong>해주세요.
                 </div>
-            </PopupModal>
-            {/* <AlertBar content='아직 서비스가 불안정합니다.' /> */}
+            </PopupModal> */}
+            {/* <AlertBar content='신청 시간은 오전 8시 ~ 오후 9시입니다.' /> */}
             <div className={styles.intro_text}>
                 <div id={styles.intro_highlight}>우산대여,</div>온라인으로 간편하게!
             </div>
@@ -226,7 +227,7 @@ const Home = () => {
                     - 반납은 익일 점심시간 반납을 원칙으로 합니다.<br />
                     - 이 외 자세한 사항은 전달된 공지사항을 확인해주세요.
                 </div>
-                <div className={styles.button} onClick={() => setFormOpen(true)}>
+                {/* <div className={styles.button} onClick={() => setFormOpen(true)}>
                     <div className={styles.button_text}>
                         대여 신청하기
                     </div>
@@ -235,10 +236,10 @@ const Home = () => {
                     <div className={styles.button_text}>
                         대여 조회 / 취소
                     </div>
-                </div>
-                <div className={styles.notice}>
+                </div> */}
+                {/* <div className={styles.notice}>
                     신청은 오전 8시 30분부터 가능합니다.
-                </div>
+                </div> */}
             </Container>
             <BottomSheet onDismiss={() => setSelectFormOpen(false)} className={styles.bottom_sheet} open={selectFormOpen}>
                 <div className={styles.sheet_title}>

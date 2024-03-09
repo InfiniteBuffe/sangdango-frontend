@@ -17,20 +17,15 @@ const ServiceHeader = (props) => {
         setDrawerOpen(change)
     }
     const router = useRouter()
-    const current_service = { 'club': true, 'rental': true }
+    const current_service = { 'rental': true }
     const current_service_title = {
-        club: '동아리',
-        rental: '우산대여'
+        rental: '우산대여시스템'
     }
-    const ClubMenu = [
-        // path가 /service/club/home 일 경우 -> 'home', /service/club/view 일 경우 -> 'view'
-        { id: 0, name: '홈', path_name: 'home' },
-        { id: 1, name: '둘러보기', path_name: 'view' },
-        { id: 3, name: '행사 및 일정', path_name: 'plan' },
-        { id: 2, name: '내 정보', path_name: 'my' },
-    ]
     const RentalMenu = [
-        // { id: 0, name: '홈', path_name: 'home' },
+        { id: 0, name: '홈', path_name: 'home' },
+        { id: 1, name: '신청', path_name: 'add' },
+        { id: 2, name: '취소', path_name: 'cancel' },
+        { id: 3, name: '조회', path_name: 'view' },
     ]
     const now_path = router.pathname
     const [viewHeader, setViewHeader] = useState(false)
@@ -83,25 +78,6 @@ const ServiceHeader = (props) => {
                         {/* 나중에 코드 정리할 것 */}
 
                         {
-                            (path[2] == 'club') ? (
-                                ClubMenu.map(e => {
-                                    let _path = now_path.split('/')[3]
-                                    let is_active = false
-                                    if (_path == e.path_name) is_active = true
-                                    return (
-                                        <div
-                                            key={e.id}
-                                            id={(is_active) ? (styles.menu_active) : (undefined)}
-                                            className={styles.menu_item}
-                                            onClick={() => router.push(`/service/${path[2]}/${e.path_name}`)}
-                                        >
-                                            {e.name}
-                                        </div>
-                                    )
-                                })
-                            ) : false
-                        }
-                         {
                             (path[2] == 'rental') ? (
                                 RentalMenu.map(e => {
                                     let _path = now_path.split('/')[3]
