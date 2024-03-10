@@ -2,15 +2,34 @@
   border-radius: 10px;
   border: 1px solid #b9b9b9;
   font-family: 'pretendard';
-  font-size: 18px;
+  font-size: 16px;
   padding: 15px 15px;
   margin-top: 10px;
-
   transition: border .3s;
+  width: 100%;
 
   &:focus {
     outline: none;
     border: 1px solid black;
     transition: border .3s;
   }
+}
+
+.box {
+  width: calc(100% - 60px);
+  max-width: 730px;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.label {
+  font-family: 'pretendard';
+  font-size: 15px;
+  text-align: left;
+  color: black;
+  font-weight: 700;
+}
+
+#red {
+  color: red;
 }

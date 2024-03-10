@@ -187,17 +187,18 @@ const Home = () => {
     return (
         <>
             <Loading visible={loading} text='서버와 통신 중' />
-            {/* <PopupModal
+            <PopupModal
                 open={loginModalStatus}
                 cb={setLoginModalStatus}
                 buttonText={'닫기'}
                 title={'공지사항 📋'}
             >
                 <div className={styles.notice_modal}>
-                    - 이제 신청을 <strong>바로 취소</strong>할 수 있어요!<br/>
-                    - 우산을 <strong>분실하지 않도록 주의</strong>해주세요.
+                    - 현재 전산 준비 중으로 <span style={{color:'red', fontWeight:'700'}}>사용이 불가</span>합니다.
+                    <br/>
+                    - 3월 12일 화요일부터 사용이 가능합니다.
                 </div>
-            </PopupModal> */}
+            </PopupModal>
             {/* <AlertBar content='신청 시간은 오전 8시 ~ 오후 9시입니다.' /> */}
             <div className={styles.intro_text}>
                 <div id={styles.intro_highlight}>우산대여,</div>온라인으로 간편하게!

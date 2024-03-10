@@ -4,7 +4,23 @@ import cs from 'classnames'
 const Input = (props) => {
     return (
         <>
-            <input className={cs(styles.input, props.classNames)} {...props} />
+            <div className={styles.box}>
+                <div className={styles.label}>
+                    {props.label}
+                    &nbsp;
+                    {props.required && (
+                        <span id={styles.red}>*</span>
+                    )}
+                </div>
+                <input
+                    className={styles.input}
+                    placeholder={props.placeholder}
+                    disabled={props.disabled}
+                    value={props.value}
+                    onChange={props.onChange}
+                    required={props.required}
+                />
+            </div>
         </>
     )
 }
