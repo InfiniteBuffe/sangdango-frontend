@@ -38,7 +38,7 @@ a {
 }
 
 :root {
-  --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
+  --rsbs-backdrop-bg: rgba(0, 0, 0, 0.25);
   --rsbs-max-w: auto;
   --rsbs-ml: env(safe-area-inset-left);
   --rsbs-mr: env(safe-area-inset-right);

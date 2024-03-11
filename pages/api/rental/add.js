@@ -15,42 +15,42 @@ export default async function handler(req, res) {
 
 
 
-    if (Number(now[0]) == 8 && Number(now[1]) < 30) {
-        return res
-            .status(200)
-            .json({
-                status: 200,
-                message: '신청 가능 시간이 아닙니다.'
-            })
-    }
-    if (Number(now[0]) == 19 && Number(now[1]) < 1) { // 19시 -> 오후 7시, 7시 00분 이후부터 거부
-        return res
-            .status(200)
-            .json({
-                status: 200,
-                message: '신청 가능 시간이 아닙니다.'
-            })
-    }
-    if (Number(now[0]) < 8 || Number(now[0]) > 19) {
-        return res
-            .status(200)
-            .json({
-                status: 200,
-                message: '신청 가능 시간이 아닙니다.'
-            })
-    }
+    // if (Number(now[0]) == 8 && Number(now[1]) < 30) {
+    //     return res
+    //         .status(200)
+    //         .json({
+    //             code: 'NOT_RENTAL_TIME',
+    //             message: '신청 가능 시간이 아닙니다.'
+    //         })
+    // }
+    // if (Number(now[0]) == 19 && Number(now[1]) < 1) { // 19시 -> 오후 7시, 7시 00분 이후부터 거부
+    //     return res
+    //         .status(200)
+    //         .json({
+    //             code: 'NOT_RENTAL_TIME',
+    //             message: '신청 가능 시간이 아닙니다.'
+    //         })
+    // }
+    // if (Number(now[0]) < 8 || Number(now[0]) > 19) {
+    //     return res
+    //         .status(200)
+    //         .json({
+    //             code: 'NOT_RENTAL_TIME',
+    //             message: '신청 가능 시간이 아닙니다.'
+    //         })
+    // }
 
 
     const currentRental = await client.CurrentRental.findMany({})
     let n = currentRental.length
 
     // 가능 수량이 없음
-    if (n == 40) { // 40개
+    if (n == 40 || n > 40) { // 40개 이상 시 | 이후에 수량을 관리자 화면에서 수정할 수 있도록 변경할 것
         return res
             .status(200)
             .json({
-                status: 200,
                 added: false,
+                code: 'NOT_RENTAL_QUANTITY',
                 message: '가능 수량이 없습니다.'
             })
     }
@@ -61,7 +61,7 @@ export default async function handler(req, res) {
         return res
             .status(200)
             .json({
-                status: 200,
+                code: 'NOT_ALLOWED',
                 added: false,
             })
     }
@@ -69,7 +69,7 @@ export default async function handler(req, res) {
         return res
             .status(200)
             .json({
-                status: 200,
+                code: 'NOT_ALLOWED',
                 added: false,
             })
     }
@@ -77,7 +77,7 @@ export default async function handler(req, res) {
         return res
             .status(200)
             .json({
-                status: 200,
+                code: 'NOT_ALLOWED',
                 added: false,
             })
     }
@@ -85,7 +85,7 @@ export default async function handler(req, res) {
         return res
             .status(200)
             .json({
-                status: 200,
+                code: 'NOT_ALLOWED',
                 added: false,
             })
     }
@@ -100,8 +100,8 @@ export default async function handler(req, res) {
         return res
             .status(200)
             .json({
-                status: 200,
                 added: false,
+                code: 'ALREADY_RENTED',
                 message: '이미 등록되어있습니다.'
             })
     }
@@ -116,10 +116,10 @@ export default async function handler(req, res) {
     return res
         .status(200)
         .json({
-            status: 200,
             added: true,
             max: 40, // 우산 최대 갯수
             rental: n+1, // 처음 맨 위에 조회한 갯수 + 1
+            CODE: 'RENTAL_COMPLETED',
             message: '등록이 완료되었습니다.'
         })
 }

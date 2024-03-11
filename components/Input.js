@@ -13,6 +13,7 @@ const Input = (props) => {
                     )}
                 </div>
                 <input
+                    id={props.error ? styles.error : null}
                     className={styles.input}
                     placeholder={props.placeholder}
                     disabled={props.disabled}
@@ -20,6 +21,16 @@ const Input = (props) => {
                     onChange={props.onChange}
                     required={props.required}
                 />
+                {props.error && props.errorMsg == null && (
+                    <div className={styles.error_text}>
+                        입력 값을 확인해주세요.
+                    </div>
+                )}
+                {props.error && props.errorMsg != null && (
+                    <div className={styles.error_text}>
+                        {props.errorMsg}
+                    </div>
+                )}
             </div>
         </>
     )
