@@ -194,9 +194,7 @@ const Home = () => {
                 title={'공지사항 📋'}
             >
                 <div className={styles.notice_modal}>
-                    - 현재 전산 준비 중으로 <span style={{color:'red', fontWeight:'700'}}>사용이 불가</span>합니다.
-                    <br/>
-                    - 3월 12일 화요일부터 사용이 가능합니다.
+                    - 취소, 조회 기능은 13일 수요일부터 가능합니다.
                 </div>
             </PopupModal>
             {/* <AlertBar content='신청 시간은 오전 8시 ~ 오후 9시입니다.' /> */}
