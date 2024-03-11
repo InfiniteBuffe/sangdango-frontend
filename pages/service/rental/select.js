@@ -66,7 +66,7 @@ const Select = (props) => {
 }
 
 export const getServerSideProps = async (context) => {
-    if (context.query.a != process.env.RENTAL_SELECT_SECRET_1 && context.query.b != process.env.RENTAL_SELECT_SECRET_2) {
+    if (context.query.a != process.env.RENTAL_SELECT_SECRET_1 || context.query.b != process.env.RENTAL_SELECT_SECRET_2) {
         return {
             redirect: {
                 destination: '/service/rental/home',

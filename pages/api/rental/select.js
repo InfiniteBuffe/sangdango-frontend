@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         return
     }
 
-    if (req.query.a != process.env.RENTAL_SELECT_SECRET_2 && req.query.b != process.env.RENTAL_SELECT_SECRET_1) {
+    if (req.query.a != process.env.RENTAL_SELECT_SECRET_2 || req.query.b != process.env.RENTAL_SELECT_SECRET_1) {
         res.status(405).send({ status:405, message: 'Method Not Allowed' })
         return
     }
