@@ -319,6 +319,7 @@ const Add = () => {
                 <div className={styles.sheet_description}>
                     {sheetError.description}
                 </div>
+                {sheetButton({ name: '닫기', onClick: ()=>setBottomSheetStatus(data => ({ ...data, error: false })) })}
                 <div className={styles.bottom_sheet_mobile} />
             </BottomSheet>
             <BottomSheet onDismiss={() => setBottomSheetStatus(data => ({ ...data, success: false }))} open={bottomSheetStatus.success}>
