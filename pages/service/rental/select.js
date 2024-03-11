@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import styles from 'styles/pages/services/Rental/Select/Select.module.css'
 
-const Select = () => {
+const Select = (props) => {
 
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
     const router = useRouter()
@@ -17,7 +17,11 @@ const Select = () => {
         // }
         axios({
             url: url + '/api/rental/select',
-            method: 'GET'
+            method: 'GET',
+            params: {
+                a: props.b,
+                b: props.a
+            }
         })
             .then(r => {
                 let _data = []
@@ -59,6 +63,18 @@ const Select = () => {
             </Container>
         </>
     )
+}
+
+export const getServerSideProps = async (context) => {
+    if (context.query.a != process.env.RENTAL_SELECT_SECRET_1 && context.query.b != process.env.RENTAL_SELECT_SECRET_2) {
+        return {
+            redirect: {
+                destination: '/service/rental/home',
+                permanent: false,
+            },
+        }
+    }
+    return { props: { a: context.query.a, b: context.query.b} }
 }
 
 export default Select
