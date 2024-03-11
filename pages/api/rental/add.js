@@ -113,6 +113,8 @@ export default async function handler(req, res) {
         }
     })
 
+    const _time = moment().tz("Asia/Seoul").format('HH시 mm분 ss초')
+
     return res
         .status(200)
         .json({
@@ -120,6 +122,7 @@ export default async function handler(req, res) {
             max: 40, // 우산 최대 갯수
             rental: n+1, // 처음 맨 위에 조회한 갯수 + 1
             CODE: 'RENTAL_COMPLETED',
-            message: '등록이 완료되었습니다.'
+            message: '등록이 완료되었습니다.',
+            time: _time
         })
 }

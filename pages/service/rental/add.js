@@ -171,6 +171,7 @@ const Add = () => {
                     setBottomSheetStatus(data => ({ ...data, error: true, loading: false }))
                     return
                 }
+                setCurrentInfo({ ...currentInfo, count: Number(r.data.max) - Number(r.data.rental), time: r.data.time })
                 setStudentInfo({ name: '', studentId: '' })
                 setBottomSheetStatus(data => ({ ...data, loading: false, success: true }))
             })
