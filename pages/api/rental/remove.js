@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import moment from "moment";
 
 const client = new PrismaClient();
 
@@ -12,7 +13,7 @@ export default async function handler(req, res) {
         return res
             .status(200)
             .json({
-                message: 'error'
+                code: 'NOT_ALLOWED',
             })
     }
 
@@ -33,17 +34,19 @@ export default async function handler(req, res) {
             }
         })
         const currentRentalAll = await client.CurrentRental.findMany({})
+        const _time = moment().tz("Asia/Seoul").format('HH시 mm분 ss초')
         let n = currentRentalAll.length
         res.status(200)
         res.json({
-            message: 'success',
+            code: 'RENTAL_CANCEL_COMPLETED',
+            time: _time,
             max: 40,
             rental: n,
         })
     } else {
         res.status(200)
         res.json({
-            message: 'error'
+            code: 'NOT_REGISTERED'
         })
     }
 }

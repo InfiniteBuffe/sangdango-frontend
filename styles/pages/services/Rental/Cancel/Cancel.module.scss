@@ -1,0 +1,120 @@
+.now_quantity {
+    width: calc(100% - 30px);
+    margin: auto;
+    max-width: 730px;
+    padding: 20px;
+    background: linear-gradient(to right, #0575e6, #021b79);
+    border-radius: 15px;
+    display: flex;
+    flex: 2;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    // border: 1px solid rgb(15, 33, 97);
+}
+
+#success {
+    background: linear-gradient(to right, #52c234, #061700);
+}
+
+#warning {
+    background: linear-gradient(to right, #ceb600, #799f0c);
+}
+
+#danger {
+    background: linear-gradient(to right, #870000, #190a05);
+}
+
+.loading {
+    text-align: center;
+    font-family: "pretendard";
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+}
+
+.title {
+    user-select: none;
+
+    & .name {
+        font-family: "pretendard";
+        font-weight: 700;
+        font-size: 20px;
+        color: white;
+    }
+
+    & .timestamp {
+        margin-top: 5px;
+        font-family: "pretendard";
+        font-weight: 500;
+        font-size: 13px;
+        color: rgb(240, 240, 240);
+    }
+}
+
+.quantity {
+    user-select: none;
+    font-family: "pretendard";
+    font-weight: 700;
+    font-size: 30px;
+    color: white;
+}
+
+.sheet_title {
+    font-family: 'pretendard';
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+    color: black;
+}
+
+.sheet_description {
+    font-family: 'pretendard';
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: rgb(50, 50, 50);
+}
+
+.sheet_loading_circle {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.sheet_icon {
+    vertical-align: middle;
+    margin-top: 20px;
+    color: red;
+}
+
+.emoji_font {
+    width: 32px;
+    text-align: center;
+    margin: 20px auto;
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .bottom_sheet_mobile {
+        height: 55px;
+    }
+}
+
+.page_title {
+    width: calc(100% - 40px);
+    max-width: 730px;
+    margin: auto;
+
+    & .text {
+        font-family: 'pretendard';
+        font-weight: 700;
+        font-size: 25px;
+        text-align: left;
+        user-select: none;
+    }
+}

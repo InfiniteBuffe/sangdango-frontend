@@ -171,6 +171,11 @@ const Add = () => {
                     setBottomSheetStatus(data => ({ ...data, error: true, loading: false }))
                     return
                 }
+                if (r.data.code == 'ALREADY_RENTED') {
+                    setSheetError({ title: '이미 신청됨', description: '대여 명단에 사용자가 존재합니다.' })
+                    setBottomSheetStatus(data => ({ ...data, error: true, loading: false }))
+                    return
+                }
                 setCurrentInfo({ ...currentInfo, count: Number(r.data.max) - Number(r.data.rental), time: r.data.time })
                 setStudentInfo({ name: '', studentId: '' })
                 setBottomSheetStatus(data => ({ ...data, loading: false, success: true }))
@@ -211,6 +216,11 @@ const Add = () => {
 
     return (
         <>
+            <div className={styles.page_title}>
+                <div className={styles.text}>
+                    신청하기 📝
+                </div>
+            </div>
             <div className={styles.now_quantity} id={quantityStyleId}>
                 {quantityLoading && (
                     <>
@@ -319,7 +329,7 @@ const Add = () => {
                 <div className={styles.sheet_description}>
                     {sheetError.description}
                 </div>
-                {sheetButton({ name: '닫기', onClick: ()=>setBottomSheetStatus(data => ({ ...data, error: false })) })}
+                {sheetButton({ name: '닫기', onClick: () => setBottomSheetStatus(data => ({ ...data, error: false })) })}
                 <div className={styles.bottom_sheet_mobile} />
             </BottomSheet>
             <BottomSheet onDismiss={() => setBottomSheetStatus(data => ({ ...data, success: false }))} open={bottomSheetStatus.success}>
@@ -330,7 +340,7 @@ const Add = () => {
                 <div className={styles.sheet_description}>
                     대여 장소와 시간을 꼭 확인해주세요!
                 </div>
-                {sheetButton({ name: '닫기', onClick: ()=>setBottomSheetStatus(data => ({ ...data, success: false })) })}
+                {sheetButton({ name: '닫기', onClick: () => setBottomSheetStatus(data => ({ ...data, success: false })) })}
                 <div className={styles.bottom_sheet_mobile} />
             </BottomSheet>
         </>
