@@ -163,11 +163,27 @@ const Cancel = () => {
                 if (r.data.code == 'NOT_REGISTERED') {
                     setSheetError({ title: '신청 안함', description: '명부에 없는 사용자입니다' })
                     setBottomSheetStatus(data => ({ ...data, error: true, loading: false }))
+                    setStudentInfo({name: '', studentId: ''})
                     return
                 }
-                setCurrentInfo({ ...currentInfo, count: Number(r.data.max) - Number(r.data.rental), time: r.data.time })
+                let data = { ...currentInfo, count: Number(r.data.max) - Number(r.data.rental), time: r.data.time, using: r.data.rental }
+                setCurrentInfo(data)
                 setStudentInfo({ name: '', studentId: '' })
-                setBottomSheetStatus(data => ({ ...data, loading: false, success: true }))
+                setBottomSheetStatus(_data => ({ ..._data, loading: false, success: true }))
+                console.log(data)
+                let quantityState = getNowCurrontCountState(data)
+                setQuantityState(quantityState)
+                console.log(quantityState)
+                switch (quantityState) {
+                    case 'max':
+                        return setQuantityStyleId()
+                    case 'good':
+                        return setQuantityStyleId(styles.success)
+                    case 'warning':
+                        return setQuantityStyleId(styles.warning)
+                    case 'danger':
+                        return setQuantityStyleId(styles.danger)
+                }
             })
     }
 
