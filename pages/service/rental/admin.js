@@ -122,8 +122,8 @@ const Admin = (props) => {
             promise,
             {
                 loading: '저장 중...',
-                success: <b>설정이 저장되었습니다</b>,
-                error: <b>오류가 발생했습니다</b>,
+                success: '설정이 저장되었습니다',
+                error: '오류가 발생했습니다',
             }
         );
     }
