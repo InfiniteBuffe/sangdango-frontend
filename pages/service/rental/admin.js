@@ -21,10 +21,10 @@ const Admin = (props) => {
                     <MdError size={40} />
                     <div className={styles.text}>
                         로그인이 필요합니다
-                        <br/>
+                        <br />
                         로그인 후 다시 시도해주세요
                     </div>
-                    <div onClick={()=>router.push(`/auth/login?redirect=${url}/service/rental/admin`)} className={styles.login_button} >
+                    <div onClick={() => router.push(`/auth/login?redirect=${url}/service/rental/admin`)} className={styles.login_button} >
                         로그인
                     </div>
                 </div>
@@ -153,6 +153,46 @@ const Admin = (props) => {
                     labelPlacement="start"
                     checked={Boolean(settings.RENTAL_APPLICATION)}
                 />
+            </div>
+            <div className={styles.box} onClick={() => {
+
+            }}>
+                <div className={styles.setting_text}>
+                    대여자 명단 보기
+                </div>
+                <div className={styles.setting_text}>
+                    →
+                </div>
+            </div>
+            <div className={styles.box} onClick={() => {
+
+            }}>
+                <div className={styles.setting_text}>
+                    우산반납 등록
+                </div>
+                <div className={styles.setting_text}>
+                    →
+                </div>
+            </div>
+            <div className={styles.box} onClick={() => {
+
+            }}>
+                <div className={styles.setting_text}>
+                    우산수량 변경
+                </div>
+                <div className={styles.setting_text}>
+                    →
+                </div>
+            </div>
+            <div className={styles.box} onClick={() => {
+
+            }}>
+                <div className={styles.setting_text}>
+                    대여금지 학번 관리
+                </div>
+                <div className={styles.setting_text}>
+                    →
+                </div>
             </div>
             <div className={styles.bottom_space} />
         </>

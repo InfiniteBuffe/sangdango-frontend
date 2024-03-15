@@ -5,17 +5,17 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { grey } from "@mui/material/colors"
-import { MoonLoader, ScaleLoader, SyncLoader } from 'react-spinners'
+import { MoonLoader, PulseLoader, SyncLoader } from 'react-spinners'
 import { BottomSheet } from 'react-spring-bottom-sheet'
-import { IoCheckmarkCircle, IoClose } from "react-icons/io5"
 import Twemoji from 'react-twemoji'
-import { useSession } from 'next-auth/react'
+import { MdError } from 'react-icons/md'
 
 const Add = () => {
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
     const [currentInfo, setCurrentInfo] = useState({ count: '-', time: '', max: '0', using: '0', })
     const [quantityStyleId, setQuantityStyleId] = useState() // 아래 quantityState랑 상태 하나로 합쳐서 정리할 것.
     const [quantityState, setQuantityState] = useState()
+    const [rentalOpen, setRentalOpen] = useState(null)
     const [quantityLoading, setQuantityLoading] = useState(true)
     const [studentInfo, setStudentInfo] = useState({ studentId: '', name: '' })
     const [inputStatus, setInputStatus] = useState({})
@@ -25,7 +25,6 @@ const Add = () => {
         name: { error: false, msg: null }
     })
     const [bottomSheetStatus, setBottomSheetStatus] = useState({})
-    const session = useSession()
     const router = useRouter()
     useEffect(() => {
 
@@ -36,6 +35,7 @@ const Add = () => {
             method: 'GET',
         })
             .then(r => {
+                setRentalOpen(JSON.parse(r.data.open))
                 if (r.status != 200) {
                     setCurrentInfo({ ...currentInfo, count: 'none', time: r.data.time })
                     return
@@ -162,6 +162,7 @@ const Add = () => {
             }
         })
             .then(r => {
+                setRentalOpen(JSON.parse(r.data.open))
                 setInputStatus(data => ({ ...data, studentId: false, name: false, rentalConfirm: false }))
                 if (r.data.code == 'NOT_RENTAL_TIME') {
                     setSheetError({ title: '대여 불가', description: '대여 가능한 시간이 아닙니다' })
@@ -182,10 +183,8 @@ const Add = () => {
                 setCurrentInfo(data)
                 setStudentInfo({ name: '', studentId: '' })
                 setBottomSheetStatus(_data => ({ ..._data, loading: false, success: true }))
-                console.log(data)
                 let quantityState = getNowCurrontCountState(data)
                 setQuantityState(quantityState)
-                console.log(quantityState)
                 switch (quantityState) {
                     case 'max':
                         return setQuantityStyleId()
@@ -258,7 +257,7 @@ const Add = () => {
                         </div>
                         <div className={styles.quantity}>
                             {currentInfo.count == 'none' && (
-                                <>대여불가</>
+                                <>수량없음</>
                             )}
                             {currentInfo.count != 'none' && (
                                 <>{currentInfo.count}개</>
@@ -267,66 +266,86 @@ const Add = () => {
                     </>
                 )}
             </div>
-            <form onSubmit={addRental}>
-                <Input
-                    label='학번'
-                    placeholder='학번 5자리를 입력하세요'
-                    required={true}
-                    onChange={(a) => {
-                        let value = changeOnlyNum(a.target.value)
-                        if (String(value).length > 5) return
-                        setStudentInfo({ ...studentInfo, studentId: value })
-                    }}
-                    value={studentInfo.studentId}
-                    disabled={inputStatus.studentId || false}
-                    error={inputError.studentId.error || false}
-                    errorMsg={inputError.studentId.msg || null}
-                />
-                <Input
-                    label='이름'
-                    placeholder='이름을 입력하세요'
-                    required={true}
-                    onChange={(a) => {
-                        let value = verifyName(a.target.value) // 최대 이름 길이는 10자 까지 (verifyName 함수에 설정됨)
-                        setStudentInfo({ ...studentInfo, name: value })
-                    }}
-                    value={studentInfo.name}
-                    disabled={inputStatus.name || false}
-                    error={inputError.name.error || false}
-                    errorMsg={inputError.name.msg || null}
-                />
-                <ThemeProvider theme={theme}>
-                    <Box textAlign='center'>
-                        <Button
-                            fullWidth
-                            style={{
-                                height: '50px',
-                                width: 'calc(100% - 60px)',
-                                maxWidth: '750px',
-                                marginTop: '30px',
-                                borderRadius: '20px',
-                                color: 'white',
-                                fontSize: '16px',
-                                fontFamily: 'pretendard',
-                                fontWeight: 600,
-                            }}
-                            variant="contained"
-                            size="large"
-                            color="dark"
-                            type="submit"
-                            onClick={addRental}
-                            disabled={inputStatus.rentalConfirm || false}
-                        >
-                            {!inputStatus.rentalConfirm && (
-                                <>우산 대여하기</>
-                            )}
-                            {inputStatus.rentalConfirm && (
-                                <MoonLoader size={17} speedMultiplier={1} color="#000000" />
-                            )}
-                        </Button>
-                    </Box>
-                </ThemeProvider>
-            </form>
+            {rentalOpen == true && (
+                <form onSubmit={addRental}>
+                    <Input
+                        label='학번'
+                        placeholder='학번 5자리를 입력하세요'
+                        required={true}
+                        onChange={(a) => {
+                            let value = changeOnlyNum(a.target.value)
+                            if (String(value).length > 5) return
+                            setStudentInfo({ ...studentInfo, studentId: value })
+                        }}
+                        value={studentInfo.studentId}
+                        disabled={inputStatus.studentId || false}
+                        error={inputError.studentId.error || false}
+                        errorMsg={inputError.studentId.msg || null}
+                    />
+                    <Input
+                        label='이름'
+                        placeholder='이름을 입력하세요'
+                        required={true}
+                        onChange={(a) => {
+                            let value = verifyName(a.target.value) // 최대 이름 길이는 10자 까지 (verifyName 함수에 설정됨)
+                            setStudentInfo({ ...studentInfo, name: value })
+                        }}
+                        value={studentInfo.name}
+                        disabled={inputStatus.name || false}
+                        error={inputError.name.error || false}
+                        errorMsg={inputError.name.msg || null}
+                    />
+                    <ThemeProvider theme={theme}>
+                        <Box textAlign='center'>
+                            <Button
+                                fullWidth
+                                style={{
+                                    height: '50px',
+                                    width: 'calc(100% - 60px)',
+                                    maxWidth: '750px',
+                                    marginTop: '30px',
+                                    borderRadius: '20px',
+                                    color: 'white',
+                                    fontSize: '16px',
+                                    fontFamily: 'pretendard',
+                                    fontWeight: 600,
+                                }}
+                                variant="contained"
+                                size="large"
+                                color="dark"
+                                type="submit"
+                                onClick={addRental}
+                                disabled={inputStatus.rentalConfirm || false}
+                            >
+                                {!inputStatus.rentalConfirm && (
+                                    <>우산 대여하기</>
+                                )}
+                                {inputStatus.rentalConfirm && (
+                                    <MoonLoader size={17} speedMultiplier={1} color="#000000" />
+                                )}
+                            </Button>
+                        </Box>
+                    </ThemeProvider>
+                </form>
+            )}
+
+            {rentalOpen == null && (
+                <div className={styles.not_open}>
+                    <PulseLoader />
+                    <div className={styles.text}>
+                        불러오는 중
+                    </div>
+                </div>
+            )}
+
+            {rentalOpen == false && (
+                <div className={styles.not_open}>
+                    <MdError size={40} />
+                    <div className={styles.text}>
+                        일시적으로 신청이<br/>중단되었습니다
+                    </div>
+                </div>
+            )}
 
             <BottomSheet open={bottomSheetStatus.loading}>
                 <SyncLoader className={styles.sheet_loading_circle} size={17} speedMultiplier={0.75} color="#A0D468" />

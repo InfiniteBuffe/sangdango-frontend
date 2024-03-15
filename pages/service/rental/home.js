@@ -232,7 +232,7 @@ const Home = () => {
                     <>
                         <div onClick={()=>router.push('/service/rental/admin')} className={styles.admin}>
                             <div className={styles.text}>
-                                우산대여 관리화면 →
+                                관리화면 이동 →
                             </div>
                         </div>
                     </>
