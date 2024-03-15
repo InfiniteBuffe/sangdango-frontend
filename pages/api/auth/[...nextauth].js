@@ -17,6 +17,14 @@ export default NextAuth({
         console.log(profile, user)
         return true
       }
+    },
+    async jwt({token, user}) {
+      return { ...token, ...user }
+    },
+
+    async session({session, token}) {
+      session.user = token
+      return session
     }
   },
   pages: {

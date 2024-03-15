@@ -103,6 +103,44 @@
   margin-bottom: 50px;
 }
 
+.rule {
+  width: calc(100% - 30px);
+  margin: auto;
+  max-width: 730px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  border: 1px solid rgb(204, 204, 204);
+  box-shadow: 0px 3px 15px 0 rgba(155, 155, 155, 0.5);
+  margin-top: 20px;
+}
+.rule .title {
+  font-family: "pretendard";
+  font-size: 20px;
+  font-weight: 800;
+}
+.rule .table {
+  border-collapse: separate;
+  border-spacing: 0px 5px;
+  margin-top: 10px;
+}
+.rule .table_tbody {
+  width: 100%;
+  border-collapse: separate;
+}
+.rule .table_number {
+  font-weight: 700;
+  width: 32px;
+  text-align: right;
+  vertical-align: top;
+}
+.rule .table_rule {
+  font-weight: 400;
+  padding-left: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
 .warning {
   position: relative;
   color: rgb(90, 90, 90);

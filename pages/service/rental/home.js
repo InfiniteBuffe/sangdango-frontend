@@ -187,7 +187,7 @@ const Home = () => {
     return (
         <>
             <Loading visible={loading} text='서버와 통신 중' />
-            <PopupModal
+            {/* <PopupModal
                 open={loginModalStatus}
                 cb={setLoginModalStatus}
                 buttonText={'닫기'}
@@ -196,7 +196,7 @@ const Home = () => {
                 <div className={styles.notice_modal}>
                     - 조회 기능은 13일 수요일부터 가능합니다.
                 </div>
-            </PopupModal>
+            </PopupModal> */}
             {/* <AlertBar content='신청 시간은 오전 8시 ~ 오후 9시입니다.' /> */}
             <div className={styles.intro_text}>
                 <div id={styles.intro_highlight}>우산대여,</div>온라인으로 간편하게!
@@ -218,14 +218,74 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className={styles.warning}>
+                {/* <div className={styles.warning}>
                     <span id={styles.warning_strong}>ⓘ 참고해주세요.</span><br />
                     - 실시간으로 현재 수량이 표시되나, 새로고침 해야 갱신됩니다.<br />
                     - 잘못된 학번으로 신청 시 불이익이 있을 수 있으니 확인해주세요.<br />
                     - 타인의 정보를 무단으로 이용 후 적발 시 이용정지 됩니다.<br />
                     - 반납은 익일 점심시간 반납을 원칙으로 합니다.<br />
                     - 이 외 자세한 사항은 전달된 공지사항을 확인해주세요.
+                </div> */}
+
+                <div className={styles.rule}>
+                    <div className={styles.title}>
+                        공지 📣
+                    </div>
+                    <table className={styles.table}>
+                        {/* <thead>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead> */}
+                        <tbody className={styles.table_tbody}>
+                            <tr>
+                                <td className={styles.table_number}>1.</td>
+                                <td className={styles.table_rule}>
+                                    대여 시 본인의 학번과 이름을 반드시 현장에서 작성합니다.<br/>
+                                    (신청폼으로 신청했어도 현장 작성)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={styles.table_number}>2.</td>
+                                <td className={styles.table_rule}>
+                                    대여, 반납은 3층 자치실에서 이루어집니다.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={styles.table_number}>3.</td>
+                                <td className={styles.table_rule}>
+                                    대여시간은 16:40~16~50 이고, 반납시간은 익일 13:15~13:25 입니다.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={styles.table_number}>4.</td>
+                                <td className={styles.table_rule}>
+                                    우산 반납은 대여 익일 반납이 원칙입니다.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={styles.table_number}>5.</td>
+                                <td className={styles.table_rule}>
+                                    우산을 분실하거나 장기간 미반납 시 불이익을 받을 수 있습니다.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={styles.table_number}>5-1.</td>
+                                <td className={styles.table_rule}>
+                                    우산분실 2회 이상 발생 시 대여 불가
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={styles.table_number}>5-2.</td>
+                                <td className={styles.table_rule}>
+                                    대여일부터 2일 이상 미반납 시 장기간 미반납으로 분류, 3회 누적시 대여 불가
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
                 {/* <div className={styles.button} onClick={() => setFormOpen(true)}>
                     <div className={styles.button_text}>
                         대여 신청하기
@@ -240,7 +300,7 @@ const Home = () => {
                     신청은 오전 8시 30분부터 가능합니다.
                 </div> */}
             </Container>
-            <BottomSheet onDismiss={() => setSelectFormOpen(false)} className={styles.bottom_sheet} open={selectFormOpen}>
+            {/* <BottomSheet onDismiss={() => setSelectFormOpen(false)} className={styles.bottom_sheet} open={selectFormOpen}>
                 <div className={styles.sheet_title}>
                     대여 조회 / 취소
                 </div>
@@ -328,10 +388,6 @@ const Home = () => {
                 </div>
             </BottomSheet>
             <BottomSheet onDismiss={() => setFormSuccessOpen(false)} className={styles.bottom_sheet} open={formSuccessOpen}>
-                {/* <div className={styles.sheet_title}>
-                    <Twemoji options={{ className: styles.emoji_font }}>☂</Twemoji>
-                    &nbsp;대여 신청하기
-                </div> */}
                 <div className={styles.sheet_container}>
                     <div className={styles.sheet_notice}>
                         <Twemoji options={{ className: styles.emoji_font }}>✔️</Twemoji>
@@ -350,10 +406,6 @@ const Home = () => {
                 </div>
             </BottomSheet>
             <BottomSheet onDismiss={() => setSelectFormOpen3(false)} className={styles.bottom_sheet} open={selectFormOpen3}>
-                {/* <div className={styles.sheet_title}>
-                    <Twemoji options={{ className: styles.emoji_font }}>☂</Twemoji>
-                    &nbsp;대여 신청하기
-                </div> */}
                 <div className={styles.sheet_container}>
                     <div className={styles.sheet_notice}>
                         <Twemoji options={{ className: styles.emoji_font }}>✔️</Twemoji>
@@ -369,7 +421,7 @@ const Home = () => {
                         닫기
                     </div>
                 </div>
-            </BottomSheet>
+            </BottomSheet> */}
         </>
     )
 }
