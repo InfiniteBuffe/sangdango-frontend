@@ -33,10 +33,9 @@ export const authOptions = {
             admin: true
           }
         })
-        console.log(find)
         if (!find) isUserAdmin = false
         if (find.admin) isUserAdmin = true
-      } catch (e) {}
+      } catch (e) {console.error(e)}
       if (token.email == undefined) token.email = null
       if (token.picture == undefined) token.picture = null
       return { ...token, ...user, admin: isUserAdmin }
