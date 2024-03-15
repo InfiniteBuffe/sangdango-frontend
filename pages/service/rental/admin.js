@@ -4,6 +4,7 @@ import { PrismaClient } from '@prisma/client'
 import axios from 'axios'
 import { getServerSession } from "next-auth/next"
 import { getSession, useSession } from "next-auth/react"
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { MdError } from "react-icons/md"
@@ -11,6 +12,7 @@ import { MdError } from "react-icons/md"
 const Admin = (props) => {
 
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
+    const router = useRouter()
 
     if (props.session == null) {
         return (
@@ -18,7 +20,12 @@ const Admin = (props) => {
                 <div className={styles.not_admin}>
                     <MdError size={40} />
                     <div className={styles.text}>
-                        로그인이 필요합니다.
+                        로그인이 필요합니다
+                        <br/>
+                        로그인 후 다시 시도해주세요
+                    </div>
+                    <div onClick={()=>router.push(`/auth/login?redirect=${url}/service/rental/admin`)} className={styles.login_button} >
+                        로그인
                     </div>
                 </div>
             </>
@@ -31,9 +38,9 @@ const Admin = (props) => {
                 <div className={styles.not_admin}>
                     <MdError size={40} />
                     <div className={styles.text}>
-                        권한이 없습니다.
+                        권한이 없습니다
                         <br />
-                        관리자에게 문의하세요.
+                        관리자에게 문의하세요
                     </div>
                     <div className={styles.user}>
                         당신의 식별번호: {props.session.user.id}

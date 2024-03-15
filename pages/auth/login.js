@@ -4,14 +4,17 @@ import { TextField, Button, createTheme, ThemeProvider, InputAdornment, IconButt
 import { grey } from '@mui/material/colors';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Image from 'next/image';
 import { signOut, signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const Login = () => {
 
-    const { data: session } = useSession()
+    const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
+    const { data: session, status: isLogin } = useSession()
+    const router = useRouter()
 
     const theme = createTheme({
         palette: {
@@ -20,6 +23,12 @@ const Login = () => {
             }
         }
     })
+
+    if (isLogin == 'authenticated') {
+        let redirect_url = router.query.redirect
+        if (!redirect_url.startsWith(url)) return
+        router.push(redirect_url)
+    }
 
     return (
         <>
