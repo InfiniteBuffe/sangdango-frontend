@@ -2,8 +2,6 @@ import NextAuth from 'next-auth'
 import KakaoProvider from 'next-auth/providers/kakao'
 import { PrismaClient } from '@prisma/client'
 
-const client = new PrismaClient()
-
 export const authOptions = {
   providers: [
     KakaoProvider({
@@ -19,6 +17,7 @@ export const authOptions = {
       }
     },
     async jwt({ token, user }) {
+      const client = new PrismaClient()
       let isUserAdmin = false
       // console.log('============')
       // console.log(token)
@@ -35,7 +34,7 @@ export const authOptions = {
         })
         if (!find) isUserAdmin = false
         if (find.admin) isUserAdmin = true
-      } catch (e) {console.error(e)}
+      } catch (e) { console.error(e) }
       if (token.email == undefined) token.email = null
       if (token.picture == undefined) token.picture = null
       return { ...token, ...user, admin: isUserAdmin }
