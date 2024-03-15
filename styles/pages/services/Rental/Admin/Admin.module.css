@@ -1,0 +1,90 @@
+.not_admin {
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-direction: column;
+}
+.not_admin .text {
+  font-family: "pretendard";
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.not_admin .user {
+  font-family: "pretendard";
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.page_title {
+  width: calc(100% - 40px);
+  max-width: 730px;
+  margin: auto;
+}
+.page_title .text {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 25px;
+  text-align: left;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.box {
+  width: calc(100% - 40px);
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+  max-width: 750px;
+  margin: auto;
+  margin-top: 20px;
+  position: relative;
+  display: flex;
+  flex: 2;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  transition: all 0.2s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.box:hover {
+  transition: all 0.2s;
+  transform: scale(1.015);
+}
+.box:active {
+  transition: all 0.2s;
+  transform: scale(0.975);
+}
+.box:focus {
+  outline: none;
+}
+
+.setting_text {
+  font-family: "pretendard";
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.switch {
+  right: 10px;
+}
+
+.bottom_space {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .bottom_space {
+    margin-bottom: 75px;
+  }
+}/*# sourceMappingURL=Admin.module.css.map */

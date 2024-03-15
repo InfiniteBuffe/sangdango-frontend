@@ -13,6 +13,7 @@ import ChannelTalk from '@/components/ChannelTalk'
 import { TextField } from '@mui/material';
 import PopupModal from '@/components/PopupModal'
 import AlertBar from '@/components/AlertBar'
+import { useSession } from 'next-auth/react'
 
 const Home = () => {
 
@@ -26,6 +27,7 @@ const Home = () => {
     const [selectFormInfo, setSelectFormInfo] = useState({ studentId: '', name: '', time: '' })
     const [loading, setLoading] = useState(false)
     const [loginModalStatus, setLoginModalStatus] = useState(true)
+    const session = useSession()
 
     const router = useRouter()
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
@@ -226,6 +228,15 @@ const Home = () => {
                     - 반납은 익일 점심시간 반납을 원칙으로 합니다.<br />
                     - 이 외 자세한 사항은 전달된 공지사항을 확인해주세요.
                 </div> */}
+                {session.status == 'authenticated' && session.data.user.admin && (
+                    <>
+                        <div onClick={()=>router.push('/service/rental/admin')} className={styles.admin}>
+                            <div className={styles.text}>
+                                우산대여 관리화면 →
+                            </div>
+                        </div>
+                    </>
+                )}
 
                 <div className={styles.rule}>
                     <div className={styles.title}>
@@ -242,7 +253,7 @@ const Home = () => {
                             <tr>
                                 <td className={styles.table_number}>1.</td>
                                 <td className={styles.table_rule}>
-                                    대여 시 본인의 학번과 이름을 반드시 현장에서 작성합니다.<br/>
+                                    대여 시 본인의 학번과 이름을 반드시 현장에서 작성합니다.<br />
                                     (신청폼으로 신청했어도 현장 작성)
                                 </td>
                             </tr>

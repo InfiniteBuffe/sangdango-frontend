@@ -103,6 +103,28 @@
     margin-bottom: 20px;
 }
 
+.admin {
+    width: calc(100% - 30px);
+    margin: auto;
+    max-width: 730px;
+    padding: 20px;
+    background: linear-gradient(to right, #000046, #1cb5e0); 
+    border-radius: 15px;
+    // border: 1px solid rgb(204, 204, 204);
+    box-shadow: 0px 3px 15px 0 rgba(155, 155, 155, 0.5);
+    margin-top: 20px;
+    cursor: pointer;
+    user-select: none;
+
+    & .text {
+        color: white;
+        text-align: center;
+        font-family: "pretendard";
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
 .rule {
     width: calc(100% - 30px);
     margin: auto;
@@ -115,7 +137,7 @@
     margin-top: 20px;
 
     & .title {
-        font-family: 'pretendard';
+        font-family: "pretendard";
         font-size: 20px;
         font-weight: 800;
     }
@@ -220,21 +242,17 @@
     margin-left: 20px;
     margin-bottom: 20px;
     margin-top: 20px;
-    background: linear-gradient(
-        to right,
-        #159987,
-        #155799
-    );
+    background: linear-gradient(to right, #159987, #155799);
     border-radius: 10px;
-    transition: all .2s;
+    transition: all 0.2s;
     &:active {
         filter: brightness(85%);
-        transition: all .2s;
+        transition: all 0.2s;
     }
 }
 
 .sheet_button_text {
-    font-family: 'pretendard';
+    font-family: "pretendard";
     font-size: 15px;
     text-align: center;
     line-height: 50px;
@@ -244,7 +262,7 @@
 }
 
 .sheet_notice {
-    font-family: 'pretendard';
+    font-family: "pretendard";
     font-weight: 500;
     font-size: 25px;
     color: black;
@@ -253,7 +271,7 @@
 }
 
 .sheet_notice_mini {
-    font-family: 'pretendard';
+    font-family: "pretendard";
     font-weight: 400;
     font-size: 17px;
     color: black;
@@ -262,7 +280,7 @@
 }
 
 .sheet_container {
-    width: calc( 100% - 40px);
+    width: calc(100% - 40px);
     margin-left: 20px;
 }
 
@@ -279,7 +297,7 @@
 }
 
 .notice_modal {
-    font-family: 'pretendard';
+    font-family: "pretendard";
     font-size: 16px;
     font-weight: 400;
     text-align: left;
@@ -299,11 +317,7 @@
 }
 
 #sheet_button_cancel {
-    background: linear-gradient(
-        to right,
-        #e96443,
-        #904e95
-    );
+    background: linear-gradient(to right, #e96443, #904e95);
 }
 
 @media (max-width: 768px) {

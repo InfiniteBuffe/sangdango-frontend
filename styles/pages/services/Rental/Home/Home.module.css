@@ -107,6 +107,28 @@
   margin-bottom: 20px;
 }
 
+.admin {
+  width: calc(100% - 30px);
+  margin: auto;
+  max-width: 730px;
+  padding: 20px;
+  background: linear-gradient(to right, #000046, #1cb5e0);
+  border-radius: 15px;
+  box-shadow: 0px 3px 15px 0 rgba(155, 155, 155, 0.5);
+  margin-top: 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.admin .text {
+  color: white;
+  text-align: center;
+  font-family: "pretendard";
+  font-size: 20px;
+  font-weight: 700;
+}
+
 .rule {
   width: calc(100% - 30px);
   margin: auto;

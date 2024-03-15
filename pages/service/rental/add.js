@@ -9,6 +9,7 @@ import { MoonLoader, ScaleLoader, SyncLoader } from 'react-spinners'
 import { BottomSheet } from 'react-spring-bottom-sheet'
 import { IoCheckmarkCircle, IoClose } from "react-icons/io5"
 import Twemoji from 'react-twemoji'
+import { useSession } from 'next-auth/react'
 
 const Add = () => {
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
@@ -24,6 +25,7 @@ const Add = () => {
         name: { error: false, msg: null }
     })
     const [bottomSheetStatus, setBottomSheetStatus] = useState({})
+    const session = useSession()
     const router = useRouter()
     useEffect(() => {
 
