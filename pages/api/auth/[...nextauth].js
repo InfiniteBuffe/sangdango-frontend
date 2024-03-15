@@ -33,6 +33,7 @@ export const authOptions = {
             admin: true
           }
         })
+        console.log(find)
         if (!find) isUserAdmin = false
         if (find.admin) isUserAdmin = true
       } catch (e) {}
