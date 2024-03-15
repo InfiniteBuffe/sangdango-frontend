@@ -300,6 +300,7 @@ const Home = () => {
                     신청은 오전 8시 30분부터 가능합니다.
                 </div> */}
             </Container>
+            <div className={styles.bottom_space} />
             {/* <BottomSheet onDismiss={() => setSelectFormOpen(false)} className={styles.bottom_sheet} open={selectFormOpen}>
                 <div className={styles.sheet_title}>
                     대여 조회 / 취소

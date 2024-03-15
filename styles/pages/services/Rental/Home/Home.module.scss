@@ -99,6 +99,10 @@
     margin-bottom: 50px;
 }
 
+.bottom_space {
+    margin-bottom: 20px;
+}
+
 .rule {
     width: calc(100% - 30px);
     margin: auto;
@@ -308,5 +312,8 @@
     }
     .bottom_sheet {
         margin-bottom: 55px;
+    }
+    .bottom_space {
+        margin-bottom: 75px;
     }
 }
