@@ -99,7 +99,7 @@ const Admin = (props) => {
     })
 
     const changeSetting = (name, value) => {
-        axios({
+        let promise = axios({
             method: 'PATCH',
             url: url + '/api/rental/setting',
             data: {
@@ -113,11 +113,19 @@ const Admin = (props) => {
                 if (r.data.code == 'SETTING_CHANGED_COMPLETED') {
                     let _settings = settings
                     _settings[name] = value
-                    setSettings({..._settings})
-                    toast.success('설정이 저장되었습니다')
+                    setSettings({ ..._settings })
                     return
                 }
             })
+
+        toast.promise(
+            promise,
+            {
+                loading: '저장 중...',
+                success: <b>설정이 저장되었습니다</b>,
+                error: <b>오류가 발생했습니다</b>,
+            }
+        );
     }
 
     return (
