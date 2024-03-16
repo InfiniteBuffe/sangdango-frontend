@@ -5,7 +5,7 @@ import axios from 'axios'
 import { getServerSession } from "next-auth/next"
 import { getSession, useSession } from "next-auth/react"
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { MdError } from "react-icons/md"
 
@@ -99,7 +99,26 @@ const Admin = (props) => {
                 duration: 500,
             }),
         },
-    }));
+    }))
+
+    useEffect(() => {
+        if (!router.isReady) return
+
+        axios({
+            method: 'GET',
+            url: url + '/api/rental/setting',
+            params: {
+                RENTAL_APPLICATION: '',
+            },
+            withCredentials: true,
+        })
+            .then(r => {
+                setSettings(data => ({
+                    ...data,
+                    RENTAL_APPLICATION: JSON.parse(r.data.RENTAL_APPLICATION)
+                }))
+            })
+    }, [router.isReady])
 
     const [settings, setSettings] = useState({
         RENTAL_APPLICATION: false
@@ -151,11 +170,11 @@ const Admin = (props) => {
                 <FormControlLabel
                     control={<IOSSwitch className={styles.switch} />}
                     labelPlacement="start"
-                    checked={Boolean(settings.RENTAL_APPLICATION)}
+                    checked={settings.RENTAL_APPLICATION}
                 />
             </div>
             <div className={styles.box} onClick={() => {
-
+                router.push('/service/rental/admin/list')
             }}>
                 <div className={styles.setting_text}>
                     대여자 명단 보기

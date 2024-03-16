@@ -266,7 +266,7 @@ const Home = () => {
                             <tr>
                                 <td className={styles.table_number}>3.</td>
                                 <td className={styles.table_rule}>
-                                    대여시간은 16:40~16~50 이고, 반납시간은 익일 13:15~13:25 입니다.
+                                    대여시간은 16:40~16:50 이고, 반납시간은 익일 13:15~13:25 입니다.
                                 </td>
                             </tr>
                             <tr>

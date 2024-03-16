@@ -7,18 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model RentalLog {
-  id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(10)
-  studentId Int
-  createdAt DateTime @default(now())
+model RentalData {
+  id           Int      @id @default(autoincrement())
+  studentId    Int
+  umbrellaName String
+  notReturned  Int      @default(0)
+  rentalBan    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
 }
 
 model CurrentRental {
-  id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(10)
-  studentId Int
-  createdAt DateTime @default(now())
+  id           Int      @id @default(autoincrement())
+  name         String   @db.VarChar(10)
+  studentId    Int      @unique
+  umbrellaName String
+  notReturned  Boolean  @default(false)
+  createdAt    DateTime @default(now())
 }
 
 model User {

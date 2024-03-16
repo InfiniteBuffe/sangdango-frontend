@@ -9,7 +9,7 @@ export default async function handler(req, res) {
         return
     }
 
-    if (req.body.name == undefined || req.body.name == undefined || typeof (req.body.studentId) == false) {
+    if (req.body.name == undefined || typeof (req.body.studentId) == false) {
         return res
             .status(200)
             .json({
@@ -33,18 +33,17 @@ export default async function handler(req, res) {
                 studentId: Number(req.body.studentId)
             }
         })
-        const currentRentalAll = await client.CurrentRental.findMany({})
+        const currentRentalCount = await client.CurrentRental.count()
         const _time = moment().tz("Asia/Seoul").format('HH시 mm분 ss초')
-        let n = currentRentalAll.length
         res.status(200)
         res.json({
             code: 'RENTAL_CANCEL_COMPLETED',
             time: _time,
             max: 40,
-            rental: n,
+            rental: currentRentalCount,
         })
     } else {
-        res.status(200)
+        res.status(404)
         res.json({
             code: 'NOT_REGISTERED'
         })

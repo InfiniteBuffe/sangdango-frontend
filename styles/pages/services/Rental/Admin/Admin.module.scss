@@ -55,7 +55,7 @@
     position: relative;
     transition: all 0.2s;
     cursor: pointer;
-    -webkit-tap-highlight-color : transparent;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
         transition: all 0.2s;
@@ -85,9 +85,9 @@
 .login_button {
     cursor: pointer;
     user-select: none;
-    font-family: 'pretendard';
+    font-family: "pretendard";
     font-size: 16px;
-    margin:auto;
+    margin: auto;
     margin-top: 20px;
     background-color: black;
     color: white;
@@ -97,6 +97,125 @@
     border-radius: 20px;
 }
 
+.rental_list {
+    width: calc(100% - 40px);
+    max-width: 750px;
+    font-family: "pretendard";
+    margin: auto;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-style: hidden;
+    box-shadow: 0 3px 20px 0px #b3b3b3;
+    background-color: white;
+
+    & tr td {
+        border: 1px solid #b3b3b3;
+        padding: 8px 10px;
+        text-align: center;
+    }
+}
+
+.rental_list_head {
+    font-weight: 600;
+    // user-select: none;
+}
+
+.rental_list_row {
+    border-collapse: separate;
+    transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+        background-color: rgb(230, 230, 230);
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.rental_list_no {
+    width: 35px;
+}
+
+.loading {
+    display: flex;
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
+
+    & .text {
+        font-family: "pretendard";
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 20px;
+        user-select: none;
+    }
+}
+
+.bottomSheetTitle {
+    font-family: "pretendard";
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#bottomSheetTable {
+    box-shadow: none;
+    border-radius: none;
+    border: 1px solid #b3b3b3;
+    user-select: text;
+}
+
+.bottomSheetButtonGroup {
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #b3b3b3;
+    margin: auto;
+    margin-top: 20px;
+    width: calc(100% - 40px);
+    user-select: none;
+    background-color: white;
+
+    & .button {
+        display: flex;
+        flex: 2;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        vertical-align: center;
+        border-bottom: 1px solid #b3b3b3;
+        padding: 15px 15px;
+        cursor: pointer;
+        transition: all .3s;
+
+        & .icon {
+            margin-right: 5px;
+        }
+
+        & .text {
+            font-family: 'pretendard';
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        &:hover {
+            transition: all .3s;
+            background-color: rgb(230, 230, 230);
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
 .bottom_space {
     margin-bottom: 20px;
 }
@@ -104,5 +223,8 @@
 @media (max-width: 768px) {
     .bottom_space {
         margin-bottom: 75px;
+    }
+    .bottom_sheet_mobile {
+        height: 55px;
     }
 }

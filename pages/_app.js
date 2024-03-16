@@ -9,6 +9,7 @@ import BottomNav from '@/components/BottomNav'
 import { SessionProvider } from "next-auth/react"
 import "react-spring-bottom-sheet/dist/style.css"
 import { Analytics } from '@vercel/analytics/react'
+import NextNProgress from 'nextjs-progressbar'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
@@ -28,6 +29,10 @@ export default function App({ Component, pageProps }) {
           }}
         />
         {/*<Layout>*/}
+        <NextNProgress 
+          color='#67e8c2'
+          // color='#0e1b3d'
+        />
         <ServiceHeader />
         <BottomNav />
         <Component key={router.route} {...pageProps} />

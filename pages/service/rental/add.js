@@ -10,6 +10,10 @@ import { BottomSheet } from 'react-spring-bottom-sheet'
 import Twemoji from 'react-twemoji'
 import { MdError } from 'react-icons/md'
 
+// TODO
+//
+// - 학번으로 대여 금지 여부 확인
+
 const Add = () => {
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
     const [currentInfo, setCurrentInfo] = useState({ count: '-', time: '', max: '0', using: '0', })

@@ -24,7 +24,7 @@ const Login = () => {
         }
     })
 
-    if (isLogin == 'authenticated') {
+    if (isLogin == 'authenticated' && router.query.redirect != null) {
         let redirect_url = router.query.redirect
         if (!redirect_url.startsWith(url)) return
         router.push(redirect_url)
