@@ -208,6 +208,7 @@ const List = (props) => {
                 <div className={styles.bottomSheetButtonGroup}>
                     <div className={styles.button} onClick={() => {
                         let data = prompt('우산정보를 입력해주세요')
+                        if (data == null) return
                         changeCurrentRentalValue(detailData.no, detailData.studentId, 'umbrellaName', data)
                     }}>
                         <MdModeEdit size={16} className={styles.icon} />
