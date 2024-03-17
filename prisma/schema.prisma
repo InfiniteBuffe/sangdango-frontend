@@ -22,8 +22,8 @@ model CurrentRental {
   name         String   @db.VarChar(10)
   studentId    Int      @unique
   umbrellaName String
-  notReturned  Boolean  @default(false)
   createdAt    DateTime @default(now())
+  notReturned  Boolean  @default(false)
 }
 
 model User {

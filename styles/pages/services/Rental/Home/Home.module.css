@@ -302,6 +302,21 @@
   line-height: 25px;
 }
 
+.admin_login {
+  font-family: "pretendard";
+  font-weight: 700;
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  color: rgb(0, 0, 140);
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 #warning_strong {
   font-weight: 700;
   height: 0;

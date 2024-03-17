@@ -230,7 +230,7 @@ const Home = () => {
                 </div> */}
                 {session.status == 'authenticated' && session.data.user.admin && (
                     <>
-                        <div onClick={()=>router.push('/service/rental/admin')} className={styles.admin}>
+                        <div onClick={() => router.push('/service/rental/admin')} className={styles.admin}>
                             <div className={styles.text}>
                                 관리화면 이동 →
                             </div>
@@ -310,6 +310,14 @@ const Home = () => {
                 {/* <div className={styles.notice}>
                     신청은 오전 8시 30분부터 가능합니다.
                 </div> */}
+                <div
+                    className={styles.admin_login}
+                    onClick={() => {
+                        router.push('/auth/login?redirect='+url+'/service/rental/home')
+                    }}
+                >
+                    관리자는 여기를 클릭하여 로그인
+                </div>
             </Container>
             <div className={styles.bottom_space} />
             {/* <BottomSheet onDismiss={() => setSelectFormOpen(false)} className={styles.bottom_sheet} open={selectFormOpen}>
