@@ -141,7 +141,7 @@ export default async function handler(req, res) {
         .json({
             added: true,
             max: 40, // 우산 최대 갯수
-            rental: n + 1, // 처음 맨 위에 조회한 갯수 + 1
+            rental: currentRentalCount + 1, // 처음 맨 위에 조회한 갯수 + 1
             CODE: 'RENTAL_COMPLETED',
             message: '등록이 완료되었습니다.',
             time: _time,
