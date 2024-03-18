@@ -129,7 +129,8 @@ export default async function handler(req, res) {
     await client.currentRental.create({
         data: {
             name: name,
-            studentId: Number(studentId)
+            studentId: Number(studentId),
+            umbrellaName: '',
         }
     })
 
