@@ -18,7 +18,7 @@ const List = (props) => {
     const [rentalList, setRentalList] = useState([])
     const [loading, setLoading] = useState(true)
     const [bottomSheetStatus, setBottomSheetStatus] = useState({ detail: false })
-    const [detailData, setDetailData] = useState({ studetnId: '', name: '', no: '', umbrellaName: '' })
+    const [detailData, setDetailData] = useState({ studetnId: '', name: '', no: '', umbrellaName: '', notReturnedCount: '불러오는 중', notReturned: false })
 
     const theme = createTheme({
         palette: {
@@ -118,6 +118,46 @@ const List = (props) => {
         );
     }
 
+    const addNotReturned = (studentId, no) => {
+        let promise = axios({
+            method: 'POST',
+            url: url + '/api/rental/admin/notReturned',
+            data: {
+                studentId: studentId,
+            }
+        })
+            .then(r => {
+                setDetailData(data => ({ ...data, notReturned: true, notReturnedCount: r.data.data.notReturnedCount }))
+                let data = rentalList
+                data[no - 1].notReturned = true
+                setRentalList(data)
+                alert('장기미반납 1회 추가 및 미반납 등록이 완료되었습니다')
+            })
+
+        toast.promise(
+            promise,
+            {
+                loading: '처리 중...',
+                success: '완료되었습니다',
+                error: '오류가 발생했습니다',
+            }
+        );
+    }
+
+    const getStudentNotReturnedCount = (studentId) => {
+
+        axios({
+            method: 'GET',
+            url: url + '/api/rental/admin/notReturned',
+            params: {
+                studentId: studentId,
+            }
+        })
+            .then(r => {
+                setDetailData(data => ({ ...data, notReturnedCount: r.data.notReturnedCount }))
+            })
+    }
+
     useEffect(() => {
         if (!router.isReady) return
 
@@ -158,7 +198,9 @@ const List = (props) => {
                                         studentId: data.studentId,
                                         no: key + 1,
                                         umbrellaName: data.umbrellaName,
+                                        notReturned: data.notReturned,
                                     })
+                                    getStudentNotReturnedCount(data.studentId)
                                     setBottomSheetStatus(data => ({ ...data, detail: true }))
                                 }}
                                 key={key}
@@ -204,6 +246,20 @@ const List = (props) => {
                         </tr>
                     </tbody>
                 </table>
+                <table className={styles.rental_list} id={styles.bottomSheetTable}>
+                    <thead className={styles.rental_list_head}>
+                        <tr>
+                            <td>현재 장기미반납 여부</td>
+                            <td>장기미반납 누적 횟수</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className={styles.rental_list_row}>
+                            <td>{detailData.notReturned ? '예' : '아니요'}</td>
+                            <td>{detailData.notReturnedCount}</td>
+                        </tr>
+                    </tbody>
+                </table>
                 {/* 표에 학번에 저장된 장기미반납 횟수, 분실 횟수 표시되게 할 것  */}
                 <div className={styles.bottomSheetButtonGroup}>
                     <div className={styles.button} onClick={() => {
@@ -216,7 +272,7 @@ const List = (props) => {
                             우산정보 수정
                         </div>
                     </div>
-                    <div className={styles.button} onClick={()=>{
+                    <div className={styles.button} onClick={() => {
                         cancelRental(detailData.studentId, detailData.name, detailData.no)
                     }}>
                         <MdCancel size={16} className={styles.icon} />
@@ -224,7 +280,9 @@ const List = (props) => {
                             대여취소 처리
                         </div>
                     </div>
-                    <div className={styles.button}>
+                    <div className={styles.button} onClick={() => {
+                        addNotReturned(detailData.studentId, detailData.no)
+                    }}>
                         <IoBan size={16} className={styles.icon} />
                         <div className={styles.text}>
                             장기미반납 처리

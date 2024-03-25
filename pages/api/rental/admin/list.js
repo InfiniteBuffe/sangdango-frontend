@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         let data = await client.currentRental.findMany({
             orderBy: {
                 id: 'desc'
-            }
+            },
         })
         res
             .status(200)

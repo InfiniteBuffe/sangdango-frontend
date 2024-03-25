@@ -1,5 +1,6 @@
-import { PrismaClient } from "@prisma/client";
-import moment from "moment";
+import { PrismaClient } from "@prisma/client"
+import moment from "moment"
+import 'moment-timezone'
 
 const client = new PrismaClient();
 
