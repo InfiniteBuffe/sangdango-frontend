@@ -184,7 +184,7 @@ const Admin = (props) => {
                 </div>
             </div>
             <div className={styles.box} onClick={() => {
-
+                router.push('/service/rental/admin/return')
             }}>
                 <div className={styles.setting_text}>
                     우산반납 등록
