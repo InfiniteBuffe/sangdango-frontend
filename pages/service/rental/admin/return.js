@@ -5,9 +5,12 @@ import { Box, Button, ThemeProvider, createTheme } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import toast from 'react-hot-toast'
 import axios from 'axios'
+import { useRouter } from 'next/router'
+import { getSession } from 'next-auth/react'
 
 const Return = (props) => {
 
+    const router = useRouter()
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
     const [inputData, setInputData] = useState({ studentId: '' })
     const [buttonStatus, setButtonStatus] = useState({ find: true })
