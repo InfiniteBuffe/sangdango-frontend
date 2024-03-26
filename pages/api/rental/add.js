@@ -134,6 +134,13 @@ export default async function handler(req, res) {
         }
     })
 
+    await client.rentalLog.create({
+        data: {
+            studentId: Number(studentId),
+            type: '우산 대여 신청'
+        }
+    })
+
     const _time = moment().tz("Asia/Seoul").format('HH시 mm분 ss초')
 
     return res

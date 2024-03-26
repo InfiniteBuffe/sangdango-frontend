@@ -53,7 +53,7 @@ export default async function handler(req, res) {
         await client.rentalLog.create({
             data: {
                 studentId: Number(studentId),
-                type: '우산 반납'
+                type: '우산 반납 완료'
             }
         })
 

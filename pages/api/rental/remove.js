@@ -34,6 +34,12 @@ export default async function handler(req, res) {
                 studentId: Number(req.body.studentId)
             }
         })
+        await client.rentalLog.create({
+            data: {
+                studentId: Number(studentId),
+                type: '우산 대여 취소'
+            }
+        })
         const currentRentalCount = await client.CurrentRental.count()
         const _time = moment().tz("Asia/Seoul").format('HH시 mm분 ss초')
         res.status(200)
