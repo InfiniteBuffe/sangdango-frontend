@@ -58,6 +58,42 @@ const Return = (props) => {
 
     }
 
+    if (props.session == null) {
+        return (
+            <>
+                <div className={styles.not_admin}>
+                    <MdError size={40} />
+                    <div className={styles.text}>
+                        로그인이 필요합니다
+                        <br />
+                        로그인 후 다시 시도해주세요
+                    </div>
+                    <div onClick={() => router.push(`/auth/login?redirect=${url}/service/rental/admin/list`)} className={styles.login_button} >
+                        로그인
+                    </div>
+                </div>
+            </>
+        )
+    }
+
+    if (!props.session.user.admin) {
+        return (
+            <>
+                <div className={styles.not_admin}>
+                    <MdError size={40} />
+                    <div className={styles.text}>
+                        권한이 없습니다
+                        <br />
+                        관리자에게 문의하세요
+                    </div>
+                    <div className={styles.user}>
+                        당신의 식별번호: {props.session.user.id}
+                    </div>
+                </div>
+            </>
+        )
+    }
+
     return (
         <>
             <div className={styles.page_title}>
@@ -107,4 +143,11 @@ const Return = (props) => {
     )
 }
 
+export const getServerSideProps = async (context) => {
+    return {
+        props: {
+            session: await getSession(context),
+        },
+    }
+}
 export default Return
