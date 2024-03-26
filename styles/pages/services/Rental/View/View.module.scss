@@ -1,0 +1,53 @@
+.rental_list {
+    width: calc(100% - 40px);
+    max-width: 750px;
+    font-family: "pretendard";
+    margin: auto;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-style: hidden;
+    box-shadow: 0 3px 20px 0px #b3b3b3;
+    background-color: white;
+
+    & tr td {
+        border: 1px solid #b3b3b3;
+        padding: 8px 10px;
+        text-align: center;
+    }
+}
+
+.rental_list_head {
+    font-weight: 600;
+    // user-select: none;
+}
+
+.rental_list_row {
+    border-collapse: separate;
+    transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+        background-color: rgb(230, 230, 230);
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.rental_list_no {
+    width: 35px;
+}
+
+.space {
+    height: 20px;
+}
+
+.rental_list_no_data {
+    font-family: "pretendard";
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+}

@@ -1,0 +1,24 @@
+.page_title {
+    width: calc(100% - 40px);
+    max-width: 730px;
+    margin: auto;
+
+    & .text {
+        font-family: "pretendard";
+        font-weight: 700;
+        font-size: 25px;
+        text-align: left;
+        user-select: none;
+        color: rgb(0, 0, 0);
+    }
+}
+
+.description {
+    margin-top: 5px;
+    font-family: "pretendard";
+    font-weight: 500;
+    font-size: 16px;
+    text-align: left;
+    user-select: none;
+    color: rgb(25, 25, 25);
+}

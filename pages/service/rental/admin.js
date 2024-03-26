@@ -151,7 +151,7 @@ const Admin = (props) => {
                 success: '설정이 저장되었습니다',
                 error: '오류가 발생했습니다',
             }
-        );
+        )
     }
 
     return (

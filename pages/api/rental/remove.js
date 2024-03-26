@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         })
         await client.rentalLog.create({
             data: {
-                studentId: Number(studentId),
+                studentId: Number(req.body.studentId),
                 type: '우산 대여 취소'
             }
         })
