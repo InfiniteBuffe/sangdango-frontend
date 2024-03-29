@@ -76,6 +76,7 @@ export default async function handler(req, res) {
     dayjs.tz.setDefault('Asia/Seoul')
 
     const date = (item) => dayjs(item.createdAt)
+        .tz()
         .locale('ko')
         .format('YYYY[년] MM[월] DD[일] HH[시] mm[분] ss[초]')
 
