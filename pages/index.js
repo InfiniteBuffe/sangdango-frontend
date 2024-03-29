@@ -81,6 +81,21 @@ const Main = () => {
           <span id={styles.nowarp}>상당고등학교🏫</span>
         </div>
       </div>
+      <div className={styles.notice}>
+        <div className={styles.title}>
+          서비스 안내 📡
+        </div>
+        <table className={styles.table}>
+          <tbody className={styles.table_tbody}>
+            <tr>
+              <td className={styles.table_number}>-</td>
+              <td className={styles.table_text}>
+                인스타그램(Instagram) 앱에서 접속할 경우, 서비스를 이용하는데 문제가 발생하오니 <strong>가급적으로 크롬, 엣지, 사파리 등을 이용해 주시길 바랍니다.</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       {/* {(session) ? (
         <div className={styles.account_card}>
           <div className={styles.account_text}>

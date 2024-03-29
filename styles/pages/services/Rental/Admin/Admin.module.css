@@ -212,6 +212,29 @@
   border-bottom: none;
 }
 
+#rental_list_row_not_returned {
+  background-color: rgb(255, 222, 195);
+  transition: all 0.3s;
+}
+#rental_list_row_not_returned:hover {
+  transition: all 0.3s;
+  background-color: rgb(223, 187, 157);
+}
+
+.rental_list_row_detail_blue {
+  color: blue;
+  font-weight: 700;
+}
+
+.rental_list_row_detail_red {
+  color: red;
+  font-weight: 700;
+}
+
+.rental_list_not_returned {
+  width: 90px;
+}
+
 .bottom_space {
   margin-bottom: 20px;
 }

@@ -7,6 +7,8 @@ import { toast } from 'react-hot-toast'
 import 'react-spring-bottom-sheet/dist/style.css'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
+import MenuTitle from '@/components/MenuTitle'
+import Footer from '@/components/Footer'
 
 const Home = () => {
 
@@ -223,6 +225,8 @@ const Home = () => {
                 </div> */}
                 {session.status == 'authenticated' && session.data.user.admin && (
                     <>
+                        <div className={styles.space} />
+                        <MenuTitle text='관리자 메뉴 ⚙️' />
                         <div onClick={() => router.push('/service/rental/admin')} className={styles.admin}>
                             <div className={styles.text}>
                                 관리화면 이동 →
@@ -230,6 +234,28 @@ const Home = () => {
                         </div>
                     </>
                 )}
+
+                <div className={styles.notice}>
+                    <div className={styles.title}>
+                        서비스 안내 📡
+                    </div>
+                    <table className={styles.table}>
+                        <tbody className={styles.table_tbody}>
+                            <tr>
+                                <td className={styles.table_number}>-</td>
+                                <td className={styles.table_text}>
+                                    인스타그램(Instagram) 앱에서 접속할 경우, 서비스를 이용하는데 문제가 발생하오니 <strong>가급적으로 크롬, 엣지, 사파리 등을 이용해 주시길 바랍니다.</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={styles.table_number}>-</td>
+                                <td className={styles.table_text}>
+                                    조회 메뉴가 활성화되었습니다. (2023. 03. 26)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div className={styles.rule}>
                     <div className={styles.title}>
@@ -303,15 +329,19 @@ const Home = () => {
                 {/* <div className={styles.notice}>
                     신청은 오전 8시 30분부터 가능합니다.
                 </div> */}
-                <div
-                    className={styles.admin_login}
-                    onClick={() => {
-                        router.push('/auth/login?redirect='+url+'/service/rental/home')
-                    }}
-                >
-                    관리자는 여기를 클릭하여 로그인
-                </div>
+                {session.status == 'unauthenticated' && (
+                    <div
+                        className={styles.admin_login}
+                        onClick={() => {
+                            router.push('/auth/login?redirect=' + url + '/service/rental/home')
+                        }}
+                    >
+                        관리자는 여기를 클릭하여 로그인하세요
+                    </div>
+                )}
             </Container>
+            <div className={styles.space} />
+            <Footer />
             <div className={styles.bottom_space} />
             {/* <BottomSheet onDismiss={() => setSelectFormOpen(false)} className={styles.bottom_sheet} open={selectFormOpen}>
                 <div className={styles.sheet_title}>

@@ -1,6 +1,8 @@
 import { PrismaClient } from "@prisma/client"
-import dayjs from 'dayjs'
 import 'dayjs/locale/ko'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
 
 const client = new PrismaClient();
 
@@ -69,9 +71,17 @@ export default async function handler(req, res) {
         }
     })
 
+    dayjs.extend(utc)
+    dayjs.extend(timezone)
+    dayjs.tz.setDefault('Asia/Seoul')
+
+    const date = (item) => dayjs(item.createdAt)
+        .locale('ko')
+        .format('YYYY[년] MM[월] DD[일] HH[시] mm[분] ss[초]')
+
     let setDateFormat = findRentalLog.map(item => ({
         ...item,
-        createdAt: dayjs(item.createdAt).locale('ko').format('YYYY[년] MM[월] DD[일] HH[시] mm[분] ss[초]'),
+        createdAt: date(item),
     }))
 
     res

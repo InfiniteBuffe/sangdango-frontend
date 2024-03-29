@@ -186,6 +186,7 @@ const List = (props) => {
                         <td>학번</td>
                         <td>이름</td>
                         <td>우산정보</td>
+                        <td className={styles.rental_list_not_returned}>장기미반납</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -205,11 +206,13 @@ const List = (props) => {
                                 }}
                                 key={key}
                                 className={styles.rental_list_row}
+                                id={data.notReturned ? styles.rental_list_row_not_returned : null}
                             >
                                 <td>{key + 1}</td>
                                 <td>{data.studentId}</td>
                                 <td>{data.name}</td>
                                 <td>{data.umbrellaName}</td>
+                                <td>{data.notReturned ? <p className={styles.rental_list_row_detail_red}>예</p> : '아니요'}</td>
                             </tr>
                         )
                     })}
@@ -255,8 +258,8 @@ const List = (props) => {
                     </thead>
                     <tbody>
                         <tr className={styles.rental_list_row}>
-                            <td>{detailData.notReturned ? '예' : '아니요'}</td>
-                            <td>{detailData.notReturnedCount}</td>
+                            <td className={detailData.notReturned ? styles.rental_list_row_detail_red : styles.rental_list_row_detail_blue}>{detailData.notReturned ? '예' : '아니요'}</td>
+                            <td className={String(detailData.notReturnedCount) != '0' ? styles.rental_list_row_detail_red : styles.rental_list_row_detail_blue}>{detailData.notReturnedCount}</td>
                         </tr>
                     </tbody>
                 </table>

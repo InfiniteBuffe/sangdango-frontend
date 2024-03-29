@@ -30,8 +30,8 @@ export default function App({ Component, pageProps }) {
         />
         {/*<Layout>*/}
         <NextNProgress 
-          color='#67e8c2'
-          // color='#0e1b3d'
+          // color='#67e8c2'
+          color='#0e1b3d'
         />
         <ServiceHeader />
         <BottomNav />

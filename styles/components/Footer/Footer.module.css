@@ -1,29 +1,59 @@
 .footer {
-  width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
   height: 120px;
-  position: absolute;
-  transform: translateY(-100%);
   display: flex;
+  margin: auto;
 }
 
 .space {
-  margin-top: 140px;
+  margin: auto;
 }
 
 .text {
   font-family: "pretendard";
   font-weight: 300;
   font-size: 15px;
-  text-align: center;
+  text-align: left;
   color: black;
   line-height: 20px;
 }
 
 .github {
-  margin: 10px auto;
   font-weight: 400;
 }
 .github a {
-  color: #0042ff;
+  color: #00258b;
+  font-weight: 500;
+}
+
+.table {
+  margin: auto;
+  border-collapse: collapse;
+}
+
+.name {
+  font-family: "pretendard";
+  font-weight: 600;
+  font-size: 16px;
+  text-align: right;
+  color: black;
+  padding-right: 5px;
+}
+
+.value {
+  font-family: "pretendard";
+  font-weight: 400;
+  font-size: 16px;
+  text-align: left;
+  color: black;
+}
+
+.project {
+  text-align: center;
+  padding-top: 5px;
+}
+.project a {
+  color: #00258b;
   font-weight: 500;
 }/*# sourceMappingURL=Footer.module.css.map */
