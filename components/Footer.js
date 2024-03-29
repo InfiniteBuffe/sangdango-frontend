@@ -27,7 +27,7 @@ const Footer = () => {
                         </tbody>
                     </table> */}
                 <div className={styles.text}>
-                    운영: 상당고등학교 학생복지부
+                    운영: 상당고등학교 학생자치회 학생복지부
                     <br />
                     개발: 상당고등학교 25회 졸업생 박태진
                     <br />
