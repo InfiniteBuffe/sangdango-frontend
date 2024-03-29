@@ -24,6 +24,7 @@ export default function Document() {
         `,
           }}
         />
+        <script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous" />
       </Head>
       <body>
         <Main />

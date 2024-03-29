@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { grey } from "@mui/material/colors"
 import { MoonLoader, PulseLoader, SyncLoader } from 'react-spinners'
 import { BottomSheet } from 'react-spring-bottom-sheet'
-import Twemoji from 'react-twemoji'
+import TwemojiFix from '@/components/TwemojiFix'
 import { MdError } from 'react-icons/md'
 
 // TODO
@@ -362,7 +362,7 @@ const Add = () => {
                 <div className={styles.bottom_sheet_mobile} />
             </BottomSheet>
             <BottomSheet onDismiss={() => setBottomSheetStatus(data => ({ ...data, error: false }))} open={bottomSheetStatus.error}>
-                <Twemoji options={{ className: styles.emoji_font }}>❌</Twemoji>
+                <TwemojiFix options={{ className: styles.emoji_font }}>❌</TwemojiFix>
                 <div className={styles.sheet_title}>
                     {sheetError.title}
                 </div>
@@ -373,7 +373,7 @@ const Add = () => {
                 <div className={styles.bottom_sheet_mobile} />
             </BottomSheet>
             <BottomSheet onDismiss={() => setBottomSheetStatus(data => ({ ...data, success: false }))} open={bottomSheetStatus.success}>
-                <Twemoji options={{ className: styles.emoji_font }}>✅</Twemoji>
+                <TwemojiFix options={{ className: styles.emoji_font }}>✅</TwemojiFix>
                 <div className={styles.sheet_title}>
                     신청 완료
                 </div>

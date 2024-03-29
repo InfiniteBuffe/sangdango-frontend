@@ -1,18 +1,11 @@
 import Loading from '@/components/Loading'
-import ServiceHeader from '@/components/ServiceHeader'
 import styles from '@/styles/pages/services/Rental/Home/Home.module.css'
 import axios from 'axios'
 import Container from 'components/Container'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
-import { BottomSheet } from 'react-spring-bottom-sheet'
 import 'react-spring-bottom-sheet/dist/style.css'
-import Twemoji from 'react-twemoji'
 import { useRouter } from 'next/router'
-import ChannelTalk from '@/components/ChannelTalk'
-import { TextField } from '@mui/material';
-import PopupModal from '@/components/PopupModal'
-import AlertBar from '@/components/AlertBar'
 import { useSession } from 'next-auth/react'
 
 const Home = () => {

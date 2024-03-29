@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { grey } from "@mui/material/colors"
 import { MoonLoader, ScaleLoader, SyncLoader } from 'react-spinners'
 import { BottomSheet } from 'react-spring-bottom-sheet'
-import Twemoji from 'react-twemoji'
+import TwemojiFix from '@/components/TwemojiFix'
 
 const Cancel = () => {
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
@@ -327,7 +327,7 @@ const Cancel = () => {
                 <div className={styles.bottom_sheet_mobile} />
             </BottomSheet>
             <BottomSheet onDismiss={() => setBottomSheetStatus(data => ({ ...data, error: false }))} open={bottomSheetStatus.error}>
-                <Twemoji options={{ className: styles.emoji_font }}>❌</Twemoji>
+                <TwemojiFix options={{ className: styles.emoji_font }}>❌</TwemojiFix>
                 <div className={styles.sheet_title}>
                     {sheetError.title}
                 </div>
@@ -338,7 +338,7 @@ const Cancel = () => {
                 <div className={styles.bottom_sheet_mobile} />
             </BottomSheet>
             <BottomSheet onDismiss={() => setBottomSheetStatus(data => ({ ...data, success: false }))} open={bottomSheetStatus.success}>
-                <Twemoji options={{ className: styles.emoji_font }}>✅</Twemoji>
+                <TwemojiFix options={{ className: styles.emoji_font }}>✅</TwemojiFix>
                 <div className={styles.sheet_title}>
                     취소 완료
                 </div>

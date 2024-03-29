@@ -1,18 +1,15 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '@/styles/pages/Main/Main.module.css'
 import Header from '@/components/Header'
-import TextTransition, { presets } from "react-text-transition"
 import { useState, useEffect, useRef } from 'react'
-import classNames from 'classnames'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
 import Twemoji from 'react-twemoji'
 import Footer from '@/components/Footer'
-import { signOut, useSession } from 'next-auth/react'
 import LoginModal from '@/components/LoginModal'
 import axios from 'axios'
 import ReactPlayer from 'react-player'
+import TwemojiFix from '@/components/TwemojiFix'
 
 const Main = () => {
 
@@ -152,7 +149,7 @@ const Main = () => {
         <div className={styles.warp_box} id={styles.umbrella} onClick={() => { router.push('/service/rental/home'); toast('우산대여 서비스로 이동합니다') }}>
           <div className={styles.warp_text_box}>
             <div className={styles.warp_big_text}>
-              <span className={styles.warp_big_text_line}>우산대여&nbsp;</span><span><Twemoji options={{ className: styles.emoji_font }}>☂</Twemoji></span>
+              <span className={styles.warp_big_text_line}>우산대여&nbsp;</span><span><TwemojiFix options={{ className: styles.emoji_font }}>☂</TwemojiFix></span>
               <div className={styles.warp_big_small_text}>
                 손쉽게 우산 대여!
               </div>

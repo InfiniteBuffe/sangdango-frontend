@@ -1,11 +1,7 @@
 import Header from 'components/Header'
 import styles from 'styles/pages/auth/Login/Login.module.css'
-import { TextField, Button, createTheme, ThemeProvider, InputAdornment, IconButton } from '@mui/material'
+import { createTheme, ThemeProvider } from '@mui/material'
 import { grey } from '@mui/material/colors';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
 import Image from 'next/image';
 import { signOut, signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
