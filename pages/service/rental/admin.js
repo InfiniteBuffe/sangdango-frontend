@@ -22,7 +22,7 @@ const Admin = (props) => {
     const [bottomSheetStatus, setBottomSheetStatus] = useState({ maxQuantity: false })
     const [bottomSheetData, setBottomSheetData] = useState({ maxQuantity: {} })
 
-    const [data, setData] = useState({ maxQuantity: { now: '', value: '' } })
+    const [data, setData] = useState({ maxQuantity: { now: '', value: '', error: false, errorMsg: '값을 입력해주세요' } })
 
     if (props.session == null) {
         return (
@@ -253,10 +253,17 @@ const Admin = (props) => {
                             setData(data => ({ ...data, maxQuantity: { ...data.maxQuantity, value: _data } }))
                         }}
                         value={data.maxQuantity.value}
+                        error={data.maxQuantity.error}
+                        errorMsg={data.maxQuantity.errorMsg}
                     />
                     <MuiButton
                         bottomSheet={true}
                         onClick={() => {
+                            if (String(data.maxQuantity.value).length == 0) {
+                                setData(data=>({...data, maxQuantity: { ...data.maxQuantity, error: true }}))
+                                return
+                            }
+                            setData(data=>({...data, maxQuantity: { ...data.maxQuantity, error: false }}))
                             changeSetting('RENTAL_MAX_UMBRELLA', String(data.maxQuantity.value))
                             setBottomSheetStatus(data => ({ ...data, maxQuantity: false }))
                             setData(data=>({...data, maxQuantity: { ...data.maxQuantity, value: '' }}))
