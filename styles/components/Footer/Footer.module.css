@@ -1,7 +1,6 @@
 .footer {
   width: -moz-fit-content;
   width: fit-content;
-  height: 120px;
   display: flex;
   margin: auto;
 }
