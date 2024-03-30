@@ -41,13 +41,23 @@ export default async function handler(req, res) {
             }
         })
         const currentRentalCount = await client.CurrentRental.count()
+        const RENTAL_MAX_UMBRELLA = await client.settings.findFirst({
+            where: {
+                name: 'RENTAL_MAX_UMBRELLA',
+            },
+            select: {
+                value: true,
+            }
+        })
         const _time = moment().tz("Asia/Seoul").format('HH시 mm분 ss초')
+        let remaining = Number(RENTAL_MAX_UMBRELLA.value) - Number(currentRentalCount)
         res.status(200)
         res.json({
             code: 'RENTAL_CANCEL_COMPLETED',
             time: _time,
-            max: 40,
+            max: Number(RENTAL_MAX_UMBRELLA.value),
             rental: currentRentalCount,
+            remaining: remaining < 0 ? 0 : remaining
         })
     } else {
         res.status(404)

@@ -1,3 +1,7 @@
+import BottomSheetContainer from '@/components/BottomSheetContainer'
+import BottomSheetTitle from '@/components/BottomSheetTitle'
+import Input from '@/components/Input'
+import MuiButton from '@/components/MuiButton'
 import styles from '@/styles/pages/services/Rental/Admin/Admin.module.css'
 import { FormControlLabel, Switch, styled } from '@mui/material'
 import { PrismaClient } from '@prisma/client'
@@ -8,11 +12,17 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { MdError } from "react-icons/md"
+import { BottomSheet } from 'react-spring-bottom-sheet'
 
 const Admin = (props) => {
 
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
     const router = useRouter()
+
+    const [bottomSheetStatus, setBottomSheetStatus] = useState({ maxQuantity: false })
+    const [bottomSheetData, setBottomSheetData] = useState({ maxQuantity: {} })
+
+    const [data, setData] = useState({ maxQuantity: { now: '', value: '' } })
 
     if (props.session == null) {
         return (
@@ -109,19 +119,22 @@ const Admin = (props) => {
             url: url + '/api/rental/setting',
             params: {
                 RENTAL_APPLICATION: '',
+                RENTAL_MAX_UMBRELLA: '',
             },
             withCredentials: true,
         })
             .then(r => {
                 setSettings(data => ({
                     ...data,
-                    RENTAL_APPLICATION: JSON.parse(r.data.RENTAL_APPLICATION)
+                    RENTAL_APPLICATION: JSON.parse(r.data.RENTAL_APPLICATION),
+                    RENTAL_MAX_UMBRELLA: r.data.RENTAL_MAX_UMBRELLA
                 }))
             })
     }, [router.isReady])
 
     const [settings, setSettings] = useState({
-        RENTAL_APPLICATION: false
+        RENTAL_APPLICATION: false,
+        RENTAL_MAX_UMBRELLA: 0,
     })
 
     const changeSetting = (name, value) => {
@@ -152,6 +165,12 @@ const Admin = (props) => {
                 error: '오류가 발생했습니다',
             }
         )
+    }
+
+    const changeOnlyNum = (text) => {
+        let regex = /[^0-9]/g
+        let result = text.replace(regex, '')
+        return result
     }
 
     return (
@@ -194,7 +213,7 @@ const Admin = (props) => {
                 </div>
             </div>
             <div className={styles.box} onClick={() => {
-
+                setBottomSheetStatus(data => ({ ...data, maxQuantity: true }))
             }}>
                 <div className={styles.setting_text}>
                     우산수량 변경
@@ -214,6 +233,46 @@ const Admin = (props) => {
                 </div>
             </div>
             <div className={styles.bottom_space} />
+
+            <BottomSheet open={bottomSheetStatus.maxQuantity}>
+                <BottomSheetContainer>
+                    <BottomSheetTitle
+                        title='우산 최대수량 변경'
+                        description='우산 대여 가능 수량을 변경합니다. 최솟값은 0, 최댓값은 999 입니다.'
+                    />
+                    <div className={styles.bottom_sheet_notice}>
+                        현재 설정된 최대 수량은 <span style={{color: 'blue'}}>{settings.RENTAL_MAX_UMBRELLA}</span>개 입니다.
+                    </div>
+                    <Input
+                        label='최대 수량'
+                        required={true}
+                        bottomSheet={true}
+                        onChange={e => {
+                            let _data = String(changeOnlyNum(e.target.value))
+                            if (_data.length > 3) return
+                            setData(data => ({ ...data, maxQuantity: { ...data.maxQuantity, value: _data } }))
+                        }}
+                        value={data.maxQuantity.value}
+                    />
+                    <MuiButton
+                        bottomSheet={true}
+                        onClick={() => {
+                            changeSetting('RENTAL_MAX_UMBRELLA', String(data.maxQuantity.value))
+                            setBottomSheetStatus(data => ({ ...data, maxQuantity: false }))
+                            setData(data=>({...data, maxQuantity: { ...data.maxQuantity, value: '' }}))
+                        }}
+                    >
+                        수량 변경하기
+                    </MuiButton>
+                    <MuiButton
+                        onClick={() => setBottomSheetStatus(data => ({ ...data, maxQuantity: false }))}
+                        bottomSheet={true}
+                        style={{ backgroundColor: 'rgb(160, 20, 0)', marginTop: '10px' }}
+                    >
+                        취소 및 닫기
+                    </MuiButton>
+                </BottomSheetContainer>
+            </BottomSheet>
         </>
     )
 }

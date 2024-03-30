@@ -1,0 +1,14 @@
+.container {
+  width: calc(100% - 40px);
+  margin: auto;
+}
+
+.space {
+  height: 20px;
+}
+
+@media (max-width: 768px) {
+  .space {
+    height: 75px;
+  }
+}/*# sourceMappingURL=BottomSheetContainer.module.css.map */

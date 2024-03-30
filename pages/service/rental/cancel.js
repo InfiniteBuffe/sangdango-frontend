@@ -37,7 +37,7 @@ const Cancel = () => {
                     setCurrentInfo({ ...currentInfo, count: 'none', time: r.data.time })
                     return
                 }
-                let data = { ...currentInfo, count: Number(r.data.max) - Number(r.data.count), time: r.data.time, max: r.data.max, using: r.data.count }
+                let data = { ...currentInfo, count: r.data.remaining, time: r.data.time, max: r.data.max, using: r.data.count }
                 setCurrentInfo(data)
                 let quantityState = getNowCurrontCountState(data)
                 setQuantityLoading(false)
@@ -166,7 +166,7 @@ const Cancel = () => {
                     setStudentInfo({name: '', studentId: ''})
                     return
                 }
-                let data = { ...currentInfo, count: Number(r.data.max) - Number(r.data.rental), time: r.data.time, using: r.data.rental }
+                let data = { ...currentInfo, count: r.data.remaining, time: r.data.time, using: r.data.rental }
                 setCurrentInfo(data)
                 setStudentInfo({ name: '', studentId: '' })
                 setBottomSheetStatus(_data => ({ ..._data, loading: false, success: true }))

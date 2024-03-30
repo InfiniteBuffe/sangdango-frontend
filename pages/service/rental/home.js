@@ -36,7 +36,7 @@ const Home = () => {
                 if (r.status != 200) {
                     setCurrentCount(0)
                 }
-                setCurrentCount(Number(r.data.max) - Number(r.data.count))
+                setCurrentCount(r.data.remaining)
             })
         if (router.isReady) {
             // ChannelTalk.boot({
@@ -77,7 +77,7 @@ const Home = () => {
                 if (!r.data.added) {
                     return toast.error(r.data.message)
                 }
-                setCurrentCount(Number(r.data.max) - Number(r.data.rental))
+                setCurrentCount(r.data.remaining)
                 toast.success('우산대여 신청이 완료되었습니다!')
                 setFormOpen(false)
                 setFormSuccessOpen(true)
@@ -172,7 +172,7 @@ const Home = () => {
                 setLoading(false)
                 setSelectFormOpen2(false)
                 setSelectFormOpen3(true)
-                setCurrentCount(Number(data.max) - Number(data.rental))
+                setCurrentCount(r.data.remaining)
                 setSelectFormInfo({ studentId: '', name: '', time: '' })
             })
             .catch(e => {

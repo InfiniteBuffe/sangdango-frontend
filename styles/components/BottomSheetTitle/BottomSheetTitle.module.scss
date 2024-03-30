@@ -1,0 +1,27 @@
+.title {
+    margin-top: 20px;
+
+    & .text {
+        font-family: "pretendard";
+        font-size: 20px;
+        font-weight: 700;
+        text-align: left;
+        color: black;
+    }
+}
+
+.description {
+    margin-top: 5px;
+
+    & .text {
+        font-family: "pretendard";
+        font-size: 15px;
+        font-weight: 400;
+        text-align: left;
+        color: rgb(70, 70, 70);
+    }
+}
+
+.space {
+    height: 20px;
+}

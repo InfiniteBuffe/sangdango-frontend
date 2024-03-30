@@ -4,7 +4,7 @@ import cs from 'classnames'
 const Input = (props) => {
     return (
         <>
-            <div className={styles.box}>
+            <div className={props.bottomSheet ? styles.bottom_sheet_box : styles.box}>
                 <div className={styles.label}>
                     {props.label}
                     &nbsp;

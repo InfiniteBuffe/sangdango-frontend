@@ -212,6 +212,19 @@
   border-bottom: none;
 }
 
+.bottom_sheet_notice {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: rgb(255, 247, 209);
+  border: 1px solid rgb(204, 167, 0);
+  box-shadow: 0 5px 20px 0 rgba(204, 167, 0, 0.3);
+  border-radius: 15px;
+}
+
 #rental_list_row_not_returned {
   background-color: rgb(255, 222, 195);
   transition: all 0.3s;

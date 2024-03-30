@@ -179,7 +179,7 @@ const List = (props) => {
                     대여자 명단 📋
                 </div>
             </div>
-            <table className={styles.rental_list}>
+            <table className={styles.rental_list} style={{ overflow: 'hidden' }}>
                 <thead className={styles.rental_list_head}>
                     <tr>
                         <td className={styles.rental_list_no}>No</td>

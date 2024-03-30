@@ -193,20 +193,20 @@
         border-bottom: 1px solid #b3b3b3;
         padding: 15px 15px;
         cursor: pointer;
-        transition: all .3s;
+        transition: all 0.3s;
 
         & .icon {
             margin-right: 5px;
         }
 
         & .text {
-            font-family: 'pretendard';
+            font-family: "pretendard";
             font-weight: 600;
             font-size: 16px;
         }
 
         &:hover {
-            transition: all .3s;
+            transition: all 0.3s;
             background-color: rgb(230, 230, 230);
         }
 
@@ -216,12 +216,26 @@
     }
 }
 
+.bottom_sheet_notice {
+    font-family: 'pretendard';
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    // margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: rgb(255, 247, 209);
+    border: 1px solid rgb(204, 167, 0);
+    box-shadow: 0 5px 20px 0 rgba(204, 167, 0, 0.3);
+    border-radius: 15px;
+}
+
 #rental_list_row_not_returned {
     background-color: rgb(255, 222, 195);
-    transition: all .3s;
+    transition: all 0.3s;
 
     &:hover {
-        transition: all .3s;
+        transition: all 0.3s;
         background-color: rgb(223, 187, 157);
     }
 }

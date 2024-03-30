@@ -42,9 +42,10 @@ export default async function handler(req, res) {
 
         // name은 service가 달라도 중복되면 안됨
 
+        const now = dayjs().add(9, 'hour').toDate()
         switch (name) {
             case 'RENTAL_APPLICATION':
-                let now = dayjs().add(9, 'hour').toDate()
+            case 'RENTAL_MAX_UMBRELLA':
                 await client.settings.update({
                     where: {
                         name: name
