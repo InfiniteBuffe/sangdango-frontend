@@ -174,6 +174,7 @@ const Main = () => {
         </div>
       </div>
       <Footer />
+      <div className={styles.space} />
     </>
   )
 }
