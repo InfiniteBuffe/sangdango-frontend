@@ -191,7 +191,7 @@ const Add = () => {
                     return
                 }
                 if (r.data.code == 'RENTAL_PROHIBITED') {
-                    setSheetError({title: '대여 금지됨', description: '해당 학번은 대여가 금지되었습니다. 기록 메뉴로 이동하여 확인해보세요.'})
+                    setSheetError({title: '대여 금지됨', description: '해당 학번은 대여가 금지되었습니다. 조회 메뉴로 이동하여 확인해보세요.'})
                     setBottomSheetStatus(data => ({...data, error: true, loading: false}))
                     return
                 }

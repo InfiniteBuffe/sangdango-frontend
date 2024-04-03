@@ -51,8 +51,10 @@ export default async function handler(req, res) {
         })
 
         await client.rentalLog.create({
-            studentId: Number(studentId),
-            type: isBan ? '우산대여 신청 차단' : '우산대여 신청 차단해제'
+            data: {
+                studentId: Number(studentId),
+                type: isBan ? '우산대여 신청 차단' : '우산대여 신청 차단해제'
+            }
         })
 
         res
