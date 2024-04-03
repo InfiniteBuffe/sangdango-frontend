@@ -11,9 +11,11 @@ import {changeOnlyNum} from "@/components/function/changeOnlyNum";
 import {checkStudentId} from "@/components/function/checkStudentId";
 import toast from "react-hot-toast";
 import axios from "axios";
+import {useRouter} from "next/router";
 
 const Cancel = (props) => {
     const url = (process.env.NEXT_PUBLIC_ENV === 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
+    const router=useRouter()
     const [inputData, setInputData] = useState({studentId: {value: '', error: false, errorMsg: '잘못된 학번입니다', disabled: false}})
     const theme = createTheme({
         palette: {

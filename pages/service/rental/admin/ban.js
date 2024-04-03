@@ -11,6 +11,7 @@ import MuiButton from "@/components/MuiButton";
 
 const Ban = (props) => {
     const router = useRouter()
+    const url = (process.env.NEXT_PUBLIC_ENV === 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
     if (props.session == null) {
         return (
             <>
