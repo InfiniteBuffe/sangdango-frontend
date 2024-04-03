@@ -41,9 +41,16 @@
   height: 20px;
 }
 
+@media (max-width: 768px) {
+  .space {
+    margin-bottom: 75px;
+  }
+}
 .rental_list_no_data {
   font-family: "pretendard";
   font-size: 16px;
   text-align: center;
   font-weight: 500;
-}/*# sourceMappingURL=View.module.css.map */
+}
+
+/*# sourceMappingURL=View.module.css.map */
