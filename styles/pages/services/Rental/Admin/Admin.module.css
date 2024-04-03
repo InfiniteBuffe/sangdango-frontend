@@ -12,9 +12,7 @@
   font-weight: 600;
   text-align: center;
   margin-top: 20px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .not_admin .user {
   font-family: "pretendard";
@@ -34,9 +32,7 @@
   font-weight: 700;
   font-size: 25px;
   text-align: left;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .box {
@@ -82,9 +78,7 @@
 
 .login_button {
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   font-family: "pretendard";
   font-size: 16px;
   margin: auto;
@@ -150,9 +144,7 @@
   font-weight: 600;
   text-align: center;
   margin-top: 20px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .bottomSheetTitle {
@@ -165,11 +157,9 @@
 
 #bottomSheetTable {
   box-shadow: none;
-  border-radius: none;
+  border-radius: 0;
   border: 1px solid #b3b3b3;
-  -webkit-user-select: text;
-     -moz-user-select: text;
-          user-select: text;
+  user-select: text;
 }
 
 .bottomSheetButtonGroup {
@@ -179,9 +169,7 @@
   margin: auto;
   margin-top: 20px;
   width: calc(100% - 40px);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   background-color: white;
 }
 .bottomSheetButtonGroup .button {
@@ -252,6 +240,17 @@
   margin-bottom: 20px;
 }
 
+.space {
+  height: 20px;
+}
+
+.rental_list_no_data {
+  font-family: "pretendard";
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
 @media (max-width: 768px) {
   .bottom_space {
     margin-bottom: 75px;
@@ -259,4 +258,6 @@
   .bottom_sheet_mobile {
     height: 55px;
   }
-}/*# sourceMappingURL=Admin.module.css.map */
+}
+
+/*# sourceMappingURL=Admin.module.css.map */

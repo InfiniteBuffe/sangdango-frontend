@@ -223,7 +223,7 @@ const Admin = (props) => {
                 </div>
             </div>
             <div className={styles.box} onClick={() => {
-
+                router.push('/service/rental/admin/ban')
             }}>
                 <div className={styles.setting_text}>
                     대여금지 학번 관리

@@ -71,6 +71,7 @@
 }
 
 .sheet_description {
+    margin: auto;
     font-family: "pretendard";
     font-size: 15px;
     font-weight: 500;
@@ -78,6 +79,7 @@
     margin-top: 10px;
     margin-bottom: 20px;
     color: rgb(50, 50, 50);
+    width: calc(100% - 40px);
 }
 
 .sheet_loading_circle {

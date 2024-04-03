@@ -168,7 +168,7 @@
 
 #bottomSheetTable {
     box-shadow: none;
-    border-radius: none;
+    border-radius: 0;
     border: 1px solid #b3b3b3;
     user-select: text;
 }
@@ -256,6 +256,17 @@
 
 .bottom_space {
     margin-bottom: 20px;
+}
+
+.space {
+    height: 20px;
+}
+
+.rental_list_no_data {
+    font-family: "pretendard";
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
 }
 
 @media (max-width: 768px) {

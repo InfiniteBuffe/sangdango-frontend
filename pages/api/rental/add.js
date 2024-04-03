@@ -117,6 +117,24 @@ export default async function handler(req, res) {
             })
     }
 
+    let checkBan = await client.rentalData.findUnique({
+        where: {
+            studentId: Number(studentId),
+        },
+        select: {
+            rentalBan: true,
+        }
+    })
+
+    if (checkBan.rentalBan) {
+        return res
+            .status(200)
+            .json({
+                code: 'RENTAL_PROHIBITED',
+                open: RENTAL_APPLICATION.value,
+            })
+    }
+
     let find = await client.currentRental.findUnique({
         where: {
             studentId: Number(studentId)

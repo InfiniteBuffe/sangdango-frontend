@@ -13,7 +13,7 @@ import { BottomSheet } from 'react-spring-bottom-sheet'
 
 const List = (props) => {
 
-    const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
+    const url = (process.env.NEXT_PUBLIC_ENV === 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
     const router = useRouter()
     const [rentalList, setRentalList] = useState([])
     const [loading, setLoading] = useState(true)
@@ -158,6 +158,7 @@ const List = (props) => {
             })
     }
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         if (!router.isReady) return
 

@@ -1,14 +1,15 @@
 import Input from '@/components/Input'
 import styles from '@/styles/pages/services/Rental/Add/Add.module.css'
-import { Box, Button, ThemeProvider, createTheme } from '@mui/material'
+import {Box, Button, ThemeProvider, createTheme} from '@mui/material'
 import axios from 'axios'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import { grey } from "@mui/material/colors"
-import { MoonLoader, PulseLoader, SyncLoader } from 'react-spinners'
-import { BottomSheet } from 'react-spring-bottom-sheet'
+import {useRouter} from 'next/router'
+import {useEffect, useState} from 'react'
+import {grey} from "@mui/material/colors"
+import {MoonLoader, PulseLoader, SyncLoader} from 'react-spinners'
+import {BottomSheet} from 'react-spring-bottom-sheet'
 import TwemojiFix from '@/components/TwemojiFix'
-import { MdError } from 'react-icons/md'
+import {MdError} from 'react-icons/md'
+import BottomSheetContainer from "@/components/BottomSheetContainer";
 
 // TODO
 //
@@ -16,17 +17,17 @@ import { MdError } from 'react-icons/md'
 
 const Add = () => {
     const url = (process.env.NEXT_PUBLIC_ENV == 'dev') ? (process.env.NEXT_PUBLIC_DEV_URL) : (process.env.NEXT_PUBLIC_PROD_URL)
-    const [currentInfo, setCurrentInfo] = useState({ count: '-', time: '', max: '0', using: '0', })
+    const [currentInfo, setCurrentInfo] = useState({count: '-', time: '', max: '0', using: '0',})
     const [quantityStyleId, setQuantityStyleId] = useState() // 아래 quantityState랑 상태 하나로 합쳐서 정리할 것.
     const [quantityState, setQuantityState] = useState()
     const [rentalOpen, setRentalOpen] = useState(null)
     const [quantityLoading, setQuantityLoading] = useState(true)
-    const [studentInfo, setStudentInfo] = useState({ studentId: '', name: '' })
+    const [studentInfo, setStudentInfo] = useState({studentId: '', name: ''})
     const [inputStatus, setInputStatus] = useState({})
-    const [sheetError, setSheetError] = useState({ title: '', description: '' })
+    const [sheetError, setSheetError] = useState({title: '', description: ''})
     const [inputError, setInputError] = useState({
-        studentId: { error: false, msg: null },
-        name: { error: false, msg: null }
+        studentId: {error: false, msg: null},
+        name: {error: false, msg: null}
     })
     const [bottomSheetStatus, setBottomSheetStatus] = useState({})
     const router = useRouter()
@@ -41,12 +42,18 @@ const Add = () => {
             .then(r => {
                 setRentalOpen(JSON.parse(r.data.open))
                 if (r.status != 200) {
-                    setCurrentInfo({ ...currentInfo, count: 'none', time: r.data.time })
+                    setCurrentInfo({...currentInfo, count: 'none', time: r.data.time})
                     return
                 }
-                let data = { ...currentInfo, count: r.data.remaining, time: r.data.time, max: r.data.max, using: r.data.count }
+                let data = {
+                    ...currentInfo,
+                    count: r.data.remaining,
+                    time: r.data.time,
+                    max: r.data.max,
+                    using: r.data.count
+                }
                 setCurrentInfo(data)
-                let quantityState = getNowCurrontCountState(data)
+                let quantityState = getNowCurrentCountState(data)
                 setQuantityLoading(false)
                 setQuantityState(quantityState)
                 switch (quantityState) {
@@ -70,11 +77,11 @@ const Add = () => {
         },
     })
 
-    const getNowCurrontCountState = (data) => {
+    const getNowCurrentCountState = (data) => {
         let max = Number(data.max)
-        let using = Number(data.using)
-        let rate = 100 - Math.round((using / max) * 100)
-        if (rate == 100) {
+        let _using = Number(data.using)
+        let rate = 100 - Math.round((_using / max) * 100)
+        if (rate === 100) {
             return 'max'
         }
         if (rate < 100 && rate >= 60) {
@@ -142,8 +149,8 @@ const Add = () => {
 
         setInputError(prevState => ({
             ...prevState,
-            studentId: { error: error.sid || false, msg: error.sid ? '잘못된 학번입니다' : null },
-            name: { error: error.name || false, msg: error.name ? '이름을 다시 입력해주세요' : null }
+            studentId: {error: error.sid || false, msg: error.sid ? '잘못된 학번입니다' : null},
+            name: {error: error.name || false, msg: error.name ? '이름을 다시 입력해주세요' : null}
         }));
 
         if (error.sid || error.name) {
@@ -151,8 +158,8 @@ const Add = () => {
         }
 
         // inputStatus는 true 시 disabled={true} 됨.
-        setInputStatus({ ...inputStatus, studentId: true, name: true, rentalConfirm: true })
-        setBottomSheetStatus({ ...bottomSheetStatus, loading: true })
+        setInputStatus({...inputStatus, studentId: true, name: true, rentalConfirm: true})
+        setBottomSheetStatus({...bottomSheetStatus, loading: true})
 
         axios({
             url: url + '/api/rental/add',
@@ -167,27 +174,32 @@ const Add = () => {
         })
             .then(r => {
                 setRentalOpen(JSON.parse(r.data.open))
-                setInputStatus(data => ({ ...data, studentId: false, name: false, rentalConfirm: false }))
+                setInputStatus(data => ({...data, studentId: false, name: false, rentalConfirm: false}))
                 if (r.data.code == 'NOT_RENTAL_TIME') {
-                    setSheetError({ title: '대여 불가', description: '대여 가능한 시간이 아닙니다' })
-                    setBottomSheetStatus(data => ({ ...data, error: true, loading: false }))
+                    setSheetError({title: '대여 불가', description: '대여 가능한 시간이 아닙니다'})
+                    setBottomSheetStatus(data => ({...data, error: true, loading: false}))
                     return
                 }
                 if (r.data.code == 'NOT_RENTAL_QUANTITY') {
-                    setSheetError({ title: '대여 불가', description: '대여 가능한 우산이 없습니다' })
-                    setBottomSheetStatus(data => ({ ...data, error: true, loading: false }))
+                    setSheetError({title: '대여 불가', description: '대여 가능한 우산이 없습니다'})
+                    setBottomSheetStatus(data => ({...data, error: true, loading: false}))
                     return
                 }
                 if (r.data.code == 'ALREADY_RENTED') {
-                    setSheetError({ title: '이미 신청됨', description: '대여 명단에 사용자가 존재합니다.' })
-                    setBottomSheetStatus(data => ({ ...data, error: true, loading: false }))
+                    setSheetError({title: '이미 신청됨', description: '대여 명단에 사용자가 존재합니다.'})
+                    setBottomSheetStatus(data => ({...data, error: true, loading: false}))
                     return
                 }
-                let data = { ...currentInfo, count: r.data.remaining, time: r.data.time, using: r.data.rental }
+                if (r.data.code == 'RENTAL_PROHIBITED') {
+                    setSheetError({title: '대여 금지됨', description: '해당 학번은 대여가 금지되었습니다. 기록 메뉴로 이동하여 확인해보세요.'})
+                    setBottomSheetStatus(data => ({...data, error: true, loading: false}))
+                    return
+                }
+                let data = {...currentInfo, count: r.data.remaining, time: r.data.time, using: r.data.rental}
                 setCurrentInfo(data)
-                setStudentInfo({ name: '', studentId: '' })
-                setBottomSheetStatus(_data => ({ ..._data, loading: false, success: true }))
-                let quantityState = getNowCurrontCountState(data)
+                setStudentInfo({name: '', studentId: ''})
+                setBottomSheetStatus(_data => ({..._data, loading: false, success: true}))
+                let quantityState = getNowCurrentCountState(data)
                 setQuantityState(quantityState)
                 switch (quantityState) {
                     case 'max':
@@ -279,7 +291,7 @@ const Add = () => {
                         onChange={(a) => {
                             let value = changeOnlyNum(a.target.value)
                             if (String(value).length > 5) return
-                            setStudentInfo({ ...studentInfo, studentId: value })
+                            setStudentInfo({...studentInfo, studentId: value})
                         }}
                         value={studentInfo.studentId}
                         disabled={inputStatus.studentId || false}
@@ -292,7 +304,7 @@ const Add = () => {
                         required={true}
                         onChange={(a) => {
                             let value = verifyName(a.target.value) // 최대 이름 길이는 10자 까지 (verifyName 함수에 설정됨)
-                            setStudentInfo({ ...studentInfo, name: value })
+                            setStudentInfo({...studentInfo, name: value})
                         }}
                         value={studentInfo.name}
                         disabled={inputStatus.name || false}
@@ -325,7 +337,7 @@ const Add = () => {
                                     <>우산 대여하기</>
                                 )}
                                 {inputStatus.rentalConfirm && (
-                                    <MoonLoader size={17} speedMultiplier={1} color="#000000" />
+                                    <MoonLoader size={17} speedMultiplier={1} color="#000000"/>
                                 )}
                             </Button>
                         </Box>
@@ -335,7 +347,7 @@ const Add = () => {
 
             {rentalOpen == null && (
                 <div className={styles.not_open}>
-                    <PulseLoader />
+                    <PulseLoader/>
                     <div className={styles.text}>
                         불러오는 중
                     </div>
@@ -344,7 +356,7 @@ const Add = () => {
 
             {rentalOpen == false && (
                 <div className={styles.not_open}>
-                    <MdError size={40} />
+                    <MdError size={40}/>
                     <div className={styles.text}>
                         일시적으로 신청이<br/>중단되었습니다
                     </div>
@@ -352,36 +364,38 @@ const Add = () => {
             )}
 
             <BottomSheet open={bottomSheetStatus.loading}>
-                <SyncLoader className={styles.sheet_loading_circle} size={17} speedMultiplier={0.75} color="#A0D468" />
+                <SyncLoader className={styles.sheet_loading_circle} size={17} speedMultiplier={0.75} color="#A0D468"/>
                 <div className={styles.sheet_title}>
                     대여 신청 중
                 </div>
                 <div className={styles.sheet_description}>
                     잠시만 기다려 주세요.
                 </div>
-                <div className={styles.bottom_sheet_mobile} />
+                <div className={styles.bottom_sheet_mobile}/>
             </BottomSheet>
-            <BottomSheet onDismiss={() => setBottomSheetStatus(data => ({ ...data, error: false }))} open={bottomSheetStatus.error}>
-                <TwemojiFix options={{ className: styles.emoji_font }}>❌</TwemojiFix>
+            <BottomSheet onDismiss={() => setBottomSheetStatus(data => ({...data, error: false}))}
+                         open={bottomSheetStatus.error}>
+                <TwemojiFix options={{className: styles.emoji_font}}>❌</TwemojiFix>
                 <div className={styles.sheet_title}>
                     {sheetError.title}
                 </div>
                 <div className={styles.sheet_description}>
-                    {sheetError.description}
+                        {sheetError.description}
                 </div>
-                {sheetButton({ name: '닫기', onClick: () => setBottomSheetStatus(data => ({ ...data, error: false })) })}
-                <div className={styles.bottom_sheet_mobile} />
+                {sheetButton({name: '닫기', onClick: () => setBottomSheetStatus(data => ({...data, error: false}))})}
+                <div className={styles.bottom_sheet_mobile}/>
             </BottomSheet>
-            <BottomSheet onDismiss={() => setBottomSheetStatus(data => ({ ...data, success: false }))} open={bottomSheetStatus.success}>
-                <TwemojiFix options={{ className: styles.emoji_font }}>✅</TwemojiFix>
+            <BottomSheet onDismiss={() => setBottomSheetStatus(data => ({...data, success: false}))}
+                         open={bottomSheetStatus.success}>
+                <TwemojiFix options={{className: styles.emoji_font}}>✅</TwemojiFix>
                 <div className={styles.sheet_title}>
                     신청 완료
                 </div>
                 <div className={styles.sheet_description}>
                     대여 장소와 시간을 꼭 확인해주세요!
                 </div>
-                {sheetButton({ name: '닫기', onClick: () => setBottomSheetStatus(data => ({ ...data, success: false })) })}
-                <div className={styles.bottom_sheet_mobile} />
+                {sheetButton({name: '닫기', onClick: () => setBottomSheetStatus(data => ({...data, success: false}))})}
+                <div className={styles.bottom_sheet_mobile}/>
             </BottomSheet>
         </>
     )
